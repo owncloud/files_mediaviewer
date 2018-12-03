@@ -1,0 +1,11 @@
+/node_modules/
+/build/
+/vendor/
+.php_cs.cache
+/tests/output/
+
+/js/
+/css/
+
+# @NOTE Remove on first release
+package-lock.json
