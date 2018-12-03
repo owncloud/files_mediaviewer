@@ -1,0 +1,26 @@
+$grid-gutter: 10px;
+
+// Colors
+
+$color-primary: #1d2d44;
+$color-secondary: #567298;
+
+$color-gray: #DCDCDC;
+$color-lightgray: #F1F1F1;
+
+$color-error : red;
+$color-error-border : #FED6D6;
+$color-error-background : #FFF0F0;
+
+$color-success :#3e5530;
+$color-success-background :#def7de;
+$color-success-border :#bbe2b7;
+
+$core-image-path : '../../../core/img';
+$app-image-path : '../img';
+
+#files_mediaviewer {
+	@import "../../node_modules/purecss/build/base-min";
+	@import "../../node_modules/purecss/build/grids-min";
+	@import "../../node_modules/purecss/build/grids-responsive-min";
+}
