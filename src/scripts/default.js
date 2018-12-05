@@ -1,6 +1,6 @@
-// -------------------------- Lets remove some stuff we defenitly don't need ---
-
 // Components
+
+import Viewer from './Viewer.vue';
 
 // Libs
 
@@ -8,7 +8,6 @@ import Vue from 'vue/dist/vue.js';
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
-
 
 // --- Global Components
 
@@ -21,14 +20,26 @@ Vue.mixin(t_mixin);
 Vue.directive('translate', directive);
 
 const router = new VueRouter({
-	routes: []
+	routes: [{
+		path: '/',
+		redirect: {
+			name: "Viewer",
+			params: {
+				file: window._mediaviewer.fileName
+			}
+		}
+	}, {
+		path: '/view/:file',
+		name: 'Viewer',
+		component: Viewer
+	}]
 });
 
 // --------------------------------------------------------------- app setup ---
 
 const files_mediaviewer = new Vue({
 	router,
-	template: '<router-view></router-view>',
+	template: '<div class="wrapper"><router-view></router-view></div>',
 	data: {
 		name: 'Mediaviewer'
 	}
