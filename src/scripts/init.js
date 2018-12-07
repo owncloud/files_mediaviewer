@@ -1,33 +1,34 @@
 $(document).ready(function () {
 
-    const mountPoint = $('<div>', {
-        id: 'files_mediaviewer',
-        html: '<div>'
-    });
+	const mountPoint = $('<div>', {
+		id: 'files_mediaviewer',
+		html: '<div>'
+	});
 
-    if (!OCA.Files && !OC)
-        return;
+	if (!OCA.Files) {
+		return;
+	}
 
-    // ---- Register fileactions -------
+	// ---- Register fileactions -------
 
-    let ViewMedia = {
-        mime: 'image/png',
-        name: 'ViewMedia',
-        permissions: OC.PERMISSION_READ,
-        actionHandler(fileName, context) {
+	let ViewMedia = {
+		mime: 'image/png',
+		name: 'ViewMedia',
+		permissions: OC.PERMISSION_READ,
+		actionHandler(fileName, context) {
 
-            window._mediaviewer = {
-                fileName,
-                context
-            }
+			window._mediaviewer = {
+				fileName,
+				context
+			};
 
-            $('body').append(mountPoint);
-            OC.addScript('files_mediaviewer', 'files_mediaviewer');
+			window.location = '#/view/' + fileName;
 
-        }
-    };
+			$('body').append(mountPoint);
+			OC.addScript('files_mediaviewer', 'files_mediaviewer');
+		}
+	};
 
-    OCA.Files.fileActions.registerAction(ViewMedia);
-    OCA.Files.fileActions.setDefault('image/png', 'ViewMedia');
-
+	OCA.Files.fileActions.registerAction(ViewMedia);
+	OCA.Files.fileActions.setDefault('image/png', 'ViewMedia');
 });

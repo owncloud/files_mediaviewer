@@ -22,11 +22,9 @@ Vue.directive('translate', directive);
 const router = new VueRouter({
 	routes: [{
 		path: '/',
-		redirect: {
-			name: "Viewer",
-			params: {
-				file: window._mediaviewer.fileName
-			}
+		component: {
+			name: 'Hibernate',
+			template : '<!-- Hibernating Mediaviewer -->'
 		}
 	}, {
 		path: '/view/:file',
@@ -39,7 +37,7 @@ const router = new VueRouter({
 
 const files_mediaviewer = new Vue({
 	router,
-	template: '<div class="wrapper"><router-view></router-view></div>',
+	template: '<router-view></router-view>',
 	data: {
 		name: 'Mediaviewer'
 	}
