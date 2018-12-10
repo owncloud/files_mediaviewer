@@ -2,7 +2,8 @@
 	"globals": {
 		"$": true,
 		"OC": true,
-		"OCA": true
+		"OCA": true,
+		"require" : true 
 	},
 	"env": {
 		"browser": true,

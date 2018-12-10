@@ -1,7 +1,9 @@
+const appName = require('../../package.json').name;
+
 $(document).ready(function () {
 
 	const mountPoint = $('<div>', {
-		id: 'files_mediaviewer',
+		id: appName,
 		html: '<div>'
 	});
 
@@ -13,22 +15,22 @@ $(document).ready(function () {
 
 	let ViewMedia = {
 		mime: 'image/png',
-		name: 'ViewMedia',
+		name: appName,
 		permissions: OC.PERMISSION_READ,
 		actionHandler(fileName, context) {
 
-			window._mediaviewer = {
+			window[appName] = {
 				fileName,
 				context
 			};
 
-			window.location = '#/view/' + fileName;
+			window.location = ['#', appName, fileName].join('/');
 
 			$('body').append(mountPoint);
-			OC.addScript('files_mediaviewer', 'files_mediaviewer');
+			OC.addScript(appName, appName);
 		}
 	};
 
 	OCA.Files.fileActions.registerAction(ViewMedia);
-	OCA.Files.fileActions.setDefault('image/png', 'ViewMedia');
+	OCA.Files.fileActions.setDefault('image/png', appName);
 });

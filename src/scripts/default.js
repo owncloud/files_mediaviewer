@@ -1,3 +1,5 @@
+const appName = require('../../package.json').name;
+
 // Components
 
 import Viewer from './Viewer.vue';
@@ -27,7 +29,7 @@ const router = new VueRouter({
 			template : '<!-- Hibernating Mediaviewer -->'
 		}
 	}, {
-		path: '/view/:file',
+		path: `/${appName}/:file`,
 		name: 'Viewer',
 		component: Viewer
 	}]
