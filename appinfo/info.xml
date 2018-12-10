@@ -16,7 +16,7 @@
 	<bugs>https://github.com/owncloud/files_mediaviewer/issues</bugs>
 	<repository type="git">https://github.com/owncloud/files_mediaviewer.git</repository>
 	<dependencies>
-		<owncloud min-version="10.0" max-version="11.0.0"/>
+		<owncloud min-version="10" max-version="10"/>
 	</dependencies>
 	<default_enable />
 </info>

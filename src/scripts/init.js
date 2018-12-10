@@ -1,9 +1,9 @@
-const appName = require('../../package.json').name;
+const app = require('../../package.json');
 
 $(document).ready(function () {
 
 	const mountPoint = $('<div>', {
-		id: appName,
+		id: app.name,
 		html: '<div>'
 	});
 
@@ -13,24 +13,27 @@ $(document).ready(function () {
 
 	// ---- Register fileactions -------
 
-	let ViewMedia = {
-		mime: 'image/png',
-		name: appName,
-		permissions: OC.PERMISSION_READ,
-		actionHandler(fileName, context) {
+	let actionHandler = (fileName, context) => {
+		window[app.name] = {
+			fileName,
+			context
+		};
 
-			window[appName] = {
-				fileName,
-				context
-			};
+		$('body').append(mountPoint);
 
-			window.location = ['#', appName, fileName].join('/');
-
-			$('body').append(mountPoint);
-			OC.addScript(appName, appName);
-		}
+		OC.redirect(OC.joinPaths('#', app.name, fileName));
+		OC.addScript(app.name, app.name);
 	};
 
-	OCA.Files.fileActions.registerAction(ViewMedia);
-	OCA.Files.fileActions.setDefault('image/png', appName);
+	app.mimetypes.forEach( (type) => {
+		let ViewMedia = {
+			mime: type,
+			name: app.name,
+			permissions: OC.PERMISSION_READ,
+			actionHandler
+		};
+
+		OCA.Files.fileActions.registerAction(ViewMedia);
+		OCA.Files.fileActions.setDefault(type, app.name);
+	});
 });

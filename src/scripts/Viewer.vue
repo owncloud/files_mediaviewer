@@ -8,7 +8,7 @@
 </template>
 
 <script>
-const appName = require('../../package.json').name;
+const app = require('../../package.json');
 
 export default {
 	name: "Viewer",
@@ -24,37 +24,30 @@ export default {
 			});
 		},
 		dir() {
-			return window[appName].context.dir;
+			return window[app.name].context.dir;
 		},
 		list() {
-			return _.filter(FileList.files, {
-				mimetype: "image/png"
+			return _.filter(FileList.files, (file) => {
+				return _.contains(app.mimetypes, file.mimetype);
 			});
 		},
 		thumbDimensions() {
 			let width = $(window).width();
 			switch (true) {
-				case (width <= 1024) :
-					return 1024
-					break;
-				case (width <= 1280) :
-					return 1280
-					break;
-				case (width <= 1920) :
-					return 1920
-					break;
-				default:
-					return 2160
-					break;
+				case (width <= 1024) : return 1024
+				case (width <= 1280) : return 1280
+				case (width <= 1920) : return 1920
+				default: return 2160
 			}
 		},
 		imgSrc() {
-			let path = [
+			let path = OC.joinPaths(
 				OC.getRootPath(),
 				'remote.php/dav/files',
-				OC.getCurrentUser().uid + this.file.path,
+				OC.getCurrentUser().uid,
+				this.file.path,
 				this.file.name
-			].join("/");
+			);
 
 			let params = $.param({
 				c: this.file.etag,
@@ -64,7 +57,7 @@ export default {
 				preview: 1
 			});
 
-			return `${path}?${params}`;
+			return `/${path}?${params}`;
 		}
 	}
 };
