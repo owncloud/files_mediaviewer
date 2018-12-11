@@ -1,6 +1,8 @@
-// -------------------------- Lets remove some stuff we defenitly don't need ---
+const appName = require('../../package.json').name;
 
 // Components
+
+import Viewer from './Viewer.vue';
 
 // Libs
 
@@ -8,7 +10,6 @@ import Vue from 'vue/dist/vue.js';
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
-
 
 // --- Global Components
 
@@ -21,7 +22,17 @@ Vue.mixin(t_mixin);
 Vue.directive('translate', directive);
 
 const router = new VueRouter({
-	routes: []
+	routes: [{
+		path: '/',
+		component: {
+			name: 'Hibernate',
+			template : '<!-- Hibernating Mediaviewer -->'
+		}
+	}, {
+		path: `/${appName}/:file`,
+		name: 'Viewer',
+		component: Viewer
+	}]
 });
 
 // --------------------------------------------------------------- app setup ---

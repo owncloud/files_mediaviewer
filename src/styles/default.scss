@@ -23,4 +23,6 @@ $app-image-path : '../img';
 	@import "../../node_modules/purecss/build/base-min";
 	@import "../../node_modules/purecss/build/grids-min";
 	@import "../../node_modules/purecss/build/grids-responsive-min";
+
+	@import "base";
 }

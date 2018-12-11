@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<info>
+	<id>files_mediaviewer</id>
+	<name>Mediaviewer</name>
+	<summary>Explore, show your image collections</summary>
+	<description>Mediaviewer adds image and video viewing capabilities</description>
+	<licence>GPL-2.0</licence>
+	<author>Felix Heidecke</author>
+	<version>0.1.0</version>
+	<namespace>Mediaviewer</namespace>
+	<documentation>
+		<developer>https://github.com/owncloud/files_mediaviewer/blob/master/README.md</developer>
+	</documentation>
+	<category>multimedia</category>
+	<website>https://github.com/owncloud/files_mediaviewer</website>
+	<bugs>https://github.com/owncloud/files_mediaviewer/issues</bugs>
+	<repository type="git">https://github.com/owncloud/files_mediaviewer.git</repository>
+	<dependencies>
+		<owncloud min-version="10" max-version="10"/>
+	</dependencies>
+	<default_enable />
+</info>

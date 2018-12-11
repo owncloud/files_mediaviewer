@@ -17,7 +17,8 @@ module.exports = function (grunt) {
 		browserify: {
 			dist: {
 				files: {
-					'js/files_mediaviewer.js': 'src/scripts/default.js'
+					'js/files_mediaviewer.js': 'src/scripts/default.js',
+					'js/files_mediaviewer_init.js': 'src/scripts/init.js',
 				},
 				options: {
 					transform: [
