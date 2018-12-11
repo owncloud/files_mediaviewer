@@ -20,9 +20,10 @@ $(document).ready(function () {
 		};
 
 		$('body').append(mountPoint);
-
-		OC.redirect(OC.joinPaths('#', app.name, fileName));
-		OC.addScript(app.name, app.name);
+		
+		OC.addScript(app.name, app.name).then(() => {
+			OC.redirect(OC.joinPaths('#', app.name, fileName));
+		});
 	};
 
 	app.mimetypes.forEach( (type) => {
