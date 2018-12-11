@@ -41,11 +41,15 @@ const files_mediaviewer = new Vue({
 	router,
 	template: '<router-view></router-view>',
 	data: {
-		name: 'Mediaviewer'
+		name: 'Mediaviewer',
+		initialFile : window[appName].file
 	}
 });
 
 // Japp … we need to wait for a ready DOM
 $(document).ready(() => {
 	files_mediaviewer.$mount('#files_mediaviewer > div');
+
+	// Free window space
+	delete window[appName];
 });

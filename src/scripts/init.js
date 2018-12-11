@@ -13,10 +13,9 @@ $(document).ready(function () {
 
 	// ---- Register fileactions -------
 
-	let actionHandler = (fileName, context) => {
+	let actionHandler = (fileName) => {
 		window[app.name] = {
-			fileName,
-			context
+			file : fileName
 		};
 
 		$('body').append(mountPoint);

@@ -24,5 +24,7 @@ $app-image-path : '../img';
 	@import "../../node_modules/purecss/build/grids-min";
 	@import "../../node_modules/purecss/build/grids-responsive-min";
 
+	@import "../../node_modules/swiper/dist/css/swiper.min";
+
 	@import "base";
 }

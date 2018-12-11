@@ -2,12 +2,13 @@
   "name": "files_mediaviewer",
   "version": "0.1.0",
   "description": "Viewer for pictures and videos integrated in the files app",
-  "mimetypes" : [
-	"image/png",
-	"image/jpeg"
+  "mimetypes": [
+    "image/png",
+    "image/jpeg"
   ],
   "dependencies": {
     "purecss": "^1.0.0",
+    "swiper": "^4.4.2",
     "vue": "^2.5.17",
     "vue-router": "^3.0.2"
   },
