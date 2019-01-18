@@ -4,7 +4,8 @@
 		"OC": true,
 		"OCA": true,
 		"require" : true,
-		"t" : true
+		"t" : true,
+		"_" : true
 	},
 	"env": {
 		"browser": true,

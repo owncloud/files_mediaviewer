@@ -25,7 +25,7 @@ export default {
 				mimetype : '',
 				name : 'Placeholder'
 			}
-		}
+		};
 	},
 	mounted () {
 		this.getActiveObject();
@@ -39,15 +39,15 @@ export default {
 		});
 
 		// Keyboard controls for swiping and closing
-		$(document).on("keyup", (e) => {
+		$(document).on('keyup', (e) => {
 			if (e.which === 27) {
 				this.close();
 			}
 			else if (e.which === 39) {
-				this.$parent.swiper.slideNext()
+				this.$parent.swiper.slideNext();
 			}
 			else if (e.which === 37) {
-				this.$parent.swiper.slidePrev()
+				this.$parent.swiper.slidePrev();
 			}
 		});
 	},
@@ -80,5 +80,5 @@ export default {
 			return this.fileType(this.slide.mimetype) === 'video';
 		}
 	}
-}
+};
 </script>

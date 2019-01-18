@@ -1,4 +1,4 @@
-const appName = require('../../package.json').name
+const appName = require('../../package.json').name;
 
 const helper = {
 	methods: {
