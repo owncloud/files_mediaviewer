@@ -29,7 +29,8 @@
   "scripts": {
     "build": "grunt default",
     "watch": "grunt watcher",
-    "lint": "eslint ./src/scripts/*.js"
+    "lint:js": "eslint ./src/scripts/*.js",
+    "lint:vue": "eslint ./src/scripts/*.vue"
   },
   "repository": {
     "type": "git",
