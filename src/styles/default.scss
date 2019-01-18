@@ -1,3 +1,4 @@
+$namespace : '#files_mediaviewer';
 $grid-gutter: 10px;
 
 // Colors
@@ -19,7 +20,7 @@ $color-success-border :#bbe2b7;
 $core-image-path : '../../../core/img';
 $app-image-path : '../img';
 
-#files_mediaviewer {
+#{$namespace} {
 	@import "../../node_modules/purecss/build/base-min";
 	@import "../../node_modules/purecss/build/grids-min";
 	@import "../../node_modules/purecss/build/grids-responsive-min";
@@ -27,4 +28,6 @@ $app-image-path : '../img';
 	@import "../../node_modules/swiper/dist/css/swiper.min";
 
 	@import "base";
+	@import "viewer";
+	@import "swiper";
 }

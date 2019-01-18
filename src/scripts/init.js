@@ -1,4 +1,5 @@
-const app = require('../../package.json');
+const app    = require('../../package.json');
+const config = require('../config.json');
 
 $(document).ready(function () {
 
@@ -14,6 +15,7 @@ $(document).ready(function () {
 	// ---- Register fileactions -------
 
 	let actionHandler = (fileName) => {
+
 		window[app.name] = {
 			file : fileName
 		};
@@ -25,7 +27,7 @@ $(document).ready(function () {
 		});
 	};
 
-	app.mimetypes.forEach( (type) => {
+	config.mimetypes.forEach( (type) => {
 		let ViewMedia = {
 			mime: type,
 			name: app.name,
