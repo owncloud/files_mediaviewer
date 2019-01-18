@@ -1,0 +1,10 @@
+{
+	"swiper" : {
+		"speed" : 400,
+		"effect" : "flip"
+	},
+	"mimetypes": [
+		"image/png",
+		"image/jpeg"
+	]
+}

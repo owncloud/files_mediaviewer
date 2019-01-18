@@ -14,11 +14,11 @@ Vue.use(VueRouter);
 // --- Global Components
 
 import {
-	mixin as t_mixin,
+	helper,
 	directive
-} from './translate.js';
+} from './helper.js';
 
-Vue.mixin(t_mixin);
+Vue.mixin(helper);
 Vue.directive('translate', directive);
 
 const router = new VueRouter({

@@ -3,7 +3,8 @@
 		"$": true,
 		"OC": true,
 		"OCA": true,
-		"require" : true 
+		"require" : true,
+		"t" : true
 	},
 	"env": {
 		"browser": true,

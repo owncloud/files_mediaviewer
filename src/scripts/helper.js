@@ -1,9 +1,17 @@
 const appName = require('../../package.json').name
 
-const mixin = {
+const helper = {
 	methods: {
 		t(string, scope = appName) {
 			return t(scope, string);
+		},
+		
+		fileType(mimetype) {
+			return mimetype.split('/')[0];
+		},
+
+		fileExtension(mimetype) {
+			return mimetype.split('/')[1];
 		}
 	}
 };
@@ -15,6 +23,6 @@ const directive = {
 };
 
 export {
-	mixin,
+	helper,
 	directive
 };
