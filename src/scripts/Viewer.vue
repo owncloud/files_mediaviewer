@@ -36,8 +36,7 @@ export default {
 	methods: {
 		thumbPath (item) {
 			let path = OC.joinPaths(
-				OC.getRootPath(),
-				'remote.php/dav/files',
+				OC.linkToRemoteBase('dav/files'),
 				OC.getCurrentUser().uid,
 				item.path,
 				item.name
@@ -51,18 +50,18 @@ export default {
 				preview: 1
 			});
 
-			return `/${path}?${params}`;
+			return `${path}?${params}`;
 		},
 
 		webdavPath (item) {
 			let path = OC.joinPaths(
 				OC.getRootPath(),
-				'remote.php/webdav',
+				OC.linkToRemoteBase('webdav'),
 				item.path,
 				item.name
 			);
 
-			return `/${path}`;
+			return path;
 		},
 
 		// Returns true if i is equal or adjacent to activeIndex
