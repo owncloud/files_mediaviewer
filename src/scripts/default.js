@@ -48,7 +48,4 @@ const files_mediaviewer = new Vue({
 // Japp … we need to wait for a ready DOM
 $(document).ready(() => {
 	files_mediaviewer.$mount('#files_mediaviewer > div');
-
-	// Free window space
-	delete window[appName];
 });

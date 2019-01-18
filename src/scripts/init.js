@@ -15,11 +15,6 @@ $(document).ready(function () {
 	// ---- Register fileactions -------
 
 	let actionHandler = (fileName) => {
-
-		window[app.name] = {
-			file : fileName
-		};
-
 		$('body').append(mountPoint);
 		
 		OC.addScript(app.name, app.name).then(() => {

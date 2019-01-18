@@ -66,7 +66,7 @@ export default {
 
 		// Returns true if i is equal or adjacent to activeIndex
 		shouldRender(i) {
-			return (this.swiper) ? _.contains([i - 1,i, ++i], this.swiper.activeIndex) : false;
+			return (this.swiper) ? _.contains([i - 1,i, i + 1], this.swiper.activeIndex) : false;
 		}
 	},
 	mounted () {
