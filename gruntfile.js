@@ -1,11 +1,23 @@
 const sass = require('node-sass');
 
+
+// --- Browserify setup
+
+let bsfTransform = [
+	['babelify', {
+		presets: 'es2015'
+	}],
+	['vueify']
+];
+
+
+
 module.exports = function (grunt) {
 	grunt.initConfig({
 		sass: {
 			options: {
 				implementation: sass,
-				sourcemap: false
+				sourcemap: true
 			},
 			dist: {
 				files: {
@@ -15,18 +27,12 @@ module.exports = function (grunt) {
 		},
 
 		browserify: {
-			dist: {
+			dev: {
 				files: {
-					'js/files_mediaviewer.js': 'src/scripts/default.js',
-					'js/files_mediaviewer_init.js': 'src/scripts/init.js',
+					'js/files_mediaviewer.js': 'src/scripts/default.js'
 				},
 				options: {
-					transform: [
-						['babelify', {
-							presets: 'es2015'
-						}],
-						['vueify']
-					],
+					transform: bsfTransform,
 					alias : {
 						'vue' : 'vue/dist/vue.js'
 					},
@@ -35,22 +41,36 @@ module.exports = function (grunt) {
 					}
 				}
 			},
-			build: {
+			
+			devInit: {
 				files: {
-					'js/files_mediaviewer.js': 'src/scripts/default.js',
 					'js/files_mediaviewer_init.js': 'src/scripts/init.js',
 				},
 				options: {
-					transform: [
-						['babelify', {
-							presets: 'es2015'
-						}],
-						['vueify']
-					],
+					transform: bsfTransform
+				}
+			},
+
+			build: {
+				files: {
+					'js/files_mediaviewer.js': 'src/scripts/default.js',
+				},
+				options: {
+					transform: bsfTransform,
 					alias : {
 						'vue-router' : 'vue-router/dist/vue-router.min.js',
-						'vue' : 'vue/dist/vue.min.js'
+						'vue' : 'vue/dist/vue.min.js',
+						'swiper' : 'swiper/dist/js/swiper.min.js'
 					}
+				}
+			},
+
+			buildInit: {
+				files: {
+					'js/files_mediaviewer_init.js': 'src/scripts/init.js',
+				},
+				options: {
+					transform: bsfTransform,
 				}
 			}
 		},
@@ -82,12 +102,14 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('default', [
 		'sass',
-		'browserify:build'
+		'browserify:build',
+		'browserify:buildInit'
 	]);
 
 	grunt.registerTask('watcher', [
 		'sass',
-		'browserify:dist',
+		'browserify:dev',
+		'browserify:devInit',
 		'watch'
 	]);
 };
