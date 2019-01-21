@@ -88,7 +88,8 @@ module.exports = function (grunt) {
 				tasks: [
 					'force:on',
 					'sass',
-					'browserify',
+					'browserify:dev',
+					'browserify:devInit',
 					'force:off'
 				]
 			}

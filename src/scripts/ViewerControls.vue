@@ -1,16 +1,25 @@
 <template>
 	<section class="viewer__controls">
-		<button class="viewer__control viewer__control--prev">Previous</button>
-		<button class="viewer__control viewer__control--next">Next</button>
-
-		<div v-if="this.isVideo">
-			<button v-if="this.playing" class="viewer__control viewer__control--pause" @click="pauseVideo()">Pause</button>
-			<button v-else class="viewer__control viewer__control--play" @click="playVideo()">Play</button>
+		<div class="viewer__controls__subgroup">
+			<button class="viewer__control viewer__control--prev">Previous</button>
+			<span class="viewer__control__count">{{ activeIndex }} of {{ slidesCount }}</span>
+			<button class="viewer__control viewer__control--next">Next</button>
 		</div>
-
-		<!-- <button class="viewer__control viewer__control--rotate">Rotate</button>
-		<button class="viewer__control viewer__control--zoom-in">Zoom in</button>
-		<button class="viewer__control viewer__control--zoom-out">Zoom out</button> -->
+		<div v-if="this.slideIsImage" class="viewer__controls__subgroup">
+			<button class="viewer__control viewer__control--rotate-right" @click="rotate(image.rotation + 90)">Rotate right</button>
+			<button class="viewer__control viewer__control--rotate-left" @click="rotate(image.rotation - 90)">Rotate left</button>
+		</div>		
+		<div v-if="this.slideIsImage" class="viewer__controls__subgroup">
+			<button class="viewer__control viewer__control--zoom-in" @click="scale(image.scale + .2)">Zoom in</button>
+			<button class="viewer__control viewer__control--zoom-out" @click="scale(image.scale - .2)">Zoom out</button>
+		</div>
+		<div v-if="this.slideIsVideo" class="viewer__controls__subgroup">
+			<button class="viewer__control viewer__control--replay-10" @click="skipVideo(-10)">Replay last 10 seconds</button>
+			<button v-if="this.video.state === 'paused'" class="viewer__control viewer__control--play" @click="playVideo()">Play</button>
+			<button v-if="this.video.state === 'playing'" class="viewer__control viewer__control--pause" @click="pauseVideo()">Pause</button>
+			<button class="viewer__control viewer__control--forward-10" @click="skipVideo(10)">Skip ahead 10 seconds</button>
+		</div>
+		<span class="viewer__control__nametag" v-text="slide.name"></span>
 		<button class="viewer__control viewer__control--close" @click="close()">Close</button>
 	</section>
 </template>
@@ -18,12 +27,18 @@
 export default {
 	data () {
 		return {
-			playing : false,
 			obj : null,
 			slide : {
 				id : null,
 				mimetype : '',
 				name : 'Placeholder'
+			},
+			video : {
+				state : 'paused'
+			},
+			image : {
+				rotation : 0,
+				scale : 1
 			}
 		};
 	},
@@ -35,7 +50,14 @@ export default {
 
 		this.$parent.$on('swiperSlideChange', (slide) => {
 			this.slide = slide;
-			this.getActiveObject();
+			this.obj = this.getActiveObject();
+			this.video.state = 'paused';
+			
+			this.resetTransform();
+			this.videoTimeline();
+
+			this.getWaitingImages().removeAttr('style');
+			this.getWaitingVideos().get(0).pause();
 		});
 
 		// Keyboard controls for swiping and closing
@@ -58,26 +80,81 @@ export default {
 
 		pauseVideo () {
 			if (this.slideIsVideo) {
-				this.obj.get(0).pause();
-				this.playing = false;
+				let video = this.obj.get(0);
+				video.pause();
+				this.video.state = 'paused';
 			}
 		},
 
 		playVideo () {
 			if (this.slideIsVideo) {
-				this.obj.get(0).play();
-				this.playing = true;
+				let video = this.obj.get(0);
+				video.play();
+				this.video.duration = video.duration;
+				this.video.state = 'playing';
 			}
 		},
 
-		// Fetch current slide for videoplayback manipulation
-		getActiveObject () {
-			this.obj = $('.swiper-slide-active .viewer__media');
+		skipVideo (seconds) {
+			let video = this.obj.get(0);
+			video.currentTime = video.currentTime + seconds;
+		},
+
+		videoTimeline () {
+			if (this.slideIsVideo) {
+				let video = this.obj.get(0);
+
+				video.addEventListener('timeupdate', () => {
+					this.video.currentTime = video.currentTime
+				})
+			}
+		},
+
+		rotate (deg) {
+			this.image.rotation = deg;
+			this.transform();
+		},
+
+		scale (factor) {
+			this.image.scale = factor;
+			this.transform();
+		},
+
+		transform () {
+			this.getActiveObject().css('transform', `rotate(${this.image.rotation}deg) scale(${this.image.scale})`);
+		},
+
+		resetTransform () {
+			this.image.rotation = 0;
+			this.image.scale = 1;
 		}
 	},
 	computed : {
 		slideIsVideo () {
 			return this.fileType(this.slide.mimetype) === 'video';
+		},
+
+		slideIsImage () {
+			return this.fileType(this.slide.mimetype) === 'image';
+		},
+
+		videoTimelinePosition () {
+			let width = (this.video.currentTime === 0) ? 0 : (100 / this.video.duration) * this.video.currentTime;
+			return "width:" + width + "%";
+		},
+
+		slidesCount () {
+			if (!this.$parent.swiper)
+				return 0;
+			
+			return this.$parent.swiper.slides.length;
+		},
+
+		activeIndex () {
+			if (!this.$parent.swiper)
+				return 0;
+
+			return this.$parent.swiper.activeIndex + 1;
 		}
 	}
 };

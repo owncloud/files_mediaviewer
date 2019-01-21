@@ -12,6 +12,18 @@ const helper = {
 
 		fileExtension(mimetype) {
 			return mimetype.split('/')[1];
+		},
+
+		getActiveObject () {
+			return $('.swiper-slide-active .viewer__media');
+		},
+
+		getWaitingVideos () {
+			return $('.viewer__slide .viewer__media--video');
+		},
+		
+		getWaitingImages () {
+			return $('.viewer__slide .viewer__media--image');
 		}
 	}
 };

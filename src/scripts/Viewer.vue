@@ -7,7 +7,7 @@
 						<div v-if="fileType(slide.mimetype) === 'image'">
 							<img v-if="shouldRender(index)" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
 						</div>
-						<video v-else-if="fileType(slide.mimetype) === 'video'" class="viewer__media viewer__media--video">
+						<video v-else-if="fileType(slide.mimetype) === 'video'" class="viewer__media viewer__media--video" controls controlsList="nodownload">
 							<source :src="webdavPath(slide)" :type="slide.mimetype">
 						</video>
 					</div>
@@ -71,7 +71,6 @@ export default {
 	},
 	mounted () {
 		const self = this;
-
 		this.swiper = new Swiper('#files_mediaviewer .viewer__container', {
 			initialSlide : _.findIndex(this.list, this.initialFile),
 			slideClass : 'viewer__slide',

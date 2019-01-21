@@ -28,6 +28,9 @@ $app-image-path : '../img';
 	@import "../../node_modules/swiper/dist/css/swiper.min";
 
 	@import "base";
-	@import "viewer";
+	@import "helper";
 	@import "swiper";
+
+	@import "viewer";
+	@import "viewerControls";
 }
