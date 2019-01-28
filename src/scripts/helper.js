@@ -5,25 +5,15 @@ const helper = {
 		t(string, scope = appName) {
 			return t(scope, string);
 		},
-		
-		fileType(mimetype) {
-			return mimetype.split('/')[0];
-		},
 
-		fileExtension(mimetype) {
-			return mimetype.split('/')[1];
-		},
-
-		getActiveObject () {
-			return $('.swiper-slide-active .viewer__media');
-		},
-
-		getWaitingVideos () {
-			return $('.viewer__slide .viewer__media--video');
+		pauseAllVideos () {
+			$('.viewer__slide .viewer__media--video').each(function() {
+				$(this).get(0).pause();
+			});
 		},
 		
 		getWaitingImages () {
-			return $('.viewer__slide .viewer__media--image');
+			return $('.viewer__slide .viewer__media--image').get(0);
 		}
 	}
 };

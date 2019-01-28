@@ -3,6 +3,7 @@ const appName = require('../../package.json').name;
 // Components
 
 import Viewer from './Viewer.vue';
+import Spinner from './ViewerSpinner.vue';
 
 // Libs
 
@@ -18,8 +19,12 @@ import {
 	directive
 } from './helper.js';
 
+
 Vue.mixin(helper);
 Vue.directive('translate', directive);
+Vue.component('spinner', Spinner);
+
+Vue.prototype.$bus = new Vue();
 
 const router = new VueRouter({
 	routes: [{
@@ -35,10 +40,20 @@ const router = new VueRouter({
 	}]
 });
 
+// ------------------------------------------------------------------- store ---
+
+import Vuex from 'vuex';
+Vue.use(Vuex);
+
+import store from './store.js';
+const Store = new Vuex.Store(store);
+
 // --------------------------------------------------------------- app setup ---
 
 const files_mediaviewer = new Vue({
+	el : '#files_mediaviewer > div',
 	router,
+	store : Store,
 	template: '<router-view></router-view>',
 	data: {
 		name: 'Mediaviewer'
@@ -47,5 +62,5 @@ const files_mediaviewer = new Vue({
 
 // Japp … we need to wait for a ready DOM
 $(document).ready(() => {
-	files_mediaviewer.$mount('#files_mediaviewer > div');
+	files_mediaviewer.$mount('');
 });

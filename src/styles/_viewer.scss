@@ -34,6 +34,13 @@
 		height: calc(100vh - 45px) !important;
 		flex-shrink: 0;
 		position: relative;
+
+		// Only active mediaitem should animate
+		&.swiper-slide-active {
+			.viewer__media--image {
+				transition: transform .25s ease-in-out;
+			}
+		}
 	}
 
 	&__media {
@@ -41,7 +48,6 @@
 		&--image {
 			max-width: 90vw;
 			max-height: 80vh;
-			transition: transform .25s ease-in-out;
 		}
 
 		&--video {
@@ -50,3 +56,4 @@
 		}
 	}
 }
+

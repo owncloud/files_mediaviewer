@@ -1,0 +1,24 @@
+<template>
+	<div>
+		<button class="viewer__control icon__prev" @click="slideTo('prev')">Previous</button>
+		<span class="viewer__control__count">{{ activeSlide }} of {{ lastSlide }}</span>
+		<button class="viewer__control icon__next" @click="slideTo('next')">Next</button>
+	</div>
+</template>
+<script>
+export default {
+	computed : {
+		activeSlide () {
+			return this.$store.state.activeIndex + 1;
+		},
+		lastSlide () {
+			return this.$store.state.maxIndex;
+		}
+	},
+	methods : {
+		slideTo (to) {
+			this.$bus.$emit('swiper:slideTo', to);
+		}
+	}
+}
+</script>

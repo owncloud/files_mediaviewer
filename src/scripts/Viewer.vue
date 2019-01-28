@@ -4,10 +4,10 @@
 			<div class="viewer__container">
 				<div class="viewer__wrapper">
 					<div class="viewer__slide" v-for="(slide, index) in list" :key="index">
-						<div v-if="fileType(slide.mimetype) === 'image'">
+						<div v-if="getType(slide) === 'image'">
 							<img v-if="shouldRender(index)" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
 						</div>
-						<video v-else-if="fileType(slide.mimetype) === 'video'" class="viewer__media viewer__media--video" controls controlsList="nodownload">
+						<video v-else-if="getType(slide) === 'video'" class="viewer__media viewer__media--video">
 							<source :src="webdavPath(slide)" :type="slide.mimetype">
 						</video>
 					</div>
@@ -64,6 +64,10 @@ export default {
 			return path;
 		},
 
+		getType (item) {
+			return item.mimetype.split('/')[0];
+		},
+
 		// Returns true if i is equal or adjacent to activeIndex
 		shouldRender(i) {
 			return (this.swiper) ? _.contains([i - 1,i, i + 1], this.swiper.activeIndex) : false;
@@ -71,33 +75,71 @@ export default {
 	},
 	mounted () {
 		const self = this;
+
+		let initialSlide = _.findWhere(this.list, { name : this.$route.params.file });
+			initialSlide = _.findIndex(this.list, initialSlide);
+
+		this.$store.dispatch('setMaxIndex', this.list.length);
+
 		this.swiper = new Swiper('#files_mediaviewer .viewer__container', {
-			initialSlide : _.findIndex(this.list, this.initialFile),
-			slideClass : 'viewer__slide',
+			initialSlide,
+			slideClass   : 'viewer__slide',
 			wrapperClass : 'viewer__wrapper',
 			navigation : {
 				prevEl : '.viewer__control--prev',
 				nextEl : '.viewer__control--next',
 			},
 			on : {
+				init : function () {
+					// Wait for re-render
+					self.$nextTick(() => {
+						self.$store.dispatch('setActive', {
+							activeIndex : this.activeIndex,
+							activeMediaItem : self.list[this.activeIndex],
+							activeDomNode : $('.swiper-slide-active .viewer__media')
+						});
+					});
+					self.$bus.$emit('swiper:init');
+				},
 				slideChangeTransitionEnd : function () {
-					// this scope workaround
-					self.$emit('swiperSlideChange', self.list[this.activeIndex]);
-
+					self.$store.dispatch('setActive', {
+						activeIndex : this.activeIndex,
+						activeMediaItem : self.list[this.activeIndex],
+						activeDomNode : $('.swiper-slide-active .viewer__media')
+					});
 					self.$router.push({
-						name: config.name ,
+						name: config.name,
 						params: {
 							file : self.list[this.activeIndex].name
 						}
 					});
+					self.$bus.$emit('swiper:slideChangeTransitionEnd');
+
+					// --- pause all playing videos
+					self.pauseAllVideos();
 				}
+			}
+		});
+
+		this.$bus.$on('swiper:slideTo', (to) => {
+			if (to === 'next') {
+				this.swiper.slideNext();
+			}
+			else if (to === 'prev') {
+				this.swiper.slidePrev();
+			}
+			else if (typeof to === 'number') {
+				this.swiper.slideTo(to);
 			}
 		});
 	},
 	computed: {
+		slideIsVideo () {
+			return this.$store.getters.itemType === 'video';
+		},
 
-		initialFile () {
-			return _.findWhere(this.list, { name : this.$route.params.file });
+		slideIsImage () {
+			return this.$store.getters.itemType === 'image';
 		},
 
 		list() {
