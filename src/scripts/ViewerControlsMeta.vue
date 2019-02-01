@@ -9,7 +9,6 @@ export default {
 	mounted () {
 		$(document).on('keyup', (e) => {
 			if (e.which === 27) {
-				$(document).off('keyup');
 				this.close();
 			}
 		});

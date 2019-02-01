@@ -31,7 +31,7 @@ const router = new VueRouter({
 		path: '/',
 		component: {
 			name: 'Hibernate',
-			template : '<!-- Hibernating Mediaviewer -->'
+			template : '<!-- Sleep warm, sleep tight, when you turn off the light. -->'
 		}
 	}, {
 		path: `/${appName}/:file`,
@@ -54,7 +54,7 @@ const files_mediaviewer = new Vue({
 	el : '#files_mediaviewer > div',
 	router,
 	store : Store,
-	template: '<router-view></router-view>',
+	template: '<keep-alive><router-view></router-view></keep-alive>',
 	data: {
 		name: 'Mediaviewer'
 	}

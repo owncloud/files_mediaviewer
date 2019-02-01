@@ -48,7 +48,27 @@ export default {
 		resetTransform () {
 			this.rotation = 0;
 			this.scaling = 1;
+		},
+
+		checkImageState () {
+			if (!this.image.get(0).complete) {
+
+				this.$store.dispatch('setLoading');
+
+				this.image.get(0).decode().then(() => {
+					this.$store.dispatch('setReady');
+				});
+			}
 		}
+	},
+	mounted () {
+		this.$nextTick( () => {
+			this.checkImageState();
+		});
+
+		this.$bus.$on('swiper:slideChangeTransitionEnd', () => {
+			this.checkImageState();
+		});
 	},
 	computed : {
 		image () {

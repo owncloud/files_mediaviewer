@@ -16,11 +16,7 @@ export default {
 	mounted () {
 		// Keyboard controls for swiping and closing
 		$(document).on('keyup', (e) => {
-			if (e.which === 27) {
-				$(document).off('keyup');
-				this.$router.push('/');
-			}
-			else if (e.which === 39) {
+			if (e.which === 39) {
 				this.$bus.$emit('swiper:slideTo', 'next');
 			}
 			else if (e.which === 37) {
