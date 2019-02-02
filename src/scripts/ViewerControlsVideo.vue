@@ -22,7 +22,7 @@ import ViewerControlsNavigate from './ViewerControlsNavigate.vue';
 import ViewerControlsMeta from './ViewerControlsMeta.vue';
 
 export default {
-	name : "VideoControls",
+	name : 'VideoControls',
 	components : {
 		navControls  : ViewerControlsNavigate,
 		metaControls : ViewerControlsMeta
@@ -44,7 +44,7 @@ export default {
 				type    : Number,
 				default : 0
 			}
-		}
+		};
 	},
 	methods : {
 		togglePlay () {
@@ -81,11 +81,11 @@ export default {
 			this.video.muted = false;
 			this.audio = 'on';
 
-			this.video.addEventListener('loadstart', (event) => {
+			this.video.addEventListener('loadstart', () => {
 				this.$store.dispatch('setLoading');
 			});
 
-			this.video.addEventListener('canplay', (event) => {
+			this.video.addEventListener('canplay', () => {
 				this.$store.dispatch('setReady');
 			});
 
@@ -95,14 +95,14 @@ export default {
 
 			this.video.addEventListener('playing', () => {
 				this.duration = this.video.duration;
-				this.state    = 'playing'
+				this.state    = 'playing';
 			});
 
-			this.video.addEventListener('timeupdate', (event) => {
+			this.video.addEventListener('timeupdate', () => {
 				this.currentTime = Math.round(this.video.currentTime);
 			});
 
-			this.$scrubber.addEventListener("mousemove", (event) => {
+			this.$scrubber.addEventListener('mousemove', (event) => {
 				let refPos = this.$scrubber.getBoundingClientRect(),
 					pct    = (100 / refPos.width) * (event.pageX - refPos.x);
 
@@ -131,13 +131,13 @@ export default {
 			let width = (this.currentTime === 0) ? 0 : (100 / this.duration) * this.currentTime;
 			
 			if (width > 100)
-				width = 100;
+			{width = 100;}
 
-			return "width:" + width + "%";
+			return 'width:' + width + '%';
 		},
 		$scrubber () {
 			return $('.viewer__control__scrubber').get(0);
 		}
 	}
-}
+};
 </script>

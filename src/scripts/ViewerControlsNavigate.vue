@@ -20,5 +20,5 @@ export default {
 			this.$bus.$emit('swiper:slideTo', to);
 		}
 	}
-}
+};
 </script>

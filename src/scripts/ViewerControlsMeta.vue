@@ -21,5 +21,5 @@ export default {
 			alert('I don\'t know how to trigger a download :-(');
 		}
 	}
-}
+};
 </script>

@@ -19,7 +19,7 @@ import ViewerControlsNavigate from './ViewerControlsNavigate.vue';
 import ViewerControlsMeta from './ViewerControlsMeta.vue';
 
 export default {
-	name : "ImageControls",
+	name : 'ImageControls',
 	components : {
 		navControls  : ViewerControlsNavigate,
 		metaControls : ViewerControlsMeta
@@ -28,7 +28,7 @@ export default {
 		return {
 			rotation : 0,
 			scaling  : 1
-		}
+		};
 	},
 	methods : {
 		rotate (deg) {
@@ -78,5 +78,5 @@ export default {
 			return this.$store.getters.itemName;
 		}
 	}
-}
+};
 </script>

@@ -6,8 +6,8 @@ export default {
 	props : ['show'],
 	data () {
 		return {
-			name : "I am the spinning spinner"
-		}
+			name : 'I am the spinning spinner'
+		};
 	}
-}
+};
 </script>

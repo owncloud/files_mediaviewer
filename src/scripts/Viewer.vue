@@ -77,7 +77,7 @@ export default {
 		const self = this;
 
 		let initialSlide = _.findWhere(this.list, { name : this.$route.params.file });
-			initialSlide = _.findIndex(this.list, initialSlide);
+		initialSlide = _.findIndex(this.list, initialSlide);
 
 		this.$store.dispatch('setMaxIndex', this.list.length);
 

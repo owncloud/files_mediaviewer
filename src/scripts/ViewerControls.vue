@@ -8,7 +8,7 @@
 import ViewerControlsVideo   from './ViewerControlsVideo.vue';
 import ViewerControlsImage   from './ViewerControlsImage.vue';
 export default {
-	name : "Controls",
+	name : 'Controls',
 	components : {
 		ViewerControlsVideo,
 		ViewerControlsImage
@@ -33,10 +33,10 @@ export default {
 	computed : {
 		controlComponent () {
 			if (this.slideIsVideo) {
-				return 'ViewerControlsVideo'
+				return 'ViewerControlsVideo';
 			}
 			else if (this.slideIsImage) {
-				return 'ViewerControlsImage'
+				return 'ViewerControlsImage';
 			}
 		},
 
