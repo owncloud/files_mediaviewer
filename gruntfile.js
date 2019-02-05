@@ -26,10 +26,30 @@ module.exports = function (grunt) {
 							presets: 'es2015'
 						}],
 						['vueify']
-
 					],
+					alias : {
+						'vue' : 'vue/dist/vue.js'
+					},
 					browserifyOptions: {
 						debug: true
+					}
+				}
+			},
+			build: {
+				files: {
+					'js/files_mediaviewer.js': 'src/scripts/default.js',
+					'js/files_mediaviewer_init.js': 'src/scripts/init.js',
+				},
+				options: {
+					transform: [
+						['babelify', {
+							presets: 'es2015'
+						}],
+						['vueify']
+					],
+					alias : {
+						'vue-router' : 'vue-router/dist/vue-router.min.js',
+						'vue' : 'vue/dist/vue.min.js'
 					}
 				}
 			}
@@ -62,12 +82,12 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('default', [
 		'sass',
-		'browserify'
+		'browserify:build'
 	]);
 
 	grunt.registerTask('watcher', [
 		'sass',
-		'browserify',
+		'browserify:dist',
 		'watch'
 	]);
 };

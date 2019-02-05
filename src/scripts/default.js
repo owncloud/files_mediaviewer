@@ -6,7 +6,7 @@ import Viewer from './Viewer.vue';
 
 // Libs
 
-import Vue from 'vue/dist/vue.js';
+import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);

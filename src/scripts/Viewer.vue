@@ -24,14 +24,14 @@ import Swiper from 'swiper';
 import ViewerControls from './ViewerControls.vue';
 
 export default {
-	name: "Viewer",
+	name: 'Viewer',
 	components : {
 		ViewerControls
 	},
 	data () {
 		return {
 			swiper : null
-		}
+		};
 	},
 	methods: {
 		thumbPath (item) {
@@ -90,7 +90,7 @@ export default {
 						params: {
 							file : self.list[this.activeIndex].name
 						}
-					})
+					});
 				}
 			}
 		});
@@ -110,11 +110,11 @@ export default {
 		thumbDimensions() {
 			let width = $(window).width();
 			switch (true) {
-				case (width <= 1024) : return 1024
-				case (width <= 1280) : return 1280
-				case (width <= 1920) : return 1920
-				case (width <= 2160) : return 2160
-				default: return 3840
+			case (width <= 1024) : return 1024;
+			case (width <= 1280) : return 1280;
+			case (width <= 1920) : return 1920;
+			case (width <= 2160) : return 2160;
+			default: return 3840;
 			}
 		}
 	}
