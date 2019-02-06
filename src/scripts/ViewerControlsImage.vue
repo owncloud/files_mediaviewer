@@ -42,7 +42,8 @@ export default {
 		},
 
 		transform () {
-			this.image.css('transform', `rotate(${this.rotation}deg) scale(${this.scaling})`);
+			// We need the jQuery element here
+			this.$store.state.activeDomNode.css('transform', `rotate(${this.rotation}deg) scale(${this.scaling})`);
 		},
 
 		resetTransform () {
@@ -51,11 +52,14 @@ export default {
 		},
 
 		checkImageState () {
-			if (!this.image.get(0).complete) {
+			if (!this.image)
+				return;
+
+			if (!this.image.complete) {
 
 				this.$store.dispatch('setLoading');
 
-				this.image.get(0).decode().then(() => {
+				this.image.decode().then(() => {
 					this.$store.dispatch('setReady');
 				});
 			}
@@ -72,7 +76,7 @@ export default {
 	},
 	computed : {
 		image () {
-			return this.$store.state.activeDomNode;
+			return this.$store.getters.image;
 		},
 		name () {
 			return this.$store.getters.itemName;

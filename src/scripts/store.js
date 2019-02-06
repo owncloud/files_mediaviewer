@@ -18,6 +18,12 @@ export default {
 				return null;
 			}
 			return state.activeMediaItem.mimetype.split('/')[0];
+		},
+		image (state) {
+			return (state.activeDomNode.get(0) instanceof HTMLImageElement) ? state.activeDomNode.get(0) : false;
+		},
+		video (state) {
+			return (state.activeDomNode.get(0) instanceof HTMLVideoElement) ? state.activeDomNode.get(0) : false;
 		}
 	},
 	mutations: {

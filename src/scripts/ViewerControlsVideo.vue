@@ -75,6 +75,10 @@ export default {
 		},
 
 		init () {
+
+			if (!this.video)
+				return;
+
 			this.duration    = this.video.duration;
 			this.currentTime = this.video.currentTime;
 			
@@ -94,7 +98,6 @@ export default {
 			});
 
 			this.video.addEventListener('playing', () => {
-				this.$store.dispatch('setReady');
 				this.duration = this.video.duration;
 				this.state    = 'playing';
 			});
@@ -123,7 +126,7 @@ export default {
 	},
 	computed : {
 		video () {
-			return this.$store.state.activeDomNode.get(0);
+			return this.$store.getters.video;
 		},
 		name () {
 			return this.$store.getters.itemName;
