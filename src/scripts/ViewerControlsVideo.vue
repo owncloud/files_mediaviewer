@@ -94,6 +94,7 @@ export default {
 			});
 
 			this.video.addEventListener('playing', () => {
+				this.$store.dispatch('setReady');
 				this.duration = this.video.duration;
 				this.state    = 'playing';
 			});
