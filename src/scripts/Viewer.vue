@@ -4,12 +4,13 @@
 			<div class="viewer__container">
 				<div class="viewer__wrapper">
 					<div class="viewer__slide" v-for="(slide, index) in list" :key="index">
-						<div v-if="getType(slide) === 'image'">
-							<img v-if="shouldRender(index)" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
-						</div>
-						<video v-else-if="getType(slide) === 'video'" class="viewer__media viewer__media--video">
-							<source :src="webdavPath(slide)" :type="slide.mimetype">
-						</video>
+						<template v-if="shouldRender(index)">
+							<img v-if="getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
+							<video v-else-if="getType(slide) === 'video'" class="viewer__media viewer__media--video">
+								<source :src="webdavPath(slide)" :type="slide.mimetype">
+							</video>
+						</template>
+						<span v-else>Pending: {{ slide.name }}</span>
 					</div>
 				</div>
 			</div>
@@ -41,6 +42,8 @@ export default {
 				item.path,
 				item.name
 			);
+
+			// path = FileList.filesClient.getBaseUrl() + `${item.path}/${item.name}`;
 
 			let params = $.param({
 				c: item.etag,
@@ -77,7 +80,7 @@ export default {
 		const self = this;
 
 		let initialSlide = _.findWhere(this.list, { name : this.$route.params.file });
-		initialSlide = _.findIndex(this.list, initialSlide);
+			initialSlide = _.findIndex(this.list, initialSlide);
 
 		this.$store.dispatch('setMaxIndex', this.list.length);
 
