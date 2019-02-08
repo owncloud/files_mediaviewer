@@ -37,6 +37,11 @@ export default {
 		},
 
 		scale (factor) {
+			// We don't want to go overboard here
+			if (factor < .25 || factor > 5) {
+				return false;
+			}
+
 			this.scaling = factor;
 			this.transform();
 		},
@@ -72,6 +77,7 @@ export default {
 
 		this.$bus.$on('swiper:slideChangeTransitionEnd', () => {
 			this.checkImageState();
+			this.resetTransform();
 		});
 	},
 	computed : {
