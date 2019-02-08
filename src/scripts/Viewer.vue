@@ -76,13 +76,30 @@ export default {
 		},
 
 		fetchFileList(callback) {
-			this.files = _.filter(FileList.files, (file) => {
-				return _.contains(config.mimetypes, file.mimetype);
-			});
+			
+			let fetch = new Promise( (resolve, reject) => {
 
-			if (typeof callback === 'function') {
-				callback(this.files);
-			}
+				let list = _.filter(FileList.files, (file) => {
+					return _.contains(config.mimetypes, file.mimetype);
+				})
+
+				if (list.length === 0) {
+					reject('list length is 0');
+					return;
+				}
+				this.list = list;
+				this.$store.dispatch('setMaxIndex', list.length);
+
+				resolve(list);
+			})
+			
+			fetch.then((list) => {
+				if (typeof callback === 'function') {
+					callback(list);
+				}
+
+				return;
+			});
 		},
 	},
 
@@ -92,8 +109,6 @@ export default {
 		this.fetchFileList((fileList) => {
 			let initialSlide = _.findWhere(fileList, { name : this.$route.params.file });
 				initialSlide = _.findIndex(fileList, initialSlide);
-
-			this.$store.dispatch('setMaxIndex', fileList.length);
 
 			this.swiper = new Swiper('#files_mediaviewer .viewer__container', {
 				initialSlide,
