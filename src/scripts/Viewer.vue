@@ -31,7 +31,8 @@ export default {
 	},
 	data () {
 		return {
-			swiper : null
+			swiper : null,
+			list : null
 		};
 	},
 	methods: {
@@ -42,8 +43,6 @@ export default {
 				item.path,
 				item.name
 			);
-
-			// path = FileList.filesClient.getBaseUrl() + `${item.path}/${item.name}`;
 
 			let params = $.param({
 				c: item.etag,
@@ -74,56 +73,75 @@ export default {
 		// Returns true if i is equal or adjacent to activeIndex
 		shouldRender(i) {
 			return (this.swiper) ? _.contains([i - 1,i, i + 1], this.swiper.activeIndex) : false;
-		}
+		},
+
+		fetchFileList(callback) {
+			this.files = _.filter(FileList.files, (file) => {
+				return _.contains(config.mimetypes, file.mimetype);
+			});
+
+			if (typeof callback === 'function') {
+				callback(this.files);
+			}
+		},
 	},
-	mounted () {
+
+	activated () {
 		const self = this;
 
-		let initialSlide = _.findWhere(this.list, { name : this.$route.params.file });
-			initialSlide = _.findIndex(this.list, initialSlide);
+		this.fetchFileList((fileList) => {
+			let initialSlide = _.findWhere(fileList, { name : this.$route.params.file });
+				initialSlide = _.findIndex(fileList, initialSlide);
 
-		this.$store.dispatch('setMaxIndex', this.list.length);
+			this.$store.dispatch('setMaxIndex', fileList.length);
 
-		this.swiper = new Swiper('#files_mediaviewer .viewer__container', {
-			initialSlide,
-			slideClass   : 'viewer__slide',
-			wrapperClass : 'viewer__wrapper',
-			navigation : {
-				prevEl : '.viewer__control--prev',
-				nextEl : '.viewer__control--next',
-			},
-			on : {
-				init : function () {
-					// Wait for re-render
-					self.$nextTick(() => {
+			this.swiper = new Swiper('#files_mediaviewer .viewer__container', {
+				initialSlide,
+				slideClass   : 'viewer__slide',
+				wrapperClass : 'viewer__wrapper',
+				navigation : {
+					prevEl : '.viewer__control--prev',
+					nextEl : '.viewer__control--next',
+				},
+				on : {
+					init : function () {
+						// Wait for re-render
+						self.$nextTick(() => {
+							self.$store.dispatch('setActive', {
+								activeIndex : this.activeIndex,
+								activeMediaItem : fileList[this.activeIndex],
+								activeDomNode : $('.swiper-slide-active .viewer__media')
+							});
+						});
+						self.$bus.$emit('swiper:init');
+					},
+					slideChangeTransitionEnd : function () {
 						self.$store.dispatch('setActive', {
 							activeIndex : this.activeIndex,
-							activeMediaItem : self.list[this.activeIndex],
+							activeMediaItem : fileList[this.activeIndex],
 							activeDomNode : $('.swiper-slide-active .viewer__media')
 						});
-					});
-					self.$bus.$emit('swiper:init');
-				},
-				slideChangeTransitionEnd : function () {
-					self.$store.dispatch('setActive', {
-						activeIndex : this.activeIndex,
-						activeMediaItem : self.list[this.activeIndex],
-						activeDomNode : $('.swiper-slide-active .viewer__media')
-					});
-					self.$router.push({
-						name: config.name,
-						params: {
-							file : self.list[this.activeIndex].name
-						}
-					});
-					self.$bus.$emit('swiper:slideChangeTransitionEnd');
+						self.$router.push({
+							name: config.name,
+							params: {
+								file : fileList[this.activeIndex].name
+							}
+						});
+						self.$bus.$emit('swiper:slideChangeTransitionEnd');
 
-					// --- pause all playing videos
-					self.pauseAllVideos();
+						// --- pause all playing videos
+						self.pauseAllVideos();
+					}
 				}
-			}
+			});
 		});
+	},
 
+	deactivated () {
+		this.swiper.destroy()
+	},
+
+	mounted () {
 		this.$bus.$on('swiper:slideTo', (to) => {
 			if (to === 'next') {
 				this.swiper.slideNext();
@@ -136,6 +154,7 @@ export default {
 			}
 		});
 	},
+
 	computed: {
 		slideIsVideo () {
 			return this.$store.getters.itemType === 'video';
@@ -143,12 +162,6 @@ export default {
 
 		slideIsImage () {
 			return this.$store.getters.itemType === 'image';
-		},
-
-		list() {
-			return _.filter(FileList.files, (file) => {
-				return _.contains(config.mimetypes, file.mimetype);
-			});
 		},
 
 		thumbDimensions() {
