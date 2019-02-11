@@ -102,6 +102,11 @@ export default {
 				this.state    = 'playing';
 			});
 
+			this.video.addEventListener('stalled', () => {
+				this.$store.dispatch('setLoading');
+				console.warn(`Loading ${this.name} stalled!`);
+			});
+
 			this.video.addEventListener('timeupdate', () => {
 				this.currentTime = Math.round(this.video.currentTime);
 			});
