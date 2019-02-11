@@ -10,7 +10,7 @@
 								<source :src="webdavPath(slide)" :type="slide.mimetype">
 							</video>
 						</template>
-						<span v-else>Pending: {{ slide.name }}</span>
+						<span v-else>{{ t('Pending:') }} {{ slide.name }}</span>
 					</div>
 				</div>
 			</div>
@@ -89,7 +89,6 @@ export default {
 				}
 				this.list = list;
 				this.$store.dispatch('setMaxIndex', list.length);
-
 				resolve(list);
 			})
 			
@@ -104,12 +103,15 @@ export default {
 	},
 
 	activated () {
+		// Swiper is a bit tricky
+		// when it comes to "this" context
 		const self = this;
 
 		this.fetchFileList((fileList) => {
 			let initialSlide = _.findWhere(fileList, { name : this.$route.params.file });
 				initialSlide = _.findIndex(fileList, initialSlide);
 
+			// @TODO: Make it a Vue.$prototpye
 			this.swiper = new Swiper('#files_mediaviewer .viewer__container', {
 				initialSlide,
 				slideClass   : 'viewer__slide',

@@ -8,9 +8,9 @@
 			<!-- Swipe controls -->
 		</nav-controls>
 		<div class="viewer__controls__subgroup">
-			<button class="viewer__control icon__replay_10" :disabled="currentTime === 0" @click="skipTo(0)">Replay</button>
-			<button class="viewer__control icon__play" :class="[state === 'paused' ? 'icon__play' : 'icon__pause']" @click="togglePlay()">Play</button>
-			<button class="viewer__control" :class="[audio === 'on' ? 'icon__volume_up' : 'icon__volume_down']" @click="toggleSound()">Mute</button>
+			<button class="viewer__control icon__replay_10" :disabled="currentTime === 0" @click="skipTo(0)" v-translate>Replay</button>
+			<button class="viewer__control icon__play" :class="[state === 'paused' ? 'icon__play' : 'icon__pause']" @click="togglePlay()" v-translate>Play</button>
+			<button class="viewer__control" :class="[audio === 'on' ? 'icon__volume_up' : 'icon__volume_down']" @click="toggleSound()" v-translate>Mute</button>
 		</div>
 		<meta-controls class="viewer__controls__subgroup">
 			<!-- Swipe controls -->
@@ -142,7 +142,7 @@ export default {
 			if (width > 100)
 			{width = 100;}
 
-			return 'width:' + width + '%';
+			return `width:${width}%`;
 		},
 		$scrubber () {
 			return $('.viewer__control__scrubber').get(0);

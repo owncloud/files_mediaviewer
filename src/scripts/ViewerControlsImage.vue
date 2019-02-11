@@ -5,9 +5,9 @@
 			<!-- Swipe controls -->
 		</nav-controls>
 		<div class="viewer__controls__subgroup">
-			<button class="viewer__control icon__rotate_90_degrees_ccw" @click="rotate(rotation - 90)">Rotate 90° counterclockwise</button>
-			<button class="viewer__control icon__zoom_in" @click="scale(scaling + .2)">Zoom in</button>
-			<button class="viewer__control icon__zoom_out" @click="scale(scaling - .2)">Zoom out</button>
+			<button class="viewer__control icon__rotate_90_degrees_ccw" @click="rotate(rotation - 90)" v-translate>Rotate 90° counterclockwise</button>
+			<button class="viewer__control icon__zoom_in" @click="scale(scaling + .2)" v-translate>Zoom in</button>
+			<button class="viewer__control icon__zoom_out" @click="scale(scaling - .2)" v-translate>Zoom out</button>
 		</div>
 		<meta-controls class="viewer__controls__subgroup">
 			<!-- Swipe controls -->

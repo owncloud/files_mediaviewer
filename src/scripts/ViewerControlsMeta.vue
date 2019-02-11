@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<button class="viewer__control icon__download" @click="download()">Download</button>
-		<button class="viewer__control icon__close" @click="close()">Close</button>
+		<button class="viewer__control icon__download" @click="download()" v-translate>Download</button>
+		<button class="viewer__control icon__close" @click="close()" v-translate>Close</button>
 	</div>
 </template>
 <script>
