@@ -18,7 +18,15 @@ export default {
 			this.$router.push('/');
 		},
 		download () {
-			alert('I don\'t know how to trigger a download :-(');
+			let item = this.$store.state.activeMediaItem;
+			let path = OC.joinPaths(
+				OC.linkToRemoteBase('dav/files'),
+				OC.getCurrentUser().uid,
+				item.path,
+				item.name
+			);
+
+			OC.redirect(path);
 		}
 	}
 };
