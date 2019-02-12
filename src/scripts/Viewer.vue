@@ -57,7 +57,6 @@ export default {
 
 		webdavPath (item) {
 			let path = OC.joinPaths(
-				OC.getRootPath(),
 				OC.linkToRemoteBase('webdav'),
 				item.path,
 				item.name
