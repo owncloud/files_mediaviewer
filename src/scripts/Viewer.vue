@@ -42,7 +42,7 @@ export default {
 
 			if (this.isPublic) {
 				path   = OC.getRootPath() + OC.filePath('files_sharing', 'ajax', 'publicpreview.php');
-				params = $.param({
+				params = OC.buildQueryString({
 					file : item.path + '/' + item.name,
 					c: item.etag,
 					x: this.thumbDimensions,
