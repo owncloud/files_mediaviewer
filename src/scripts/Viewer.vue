@@ -37,12 +37,11 @@ export default {
 	},
 	methods: {
 		thumbPath (item) {
-
-			let path, params;
+			let webdavPath;
 
 			if (this.isPublic) {
-				path   = OC.getRootPath() + OC.filePath('files_sharing', 'ajax', 'publicpreview.php');
-				params = OC.buildQueryString({
+				let path   = OC.getRootPath() + OC.filePath('files_sharing', 'ajax', 'publicpreview.php');
+				let params = OC.buildQueryString({
 					file : item.path + '/' + item.name,
 					c: item.etag,
 					x: this.thumbDimensions,
@@ -50,26 +49,30 @@ export default {
 					a: 1,
 					t : this.sharingToken
 				})
+
+				webdavPath = `${path}?${params}`;
 			}
 
 			else {
-				path = OC.joinPaths(
+				let path = OC.joinPaths(
 					OC.linkToRemoteBase('dav/files'),
 					OC.getCurrentUser().uid,
 					item.path,
 					item.name
 				);
 
-				params = $.param({
+				let params = $.param({
 					c: item.etag,
 					x: this.thumbDimensions,
 					y: this.thumbDimensions,
 					a: 1,
 					preview: 1
 				});
+
+				webdavPath = encodeURI(`${path}?${params}`);
 			}
 
-			return `${path}?${params}`;
+			return webdavPath;
 		},
 
 		webdavPath (item) {
