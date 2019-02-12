@@ -3,19 +3,21 @@ $grid-gutter: 10px;
 
 // Colors
 
-$color-primary: #1d2d44;
-$color-secondary: #567298;
-
-$color-gray: #DCDCDC;
-$color-lightgray: #F1F1F1;
-
-$color-error : red;
-$color-error-border : #FED6D6;
-$color-error-background : #FFF0F0;
-
-$color-success :#3e5530;
-$color-success-background :#def7de;
-$color-success-border :#bbe2b7;
+$color : (
+	primary: #1d2d44,
+	secondary: #567298,
+	
+	gray: #DCDCDC,
+	lightgray: #F1F1F1,
+	
+	error : red,
+	error-border : #FED6D6,
+	error-background : #FFF0F0,
+	
+	success :#3e5530,
+	success-background :#def7de,
+	success-border :#bbe2b7,
+);
 
 $core-image-path : '../../../core/img';
 $app-image-path : '../img';
@@ -28,6 +30,11 @@ $app-image-path : '../img';
 	@import "../../node_modules/swiper/dist/css/swiper.min";
 
 	@import "base";
-	@import "viewer";
+	@import "helper";
+	@import "icons";
 	@import "swiper";
+
+	@import "spinner";
+	@import "viewer";
+	@import "viewerControls";
 }

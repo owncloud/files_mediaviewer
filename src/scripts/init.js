@@ -21,7 +21,6 @@ $(document).ready(function () {
 			OC.redirect(OC.joinPaths('#', app.name, fileName));
 		});
 	};
-
 	config.mimetypes.forEach( (type) => {
 		let ViewMedia = {
 			mime: type,

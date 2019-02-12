@@ -4,12 +4,13 @@
 			<div class="viewer__container">
 				<div class="viewer__wrapper">
 					<div class="viewer__slide" v-for="(slide, index) in list" :key="index">
-						<div v-if="fileType(slide.mimetype) === 'image'">
-							<img v-if="shouldRender(index)" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
-						</div>
-						<video v-else-if="fileType(slide.mimetype) === 'video'" class="viewer__media viewer__media--video">
-							<source :src="webdavPath(slide)" :type="slide.mimetype">
-						</video>
+						<template v-if="shouldRender(index)">
+							<img v-if="getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
+							<video v-else-if="getType(slide) === 'video'" class="viewer__media viewer__media--video">
+								<source :src="webdavPath(slide)" :type="slide.mimetype">
+							</video>
+						</template>
+						<span v-else>{{ t('Pending:') }} {{ slide.name }}</span>
 					</div>
 				</div>
 			</div>
@@ -30,7 +31,8 @@ export default {
 	},
 	data () {
 		return {
-			swiper : null
+			swiper : null,
+			list : null
 		};
 	},
 	methods: {
@@ -55,7 +57,6 @@ export default {
 
 		webdavPath (item) {
 			let path = OC.joinPaths(
-				OC.getRootPath(),
 				OC.linkToRemoteBase('webdav'),
 				item.path,
 				item.name
@@ -64,47 +65,119 @@ export default {
 			return path;
 		},
 
+		getType (item) {
+			return item.mimetype.split('/')[0];
+		},
+
 		// Returns true if i is equal or adjacent to activeIndex
 		shouldRender(i) {
 			return (this.swiper) ? _.contains([i - 1,i, i + 1], this.swiper.activeIndex) : false;
-		}
+		},
+
+		fetchFileList(callback) {
+			
+			let fetch = new Promise( (resolve, reject) => {
+
+				let list = _.filter(FileList.files, (file) => {
+					return _.contains(config.mimetypes, file.mimetype);
+				})
+
+				if (list.length === 0) {
+					reject('list length is 0');
+					return;
+				}
+				this.list = list;
+				this.$store.dispatch('setMaxIndex', list.length);
+				resolve(list);
+			})
+			
+			fetch.then((list) => {
+				if (typeof callback === 'function') {
+					callback(list);
+				}
+
+				return;
+			});
+		},
 	},
-	mounted () {
+
+	activated () {
+		// Swiper is a bit tricky
+		// when it comes to "this" context
 		const self = this;
 
-		this.swiper = new Swiper('#files_mediaviewer .viewer__container', {
-			initialSlide : _.findIndex(this.list, this.initialFile),
-			slideClass : 'viewer__slide',
-			wrapperClass : 'viewer__wrapper',
-			navigation : {
-				prevEl : '.viewer__control--prev',
-				nextEl : '.viewer__control--next',
-			},
-			on : {
-				slideChangeTransitionEnd : function () {
-					// this scope workaround
-					self.$emit('swiperSlideChange', self.list[this.activeIndex]);
+		this.fetchFileList((fileList) => {
+			let initialSlide = _.findWhere(fileList, { name : this.$route.params.file });
+				initialSlide = _.findIndex(fileList, initialSlide);
 
-					self.$router.push({
-						name: config.name ,
-						params: {
-							file : self.list[this.activeIndex].name
-						}
-					});
+			// @TODO: Make it a Vue.$prototpye
+			this.swiper = new Swiper('#files_mediaviewer .viewer__container', {
+				initialSlide,
+				slideClass   : 'viewer__slide',
+				wrapperClass : 'viewer__wrapper',
+				navigation : {
+					prevEl : '.viewer__control--prev',
+					nextEl : '.viewer__control--next',
+				},
+				on : {
+					init : function () {
+						// Wait for re-render
+						self.$nextTick(() => {
+							self.$store.dispatch('setActive', {
+								activeIndex : this.activeIndex,
+								activeMediaItem : fileList[this.activeIndex],
+								activeDomNode : $('.swiper-slide-active .viewer__media')
+							});
+						});
+						self.$bus.$emit('swiper:init');
+					},
+					slideChangeTransitionEnd : function () {
+						self.$store.dispatch('setActive', {
+							activeIndex : this.activeIndex,
+							activeMediaItem : fileList[this.activeIndex],
+							activeDomNode : $('.swiper-slide-active .viewer__media')
+						});
+						self.$router.push({
+							name: config.name,
+							params: {
+								file : fileList[this.activeIndex].name
+							}
+						});
+						self.$bus.$emit('swiper:slideChangeTransitionEnd');
+
+						// --- pause all playing videos
+						self.pauseAllVideos();
+					}
 				}
+			});
+		});
+	},
+
+	deactivated () {
+		this.swiper.destroy()
+	},
+
+	mounted () {
+		this.$bus.$on('swiper:slideTo', (to) => {
+			if (to === 'next') {
+				this.swiper.slideNext();
+			}
+			else if (to === 'prev') {
+				this.swiper.slidePrev();
+			}
+			else if (typeof to === 'number') {
+				this.swiper.slideTo(to);
 			}
 		});
 	},
-	computed: {
 
-		initialFile () {
-			return _.findWhere(this.list, { name : this.$route.params.file });
+	computed: {
+		slideIsVideo () {
+			return this.$store.getters.itemType === 'video';
 		},
 
-		list() {
-			return _.filter(FileList.files, (file) => {
-				return _.contains(config.mimetypes, file.mimetype);
-			});
+		slideIsImage () {
+			return this.$store.getters.itemType === 'image';
 		},
 
 		thumbDimensions() {

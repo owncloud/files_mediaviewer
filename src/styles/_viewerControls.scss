@@ -1,0 +1,99 @@
+.viewer__control {
+	cursor: pointer;
+	border: 0 none;
+	width: 24px;
+	height: 24px;
+	text-indent: -9999px;
+	background: {
+		color: transparent;
+		size: contain;
+		repeat: no-repeat;
+		cursor: pointer;
+	}
+
+	&[disabled] {
+		opacity: .25;
+	}
+
+	&__nametag {
+		display: block;
+		position: absolute;
+		color: white;
+		transform: translate(-50%, -150%);
+		top: 0;
+		left: 50%;
+		white-space: nowrap;
+		font-size: 16px;
+		text-shadow: 
+			1px  1px 1px black,
+			1px -1px 1px black,
+			-1px  1px 1px black,
+			-1px -1px 1px black;
+	}
+
+	&__count {
+		color: white;
+	}
+
+	// -- Video controls
+
+	&__scrubber {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		height: 5px;
+		width: 100%;
+		transform: translateY(-100%);
+		transition: height .25s;
+
+		// Juicebar
+		> div {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			width: 0%;
+			background-color: red;
+		}
+	}
+}
+
+.viewer__controls {
+	position: absolute;
+	display: flex;
+	background: rgba(black, .5);
+	left: 50%;
+	bottom: 0;
+	transform: translate(-50%, -25%);
+	z-index: 160;
+	min-height: 50px;
+	min-width: 600px;
+	justify-content: space-between;
+	align-items: center;
+	transition: width .25s;
+
+	padding: {
+		left: 15px;
+		right: 15px;
+	}
+
+	&:not(:hover) {
+		opacity: .5;
+	}
+
+	&__subgroup {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+
+		> * {
+			margin: 0 5px;
+		}
+	}
+
+	// --- Enlarge juicebar on hovering over controlbar
+	&:hover > .viewer__control__scrubber {
+		height: 10px;
+	}
+}

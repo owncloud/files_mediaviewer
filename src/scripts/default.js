@@ -3,6 +3,7 @@ const appName = require('../../package.json').name;
 // Components
 
 import Viewer from './Viewer.vue';
+import Spinner from './ViewerSpinner.vue';
 
 // Libs
 
@@ -18,15 +19,19 @@ import {
 	directive
 } from './helper.js';
 
+
 Vue.mixin(helper);
 Vue.directive('translate', directive);
+Vue.component('spinner', Spinner);
+
+Vue.prototype.$bus = new Vue();
 
 const router = new VueRouter({
 	routes: [{
 		path: '/',
 		component: {
 			name: 'Hibernate',
-			template : '<!-- Hibernating Mediaviewer -->'
+			template : '<!-- Sleep warm, sleep tight, when you turn off the light. -->'
 		}
 	}, {
 		path: `/${appName}/:file`,
@@ -35,11 +40,21 @@ const router = new VueRouter({
 	}]
 });
 
+// ------------------------------------------------------------------- store ---
+
+import Vuex from 'vuex';
+Vue.use(Vuex);
+
+import store from './store.js';
+const Store = new Vuex.Store(store);
+
 // --------------------------------------------------------------- app setup ---
 
 const files_mediaviewer = new Vue({
+	el : '#files_mediaviewer > div',
 	router,
-	template: '<router-view></router-view>',
+	store : Store,
+	template: '<keep-alive><router-view></router-view></keep-alive>',
 	data: {
 		name: 'Mediaviewer'
 	}
@@ -47,5 +62,5 @@ const files_mediaviewer = new Vue({
 
 // Japp … we need to wait for a ready DOM
 $(document).ready(() => {
-	files_mediaviewer.$mount('#files_mediaviewer > div');
+	files_mediaviewer.$mount('');
 });

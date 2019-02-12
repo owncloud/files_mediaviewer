@@ -5,13 +5,11 @@ const helper = {
 		t(string, scope = appName) {
 			return t(scope, string);
 		},
-		
-		fileType(mimetype) {
-			return mimetype.split('/')[0];
-		},
 
-		fileExtension(mimetype) {
-			return mimetype.split('/')[1];
+		pauseAllVideos () {
+			$('.viewer__slide .viewer__media--video').each(function() {
+				$(this).get(0).pause();
+			});
 		}
 	}
 };

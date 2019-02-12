@@ -5,6 +5,9 @@
 	},
 	"mimetypes": [
 		"image/png",
-		"image/jpeg"
+		"image/jpeg",
+		"video/mp4",
+		"video/ogg",
+		"video/webm"
 	]
 }

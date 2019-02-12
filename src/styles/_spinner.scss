@@ -1,0 +1,42 @@
+$viewer__spinner__dim          : 60px;
+$viewer__spinner__border-width : 6px;
+
+.viewer__spinner {
+	position: absolute;
+	height: $viewer__spinner__dim;
+	width: $viewer__spinner__dim;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	animation: rotation 1s infinite ease-in-out;
+	border: $viewer__spinner__border-width solid rgba(white, .25);
+	border-radius: 100%;
+	z-index: 999;
+	text-indent: -9999px;
+
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		left: -$viewer__spinner__border-width;
+		top: -$viewer__spinner__border-width;
+		height: 100%;
+		width: 100%;
+		border: {
+			top: $viewer__spinner__border-width solid rgba(white, .75);
+			left: $viewer__spinner__border-width solid transparent;
+			bottom: $viewer__spinner__border-width solid transparent;
+			right: $viewer__spinner__border-width solid transparent;
+			radius: 100%;
+		}
+	}
+}
+
+@keyframes rotation {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}

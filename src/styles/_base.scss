@@ -1,10 +1,11 @@
 .wrapper {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    z-index: 50;
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	z-index: 150;
+	overflow: hidden;
 
-    background: {
-        color: rgba(black, .75);
-    }
+	background: {
+		color: rgba(black, .75);
+	}
 }
