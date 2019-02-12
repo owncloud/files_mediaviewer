@@ -10,10 +10,6 @@ const helper = {
 			$('.viewer__slide .viewer__media--video').each(function() {
 				$(this).get(0).pause();
 			});
-		},
-		
-		getWaitingImages () {
-			return $('.viewer__slide .viewer__media--image').get(0);
 		}
 	}
 };
