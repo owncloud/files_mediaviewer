@@ -4,13 +4,10 @@
 			<div class="viewer__container">
 				<div class="viewer__wrapper">
 					<div class="viewer__slide" v-for="(slide, index) in list" :key="index">
-						<template v-if="shouldRender(index)">
-							<img v-if="getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
-							<video v-else-if="getType(slide) === 'video'" class="viewer__media viewer__media--video">
-								<source :src="webdavPath(slide)" :type="slide.mimetype">
-							</video>
-						</template>
-						<span v-else>{{ t('Pending:') }} {{ slide.name }}</span>
+						<img v-if="shouldRender(index) && getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
+						<video if="getType(slide) === 'video'" class="viewer__media viewer__media--video">
+							<source :src="webdavPath(slide)" :type="slide.mimetype">
+						</video>
 					</div>
 				</div>
 			</div>
