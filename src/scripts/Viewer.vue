@@ -6,7 +6,7 @@
 					<div class="viewer__slide" v-for="(slide, index) in list" :key="index">
 						<img v-if="shouldRender(index) && getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
 						<video v-if="getType(slide) === 'video'" class="viewer__media viewer__media--video">
-							<source :src="webdavPath(slide)" :type="slide.mimetype">
+							<source v-if="shouldRender(index)" :src="webdavPath(slide)" :type="slide.mimetype">
 						</video>
 					</div>
 				</div>
@@ -188,6 +188,7 @@ export default {
 
 	deactivated () {
 		this.swiper.destroy()
+		this.list = null;
 	},
 
 	mounted () {
