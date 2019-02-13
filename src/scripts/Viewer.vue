@@ -205,14 +205,6 @@ export default {
 	},
 
 	computed: {
-		isPublic () {
-			return typeof OCA.Sharing.PublicApp === 'object';
-		},
-
-		sharingToken () {
-			return (this.isPublic) ? $('#sharingToken').val() : null;
-		},
-
 		slideIsVideo () {
 			return this.$store.getters.itemType === 'video';
 		},

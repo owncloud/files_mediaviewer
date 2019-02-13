@@ -17,16 +17,32 @@ export default {
 		close() {
 			this.$router.push('/');
 		},
+		// @TODO: make path creation a helper
 		download () {
+			let webdavPath;
 			let item = this.$store.state.activeMediaItem;
-			let path = OC.joinPaths(
-				OC.linkToRemoteBase('dav/files'),
-				OC.getCurrentUser().uid,
-				item.path,
-				item.name
-			);
 
-			OC.redirect(path);
+			if (this.isPublic) {
+				let path   = OC.generateUrl(`/s/${this.sharingToken}/download`);
+				let params = OC.buildQueryString({
+					path: item.path,
+					files: item.name
+				});
+
+				webdavPath = `${path}?${params}`;
+			}
+
+			else {
+				let path = OC.joinPaths(
+					OC.linkToRemoteBase('webdav'),
+					item.path,
+					item.name
+				);
+
+				webdavPath = path;
+			}
+
+			OC.redirect(webdavPath);
 		}
 	}
 };

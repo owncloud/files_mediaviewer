@@ -11,6 +11,14 @@ const helper = {
 				$(this).get(0).pause();
 			});
 		}
+	},
+	computed : {
+		isPublic () {
+			return typeof OCA.Sharing.PublicApp === 'object';
+		},
+		sharingToken () {
+			return (this.isPublic) ? $('#sharingToken').val() : null;
+		}
 	}
 };
 
