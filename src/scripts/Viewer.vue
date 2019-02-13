@@ -4,13 +4,10 @@
 			<div class="viewer__container">
 				<div class="viewer__wrapper">
 					<div class="viewer__slide" v-for="(slide, index) in list" :key="index">
-						<template v-if="shouldRender(index)">
-							<img v-if="getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
-							<video v-else-if="getType(slide) === 'video'" class="viewer__media viewer__media--video">
-								<source :src="webdavPath(slide)" :type="slide.mimetype">
-							</video>
-						</template>
-						<span v-else>{{ t('Pending:') }} {{ slide.name }}</span>
+						<img v-if="shouldRender(index) && getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
+						<video v-if="getType(slide) === 'video'" class="viewer__media viewer__media--video">
+							<source v-if="shouldRender(index)" :src="webdavPath(slide)" :type="slide.mimetype">
+						</video>
 					</div>
 				</div>
 			</div>
@@ -37,32 +34,68 @@ export default {
 	},
 	methods: {
 		thumbPath (item) {
-			let path = OC.joinPaths(
-				OC.linkToRemoteBase('dav/files'),
-				OC.getCurrentUser().uid,
-				item.path,
-				item.name
-			);
+			let webdavPath;
 
-			let params = $.param({
-				c: item.etag,
-				x: this.thumbDimensions,
-				y: this.thumbDimensions,
-				a: 1,
-				preview: 1
-			});
+			if (this.isPublic) {
+				let path   = OC.filePath('files_sharing', 'ajax', 'publicpreview.php');
+				let params = OC.buildQueryString({
+					file : item.path + '/' + item.name,
+					c: item.etag,
+					x: this.thumbDimensions,
+					y: this.thumbDimensions,
+					a: 1,
+					t : this.sharingToken
+				})
 
-			return `${path}?${params}`;
+				webdavPath = `${path}?${params}`;
+			}
+
+			else {
+				let path = OC.joinPaths(
+					OC.linkToRemoteBase('dav/files'),
+					OC.getCurrentUser().uid,
+					item.path,
+					item.name
+				);
+
+				let params = $.param({
+					c: item.etag,
+					x: this.thumbDimensions,
+					y: this.thumbDimensions,
+					a: 1,
+					preview: 1
+				});
+
+				webdavPath = encodeURI(`${path}?${params}`);
+			}
+
+			return webdavPath;
 		},
 
 		webdavPath (item) {
-			let path = OC.joinPaths(
-				OC.linkToRemoteBase('webdav'),
-				item.path,
-				item.name
-			);
+			let webdavPath;
 
-			return path;
+			if (this.isPublic) {
+				let path   = OC.generateUrl(`/s/${this.sharingToken}/download`);
+				let params = OC.buildQueryString({
+					path: item.path,
+					files: item.name
+				});
+
+				webdavPath = `${path}?${params}`;
+			}
+
+			else {
+				let path = OC.joinPaths(
+					OC.linkToRemoteBase('webdav'),
+					item.path,
+					item.name
+				);
+
+				webdavPath = path;
+			}
+
+			return webdavPath;
 		},
 
 		getType (item) {
@@ -155,6 +188,7 @@ export default {
 
 	deactivated () {
 		this.swiper.destroy()
+		this.list = null;
 	},
 
 	mounted () {
