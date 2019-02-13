@@ -1,5 +1,5 @@
-const app    = require('../../package.json');
-const config = require('../config.json');
+const app     = require('../../package.json');
+app['config'] = require('../config.json');
 
 $(document).ready(function () {
 
@@ -21,7 +21,7 @@ $(document).ready(function () {
 			OC.redirect(OC.joinPaths('#', app.name, fileName));
 		});
 	};
-	config.mimetypes.forEach( (type) => {
+	app.config.mimetypes.forEach( (type) => {
 		let ViewMedia = {
 			mime: type,
 			name: app.name,

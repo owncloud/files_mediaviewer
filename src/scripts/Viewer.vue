@@ -16,9 +16,6 @@
 	</div>
 </template>
 <script>
-const config = require('../config.json');
-
-import Swiper from 'swiper';
 import ViewerControls from './ViewerControls.vue';
 
 export default {
@@ -112,7 +109,7 @@ export default {
 			let fetch = new Promise( (resolve, reject) => {
 
 				let list = _.filter(FileList.files, (file) => {
-					return _.contains(config.mimetypes, file.mimetype);
+					return _.contains(this.$app.config.mimetypes, file.mimetype);
 				})
 
 				if (list.length === 0) {
@@ -143,8 +140,7 @@ export default {
 			let initialSlide = _.findWhere(fileList, { name : this.$route.params.file });
 				initialSlide = _.findIndex(fileList, initialSlide);
 
-			// @TODO: Make it a Vue.$prototpye
-			this.swiper = new Swiper('#files_mediaviewer .viewer__container', {
+			this.swiper = new this.$wiper('#files_mediaviewer .viewer__container', {
 				initialSlide,
 				slideClass   : 'viewer__slide',
 				wrapperClass : 'viewer__wrapper',
@@ -171,7 +167,6 @@ export default {
 							activeDomNode : $('.swiper-slide-active .viewer__media')
 						});
 						self.$router.push({
-							name: config.name,
 							params: {
 								file : fileList[this.activeIndex].name
 							}

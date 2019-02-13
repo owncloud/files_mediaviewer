@@ -1,4 +1,5 @@
-const appName = require('../../package.json').name;
+const app     = require('../../package.json');
+app['config'] = require('../config.json');
 
 // Components
 
@@ -6,6 +7,8 @@ import Viewer from './Viewer.vue';
 import Spinner from './ViewerSpinner.vue';
 
 // Libs
+
+import Swiper from 'swiper';
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
@@ -24,7 +27,9 @@ Vue.mixin(helper);
 Vue.directive('translate', directive);
 Vue.component('spinner', Spinner);
 
-Vue.prototype.$bus = new Vue();
+Vue.prototype.$bus     = new Vue();
+Vue.prototype.$wiper   = Swiper;
+Vue.prototype.$app     = app;
 
 const router = new VueRouter({
 	routes: [{
@@ -34,7 +39,7 @@ const router = new VueRouter({
 			template : '<!-- Sleep warm, sleep tight, when you turn off the light. -->'
 		}
 	}, {
-		path: `/${appName}/:file`,
+		path: `/${app.name}/:file`,
 		name: 'Viewer',
 		component: Viewer
 	}]
