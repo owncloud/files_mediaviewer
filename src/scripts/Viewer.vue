@@ -5,7 +5,7 @@
 				<div class="viewer__wrapper">
 					<div class="viewer__slide" v-for="(slide, index) in list" :key="index">
 						<img v-if="shouldRender(index) && getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
-						<video if="getType(slide) === 'video'" class="viewer__media viewer__media--video">
+						<video v-if="getType(slide) === 'video'" class="viewer__media viewer__media--video">
 							<source :src="webdavPath(slide)" :type="slide.mimetype">
 						</video>
 					</div>
@@ -37,7 +37,7 @@ export default {
 			let webdavPath;
 
 			if (this.isPublic) {
-				let path   = OC.getRootPath() + OC.filePath('files_sharing', 'ajax', 'publicpreview.php');
+				let path   = OC.filePath('files_sharing', 'ajax', 'publicpreview.php');
 				let params = OC.buildQueryString({
 					file : item.path + '/' + item.name,
 					c: item.etag,
