@@ -11,6 +11,7 @@
 			<button class="viewer__control icon__replay_10" :disabled="currentTime === 0" @click="skipTo(0)" v-translate>Replay</button>
 			<button class="viewer__control icon__play" :class="[state === 'paused' ? 'icon__play' : 'icon__pause']" @click="togglePlay()" v-translate>Play</button>
 			<button class="viewer__control" :class="[audio === 'on' ? 'icon__volume_up' : 'icon__volume_down']" @click="toggleSound()" v-translate>Mute</button>
+			<button class="viewer__control icon__fullscreen" v-if="fullscreenEnabled" @click="requestFullscreen()" v-translate>Fullscreen</button>
 		</div>
 		<meta-controls class="viewer__controls__subgroup">
 			<!-- Swipe controls -->
@@ -66,6 +67,10 @@ export default {
 				this.video.muted = true;
 				this.audio = 'off';
 			}
+		},
+
+		requestFullscreen () {
+			this.video.requestFullscreen();
 		},
 
 		skipTo (seconds) {
@@ -135,6 +140,12 @@ export default {
 		},
 		name () {
 			return this.$store.getters.itemName;
+		},
+		fullscreenEnabled () {
+			return document.fullscreenEnabled;
+		},
+		isFullscreen () {
+			return document.fullscreen;
 		},
 		scrubberPosition () {
 			let width = (this.currentTime === 0) ? 0 : (100 / this.duration) * this.currentTime;
