@@ -59,6 +59,23 @@
 	}
 }
 
+.viewer__video-overlay {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 10vw;
+	height: 10vw;
+	z-index: 1;
+	border: 0 none;
+	opacity: .5;
+	background: {
+		color: transparent;
+		repeat: no-repeat;
+		size: contain;
+	}
+}
+
 .viewer__controls {
 	position: absolute;
 	display: flex;

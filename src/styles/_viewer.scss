@@ -43,7 +43,12 @@
 		}
 	}
 
+	&__play {
+		position: absolute;
+	}
+
 	&__media {
+		position: relative;
 
 		&--image {
 			max-width: 90vw;

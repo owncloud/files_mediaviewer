@@ -1,22 +1,27 @@
 <template>
-	<section class="viewer__controls viewer__controls--video">
-		<span class="viewer__control__nametag" v-text="name"></span>
-		<div class="viewer__control__scrubber" @click="skipTo(mousePos)">
-			<div :style="scrubberPosition"></div>
-		</div>
-		<nav-controls class="viewer__controls__subgroup">
-			<!-- Swipe controls -->
-		</nav-controls>
-		<div class="viewer__controls__subgroup">
-			<button class="viewer__control icon__replay_10" :disabled="currentTime === 0" @click="skipTo(0)" v-translate>Replay</button>
-			<button class="viewer__control icon__play" :class="[isPaused ? 'icon__play' : 'icon__pause']" @click="togglePlay()" v-translate>Play</button>
-			<button class="viewer__control" :class="[isMuted ? 'icon__volume_down' : 'icon__volume_up']" @click="toggleSound()" v-translate>Mute</button>
-			<button class="viewer__control icon__fullscreen" v-if="documentFullscreenEnabled" @click="requestFullscreen()" v-translate>Fullscreen</button>
-		</div>
-		<meta-controls class="viewer__controls__subgroup">
-			<!-- Swipe controls -->
-		</meta-controls>
-	</section>
+	<div>
+		<transition name="fade">
+			<button v-show="isPaused && !isLoading && !isInTransition" class="viewer__video-overlay icon__play_circle" @click="togglePlay()" aria-hidden></button>
+		</transition>
+		<section class="viewer__controls viewer__controls--video">
+			<span class="viewer__control__nametag" v-text="name"></span>
+			<div class="viewer__control__scrubber" @click="skipTo(mousePos)">
+				<div :style="scrubberPosition"></div>
+			</div>
+			<nav-controls class="viewer__controls__subgroup">
+				<!-- Swipe controls -->
+			</nav-controls>
+			<div class="viewer__controls__subgroup">
+				<button class="viewer__control icon__replay_10" :disabled="currentTime === 0" @click="skipTo(0)" v-translate>Replay</button>
+				<button class="viewer__control icon__play" :class="[isPaused ? 'icon__play' : 'icon__pause']" @click="togglePlay()" v-translate>Play</button>
+				<button class="viewer__control" :class="[isMuted ? 'icon__volume_down' : 'icon__volume_up']" @click="toggleSound()" v-translate>Mute</button>
+				<button class="viewer__control icon__fullscreen" v-if="documentFullscreenEnabled" @click="requestFullscreen()" v-translate>Fullscreen</button>
+			</div>
+			<meta-controls class="viewer__controls__subgroup">
+				<!-- Swipe controls -->
+			</meta-controls>
+		</section>
+	</div>
 </template>
 <script>
 import ViewerControlsNavigate from './ViewerControlsNavigate.vue';
@@ -154,6 +159,14 @@ export default {
 
 		isMuted () {
 			return this.$store.state.video.isMuted;
+		},
+
+		isLoading () {
+			return this.$store.state.isLoading;
+		},
+
+		isInTransition () {
+			return this.$store.state.isInTransition;
 		},
 
 		scrubberPosition () {

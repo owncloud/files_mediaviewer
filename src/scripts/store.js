@@ -5,6 +5,7 @@ export default {
 		activeMediaItem : {},
 		activeHTMLElement : null,
 		isLoading : false,
+		isInTransition : false,
 		video : {
 			isPaused : true,
 			isMuted : false,
@@ -49,6 +50,9 @@ export default {
 		},
 		setVideoState(state, payload) {
 			state.video = _.extend(state.video, payload);
+		},
+		setTransitionState(state, setTo) {
+			state.isInTransition = setTo;
 		}
 	},
 	actions : {
@@ -59,6 +63,12 @@ export default {
 		},
 		setLoading(context) {
 			context.commit('setLoadingState', true);
+		},
+		setInTransition(context) {
+			context.commit('setTransitionState', true);
+		},
+		setTransitionEnd(context) {
+			context.commit('setTransitionState', false);
 		},
 		setReady(context) {
 			context.commit('setLoadingState', false);

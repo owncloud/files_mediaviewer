@@ -48,7 +48,7 @@ export default {
 
 		transform () {
 			// We need the jQuery element here
-			this.$store.state.activeDomNode.css('transform', `rotate(${this.rotation}deg) scale(${this.scaling})`);
+			this.$store.state.activeHTMLElement.css('transform', `rotate(${this.rotation}deg) scale(${this.scaling})`);
 		},
 
 		resetTransform () {

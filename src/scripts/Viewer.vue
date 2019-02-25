@@ -5,7 +5,7 @@
 				<div class="viewer__wrapper">
 					<div class="viewer__slide" v-for="(slide, index) in list" :key="index">
 						<img v-if="getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(index, slide)" :alt="slide.name">
-						<video v-if="getType(slide) === 'video'" class="viewer__media viewer__media--video" :controls="isFullscreen">
+						<video v-if="getType(slide) === 'video'" class="viewer__media viewer__media--video" :controls="isFullscreen" :class="{ 'viewer__media--video-paused' : isPaused }">
 							<source :src="webdavPath(index, slide)" :type="slide.mimetype">
 						</video>
 					</div>
@@ -166,9 +166,11 @@ export default {
 						self.$bus.$emit('swiper:init');
 					},
 					slideChangeTransitionStart : function() {
+						self.$store.dispatch('setInTransition');
 						self.$store.dispatch('setReady');
 					},
 					slideChangeTransitionEnd : function () {
+						self.$store.dispatch('setTransitionEnd');
 						self.$store.dispatch('setActive', {
 							activeIndex : this.activeIndex,
 							activeMediaItem : fileList[this.activeIndex],
@@ -225,6 +227,10 @@ export default {
 
 		isFullscreen () {
 			return this.$store.state.video.isFullscreen;
+		},
+
+		isPaused () {
+			return this.$store.state.video.isPaused;
 		},
 
 		thumbDimensions() {
