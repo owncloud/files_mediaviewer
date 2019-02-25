@@ -18,6 +18,9 @@ const helper = {
 		},
 		sharingToken () {
 			return (this.isPublic) ? $('#sharingToken').val() : null;
+		},
+		documentFullscreenEnabled () {
+			return document.fullscreenEnabled;
 		}
 	}
 };

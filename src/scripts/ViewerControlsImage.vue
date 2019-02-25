@@ -57,14 +57,14 @@ export default {
 		},
 
 		checkImageState () {
-			if (!this.image)
+			if (!this.$image)
 				return;
 
-			if (!this.image.complete) {
+			if (!this.$image.complete) {
 
 				this.$store.dispatch('setLoading');
 
-				this.image.decode().then(() => {
+				this.$image.decode().then(() => {
 					this.$store.dispatch('setReady');
 				});
 			}
@@ -81,8 +81,8 @@ export default {
 		});
 	},
 	computed : {
-		image () {
-			return this.$store.getters.image;
+		$image () {
+			return this.$store.getters.HTMLImageElement;
 		},
 		name () {
 			return this.$store.getters.itemName;

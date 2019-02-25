@@ -4,9 +4,9 @@
 			<div class="viewer__container">
 				<div class="viewer__wrapper">
 					<div class="viewer__slide" v-for="(slide, index) in list" :key="index">
-						<img v-if="shouldRender(index) && getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
-						<video v-if="getType(slide) === 'video'" class="viewer__media viewer__media--video">
-							<source v-if="shouldRender(index)" :src="webdavPath(slide)" :type="slide.mimetype">
+						<img v-if="getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(index, slide)" :alt="slide.name">
+						<video v-if="getType(slide) === 'video'" class="viewer__media viewer__media--video" :controls="isFullscreen">
+							<source :src="webdavPath(index, slide)" :type="slide.mimetype">
 						</video>
 					</div>
 				</div>
@@ -25,13 +25,18 @@ export default {
 	},
 	data () {
 		return {
-			swiper : null,
+			swiper : {
+				activeIndex : 0
+			},
 			list : null
 		};
 	},
 	methods: {
-		thumbPath (item) {
+		thumbPath (i, item) {
 			let webdavPath;
+
+			if (!this.shouldRender(i))
+				return "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
 
 			if (this.isPublic) {
 				let path   = OC.filePath('files_sharing', 'ajax', 'publicpreview.php');
@@ -69,7 +74,7 @@ export default {
 			return webdavPath;
 		},
 
-		webdavPath (item) {
+		webdavPath (i, item) {
 			let webdavPath;
 
 			if (this.isPublic) {
@@ -155,16 +160,19 @@ export default {
 							self.$store.dispatch('setActive', {
 								activeIndex : this.activeIndex,
 								activeMediaItem : fileList[this.activeIndex],
-								activeDomNode : $('.swiper-slide-active .viewer__media')
+								activeHTMLElement : $('.swiper-slide-active .viewer__media')
 							});
 						});
 						self.$bus.$emit('swiper:init');
+					},
+					slideChangeTransitionStart : function() {
+						self.$store.dispatch('setReady');
 					},
 					slideChangeTransitionEnd : function () {
 						self.$store.dispatch('setActive', {
 							activeIndex : this.activeIndex,
 							activeMediaItem : fileList[this.activeIndex],
-							activeDomNode : $('.swiper-slide-active .viewer__media')
+							activeHTMLElement : $('.swiper-slide-active .viewer__media')
 						});
 						self.$router.push({
 							params: {
@@ -198,6 +206,12 @@ export default {
 				this.swiper.slideTo(to);
 			}
 		});
+
+		document.addEventListener("fullscreenchange", () => {
+			this.$store.dispatch('setVideoState', {
+				isFullscreen : document.fullscreen
+			});
+		});
 	},
 
 	computed: {
@@ -207,6 +221,10 @@ export default {
 
 		slideIsImage () {
 			return this.$store.getters.itemType === 'image';
+		},
+
+		isFullscreen () {
+			return this.$store.state.video.isFullscreen;
 		},
 
 		thumbDimensions() {
