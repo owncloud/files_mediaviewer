@@ -147,6 +147,7 @@ export default {
 
 			this.swiper = new this.$wiper('#files_mediaviewer .viewer__container', {
 				initialSlide,
+				resistance   : false,
 				slideClass   : 'viewer__slide',
 				wrapperClass : 'viewer__wrapper',
 				navigation : {
