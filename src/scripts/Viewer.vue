@@ -165,8 +165,13 @@ export default {
 								activeHTMLElement : $('.swiper-slide-active .viewer__media')
 							});
 							self.$bus.$emit('swiper:init');
-							console.log('swiper:init');
 						}, 666);
+					},
+					touchStart : function() {
+						self.$store.dispatch('setInTransition');
+					},
+					touchEnd : function() {
+						self.$store.dispatch('setTransitionEnd');
 					},
 					slideChangeTransitionStart : function() {
 						self.$store.dispatch('setInTransition');

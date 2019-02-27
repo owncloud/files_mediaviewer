@@ -80,7 +80,7 @@ export default {
 		},
 
 		skipTo (seconds) {
-			this.duration          = this.$video.duration;
+			this.duration           = this.$video.duration;
 			this.$video.currentTime = seconds;
 			this.$store.dispatch('setLoading');
 		},
@@ -129,7 +129,7 @@ export default {
 
 			this.$scrubber.addEventListener('mousemove', (event) => {
 				let refPos = this.$scrubber.getBoundingClientRect(),
-					pct    = (100 / refPos.width) * (event.pageX - refPos.x);
+					pct    = (100 / refPos.width) * (event.pageX - refPos.left);
 
 				this.mousePos = Math.round(pct / 100 * this.duration);
 			});
@@ -169,11 +169,22 @@ export default {
 			return this.$store.state.isInTransition;
 		},
 
+		documentFullscreenEnabled () {
+			return document.fullscreenEnabled;
+		},
+
 		scrubberPosition () {
 			let width = (this.currentTime === 0) ? 0 : (100 / this.duration) * this.currentTime;
-			
-			if (width > 100)
-			{width = 100;}
+
+			if (width > 100) {
+				width = 100;
+			}
+			else if (isNaN(width)) {
+				width = 0;
+			}
+			else {
+				width = Math.round(width);
+			}
 
 			return `width:${width}%`;
 		},
