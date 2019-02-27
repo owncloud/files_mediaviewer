@@ -156,15 +156,17 @@ export default {
 				},
 				on : {
 					init : function () {
-						// Wait for re-render
-						self.$nextTick(() => {
+						// Sadly, there is no afterInit() method here :-|
+						// Will have to wait 666 MS
+						setTimeout(() => {
 							self.$store.dispatch('setActive', {
 								activeIndex : this.activeIndex,
 								activeMediaItem : fileList[this.activeIndex],
 								activeHTMLElement : $('.swiper-slide-active .viewer__media')
 							});
-						});
-						self.$bus.$emit('swiper:init');
+							self.$bus.$emit('swiper:init');
+							console.log('swiper:init');
+						}, 666);
 					},
 					slideChangeTransitionStart : function() {
 						self.$store.dispatch('setInTransition');
