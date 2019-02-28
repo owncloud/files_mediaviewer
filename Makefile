@@ -17,7 +17,7 @@ endif
 app_name=files_mediaviewer
 build_dir=$(CURDIR)/build
 dist_dir=$(build_dir)/dist
-src_files=README.md LICENSE
+src_files=README.md LICENSE CHANGELOG.md
 src_dirs=appinfo css js templates
 all_src=$(src_dirs) $(src_files)
 
@@ -76,4 +76,4 @@ endif
 
 .PHONY: package
 package:
-	tar -czf $(dist_dir)/$(app_name).tar.gz -C $(dist_dir) $(app_name)
+	tar --format=gnu -czf $(dist_dir)/$(app_name).tar.gz -C $(dist_dir) $(app_name)
