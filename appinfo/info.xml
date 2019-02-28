@@ -6,7 +6,7 @@
 	<description>Mediaviewer adds image and video viewing capabilities</description>
 	<licence>GPL-2.0</licence>
 	<author>Felix Heidecke</author>
-	<version>0.1.0</version>
+	<version>1.0.0</version>
 	<namespace>Mediaviewer</namespace>
 	<documentation>
 		<developer>https://github.com/owncloud/files_mediaviewer/blob/master/README.md</developer>
