@@ -30,6 +30,7 @@ $app-image-path : '../img';
 	@import "../../node_modules/swiper/dist/css/swiper.min";
 
 	@import "base";
+	@import "transitions";
 	@import "helper";
 	@import "icons";
 	@import "swiper";

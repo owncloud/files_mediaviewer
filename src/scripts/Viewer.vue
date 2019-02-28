@@ -4,9 +4,9 @@
 			<div class="viewer__container">
 				<div class="viewer__wrapper">
 					<div class="viewer__slide" v-for="(slide, index) in list" :key="index">
-						<img v-if="shouldRender(index) && getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
-						<video v-if="getType(slide) === 'video'" class="viewer__media viewer__media--video">
-							<source v-if="shouldRender(index)" :src="webdavPath(slide)" :type="slide.mimetype">
+						<img v-if="getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(index, slide)" :alt="slide.name">
+						<video v-if="getType(slide) === 'video'" class="viewer__media viewer__media--video" :controls="isFullscreen" :class="{ 'viewer__media--video-paused' : isPaused }">
+							<source :src="webdavPath(index, slide)" :type="slide.mimetype">
 						</video>
 					</div>
 				</div>
@@ -16,9 +16,6 @@
 	</div>
 </template>
 <script>
-const config = require('../config.json');
-
-import Swiper from 'swiper';
 import ViewerControls from './ViewerControls.vue';
 
 export default {
@@ -28,13 +25,18 @@ export default {
 	},
 	data () {
 		return {
-			swiper : null,
+			swiper : {
+				activeIndex : 0
+			},
 			list : null
 		};
 	},
 	methods: {
-		thumbPath (item) {
+		thumbPath (i, item) {
 			let webdavPath;
+
+			if (!this.shouldRender(i))
+				return "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
 
 			if (this.isPublic) {
 				let path   = OC.filePath('files_sharing', 'ajax', 'publicpreview.php');
@@ -72,7 +74,7 @@ export default {
 			return webdavPath;
 		},
 
-		webdavPath (item) {
+		webdavPath (i, item) {
 			let webdavPath;
 
 			if (this.isPublic) {
@@ -112,7 +114,7 @@ export default {
 			let fetch = new Promise( (resolve, reject) => {
 
 				let list = _.filter(FileList.files, (file) => {
-					return _.contains(config.mimetypes, file.mimetype);
+					return _.contains(this.$app.config.mimetypes, file.mimetype);
 				})
 
 				if (list.length === 0) {
@@ -143,9 +145,9 @@ export default {
 			let initialSlide = _.findWhere(fileList, { name : this.$route.params.file });
 				initialSlide = _.findIndex(fileList, initialSlide);
 
-			// @TODO: Make it a Vue.$prototpye
-			this.swiper = new Swiper('#files_mediaviewer .viewer__container', {
+			this.swiper = new this.$wiper('#files_mediaviewer .viewer__container', {
 				initialSlide,
+				resistance   : false,
 				slideClass   : 'viewer__slide',
 				wrapperClass : 'viewer__wrapper',
 				navigation : {
@@ -154,24 +156,35 @@ export default {
 				},
 				on : {
 					init : function () {
-						// Wait for re-render
-						self.$nextTick(() => {
+						// Sadly, there is no afterInit() method here :-|
+						// Will have to wait 666 MS
+						setTimeout(() => {
 							self.$store.dispatch('setActive', {
 								activeIndex : this.activeIndex,
 								activeMediaItem : fileList[this.activeIndex],
-								activeDomNode : $('.swiper-slide-active .viewer__media')
+								activeHTMLElement : $('.swiper-slide-active .viewer__media')
 							});
-						});
-						self.$bus.$emit('swiper:init');
+							self.$bus.$emit('swiper:init');
+						}, 666);
+					},
+					touchStart : function() {
+						self.$store.dispatch('setInTransition');
+					},
+					touchEnd : function() {
+						self.$store.dispatch('setTransitionEnd');
+					},
+					slideChangeTransitionStart : function() {
+						self.$store.dispatch('setInTransition');
+						self.$store.dispatch('setReady');
 					},
 					slideChangeTransitionEnd : function () {
+						self.$store.dispatch('setTransitionEnd');
 						self.$store.dispatch('setActive', {
 							activeIndex : this.activeIndex,
 							activeMediaItem : fileList[this.activeIndex],
-							activeDomNode : $('.swiper-slide-active .viewer__media')
+							activeHTMLElement : $('.swiper-slide-active .viewer__media')
 						});
 						self.$router.push({
-							name: config.name,
 							params: {
 								file : fileList[this.activeIndex].name
 							}
@@ -203,6 +216,12 @@ export default {
 				this.swiper.slideTo(to);
 			}
 		});
+
+		document.addEventListener("fullscreenchange", () => {
+			this.$store.dispatch('setVideoState', {
+				isFullscreen : document.fullscreen
+			});
+		});
 	},
 
 	computed: {
@@ -212,6 +231,14 @@ export default {
 
 		slideIsImage () {
 			return this.$store.getters.itemType === 'image';
+		},
+
+		isFullscreen () {
+			return this.$store.state.video.isFullscreen;
+		},
+
+		isPaused () {
+			return this.$store.state.video.isPaused;
 		},
 
 		thumbDimensions() {

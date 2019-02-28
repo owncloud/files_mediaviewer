@@ -3,8 +3,14 @@ export default {
 		activeIndex: 0,
 		maxIndex : 0,
 		activeMediaItem : {},
-		activeDomNode : null,
-		isLoading : false
+		activeHTMLElement : null,
+		isLoading : false,
+		isInTransition : false,
+		video : {
+			isPaused : true,
+			isMuted : false,
+			isFullscreen : false
+		}
 	},
 	getters : {
 		itemName (state) {
@@ -19,11 +25,11 @@ export default {
 			}
 			return state.activeMediaItem.mimetype.split('/')[0];
 		},
-		image (state) {
-			return (state.activeDomNode.get(0) instanceof HTMLImageElement) ? state.activeDomNode.get(0) : false;
+		HTMLImageElement (state) {
+			return (state.activeHTMLElement.get(0) instanceof HTMLImageElement) ? state.activeHTMLElement.get(0) : false;
 		},
-		video (state) {
-			return (state.activeDomNode.get(0) instanceof HTMLVideoElement) ? state.activeDomNode.get(0) : false;
+		HTMLVideoElement (state) {
+			return (state.activeHTMLElement.get(0) instanceof HTMLVideoElement) ? state.activeHTMLElement.get(0) : false;
 		}
 	},
 	mutations: {
@@ -33,30 +39,45 @@ export default {
 		setActiveMediaItem (state, item) {
 			state.activeMediaItem = item;
 		},
-		setActiveDomNode (state, node) {
-			state.activeDomNode = (typeof node === 'object') ? node : null;
+		setActiveHTMLElement (state, node) {
+			state.activeHTMLElement = (typeof node === 'object') ? node : null;
 		},
 		setLoadingState(state, setTo) {
 			state.isLoading = setTo;
 		},
 		setMaxIndex(state, max) {
 			state.maxIndex = (typeof max === 'number') ? max : parseInt(max);
+		},
+		setVideoState(state, payload) {
+			state.video = _.extend(state.video, payload);
+		},
+		setTransitionState(state, setTo) {
+			state.isInTransition = setTo;
 		}
 	},
 	actions : {
 		setActive(context, payload) {
 			context.commit('setActiveIndex', payload.activeIndex);
 			context.commit('setActiveMediaItem', payload.activeMediaItem);
-			context.commit('setActiveDomNode', payload.activeDomNode);
+			context.commit('setActiveHTMLElement', payload.activeHTMLElement);
 		},
 		setLoading(context) {
 			context.commit('setLoadingState', true);
+		},
+		setInTransition(context) {
+			context.commit('setTransitionState', true);
+		},
+		setTransitionEnd(context) {
+			context.commit('setTransitionState', false);
 		},
 		setReady(context) {
 			context.commit('setLoadingState', false);
 		},
 		setMaxIndex(context, payload) {
 			context.commit('setMaxIndex', payload);
+		},
+		setVideoState(context, payload) {
+			context.commit('setVideoState', payload);
 		}
 	}
 };
