@@ -60,14 +60,14 @@ export default {
 			if (!this.$image)
 				return;
 
-			if (!this.$image.complete) {
+			this.$store.dispatch('setLoading');
 
-				this.$store.dispatch('setLoading');
-
-				this.$image.decode().then(() => {
+			let recheck = setInterval( () => {
+				if (this.$image.complete) {
 					this.$store.dispatch('setReady');
-				});
-			}
+					clearInterval(recheck);
+				}
+			}, 1000);
 		}
 	},
 	mounted () {
