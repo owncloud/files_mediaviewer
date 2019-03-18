@@ -71,11 +71,11 @@
 	opacity: .5;
 	border-radius: 50%;
 	background: {
-		color: rgba(black, .5);
+		color: rgba(black, .666);
 		repeat: no-repeat;
 		size: contain;
 		position: center center;
-		size: calc(100% + 24px);
+		size: calc(100% + 12px);
 	}
 }
 
