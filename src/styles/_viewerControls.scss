@@ -69,10 +69,13 @@
 	z-index: 1;
 	border: 0 none;
 	opacity: .5;
+	border-radius: 50%;
 	background: {
-		color: transparent;
+		color: rgba(black, .666);
 		repeat: no-repeat;
 		size: contain;
+		position: center center;
+		size: calc(100% + 12px);
 	}
 }
 
