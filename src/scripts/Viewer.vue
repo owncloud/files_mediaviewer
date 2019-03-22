@@ -1,5 +1,5 @@
 <template>
-	<div class="wrapper">
+	<div class="wrapper" @click.stop="_closeViewer($event)">
 		<div class="viewer">
 			<div class="viewer__container">
 				<div class="viewer__wrapper">
@@ -32,6 +32,11 @@ export default {
 		};
 	},
 	methods: {
+		_closeViewer () {
+			// Handmade propagation stopper
+			if ($(event.target).hasClass('viewer__slide'))
+				this.closeViewer();
+		},
 		thumbPath (i, item) {
 			let webdavPath;
 

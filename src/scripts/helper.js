@@ -10,6 +10,10 @@ const helper = {
 			$('.viewer__slide .viewer__media--video').each(function() {
 				$(this).get(0).pause();
 			});
+		},
+
+		closeViewer () {
+			this.$router.push('/');
 		}
 	},
 	computed : {

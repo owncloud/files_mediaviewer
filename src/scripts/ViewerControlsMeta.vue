@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<button class="viewer__control icon__download" @click="download()" v-translate>Download</button>
-		<button class="viewer__control icon__close" @click="close()" v-translate>Close</button>
+		<button class="viewer__control icon__close" @click="closeViewer()" v-translate>Close</button>
 	</div>
 </template>
 <script>
@@ -14,9 +14,6 @@ export default {
 		});
 	},
 	methods : {
-		close() {
-			this.$router.push('/');
-		},
 		// @TODO: make path creation a helper
 		download () {
 			let webdavPath;
