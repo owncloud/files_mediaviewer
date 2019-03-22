@@ -58,16 +58,16 @@ export default {
 
 		checkImageState () {
 			if (!this.$image)
-				return;
+			{return;}
 
-			if (!this.$image.complete) {
+			this.$store.dispatch('setLoading');
 
-				this.$store.dispatch('setLoading');
-
-				this.$image.decode().then(() => {
+			let recheck = setInterval( () => {
+				if (this.$image.complete) {
 					this.$store.dispatch('setReady');
-				});
-			}
+					clearInterval(recheck);
+				}
+			}, 1000);
 		}
 	},
 	mounted () {

@@ -32,12 +32,16 @@ export default {
 	},
 	computed : {
 		controlComponent () {
+			let component;
+
 			if (this.slideIsVideo) {
-				return 'ViewerControlsVideo';
+				component = 'ViewerControlsVideo';
 			}
 			else if (this.slideIsImage) {
-				return 'ViewerControlsImage';
+				component = 'ViewerControlsImage';
 			}
+
+			return component;
 		},
 
 		isLoading () {
