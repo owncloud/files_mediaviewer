@@ -35,13 +35,13 @@ export default {
 		_closeViewer () {
 			// Handmade propagation stopper
 			if ($(event.target).hasClass('viewer__slide'))
-				this.closeViewer();
+			{this.closeViewer();}
 		},
 		thumbPath (i, item) {
 			let webdavPath;
 
 			if (!this.shouldRender(i))
-				return "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
+			{return 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';}
 
 			if (this.isPublic) {
 				let path   = OC.filePath('files_sharing', 'ajax', 'publicpreview.php');
@@ -52,7 +52,7 @@ export default {
 					y: this.thumbDimensions,
 					a: 1,
 					t : this.sharingToken
-				})
+				});
 
 				webdavPath = `${path}?${params}`;
 			}
@@ -120,7 +120,7 @@ export default {
 
 				let list = _.filter(FileList.files, (file) => {
 					return _.contains(this.$app.config.mimetypes, file.mimetype);
-				})
+				});
 
 				if (list.length === 0) {
 					reject('list length is 0');
@@ -129,7 +129,7 @@ export default {
 				this.list = list;
 				this.$store.dispatch('setMaxIndex', list.length);
 				resolve(list);
-			})
+			});
 			
 			fetch.then((list) => {
 				if (typeof callback === 'function') {
@@ -148,7 +148,7 @@ export default {
 
 		this.fetchFileList((fileList) => {
 			let initialSlide = _.findWhere(fileList, { name : this.$route.params.file });
-				initialSlide = _.findIndex(fileList, initialSlide);
+			initialSlide = _.findIndex(fileList, initialSlide);
 
 			this.swiper = new this.$wiper('#files_mediaviewer .viewer__container', {
 				initialSlide,
@@ -205,7 +205,7 @@ export default {
 	},
 
 	deactivated () {
-		this.swiper.destroy()
+		this.swiper.destroy();
 		this.list = null;
 	},
 
@@ -222,7 +222,7 @@ export default {
 			}
 		});
 
-		document.addEventListener("fullscreenchange", () => {
+		document.addEventListener('fullscreenchange', () => {
 			this.$store.dispatch('setVideoState', {
 				isFullscreen : document.fullscreen
 			});

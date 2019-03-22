@@ -88,7 +88,7 @@ export default {
 		init () {
 
 			if (!this.$video)
-				return;
+			{return;}
 
 			this.duration    = this.$video.duration;
 			this.currentTime = this.$video.currentTime;
@@ -120,7 +120,6 @@ export default {
 
 			this.$video.addEventListener('stalled', () => {
 				this.$store.dispatch('setLoading');
-				console.warn(`Loading ${this.name} stalled!`);
 			});
 
 			this.$video.addEventListener('timeupdate', () => {
