@@ -58,7 +58,7 @@ export default {
 
 		checkImageState () {
 			if (!this.$image)
-				return;
+			{return;}
 
 			this.$store.dispatch('setLoading');
 
