@@ -2,9 +2,21 @@
 <info>
 	<id>files_mediaviewer</id>
 	<name>Mediaviewer</name>
-	<summary>Explore, show your image collections</summary>
-	<description>Mediaviewer adds image and video viewing capabilities</description>
-	<licence>GPL-2.0</licence>
+	<summary>Explore, show and share your media collections</summary>
+	<description>
+A media viewer that adds image and video viewing capabilities to Files view and Public Links.
+
+**Features**
+
+- Support for a large selection of image and video formats (depending on server setup)
+- Image and video viewer in one
+- Fullscreen, zoomable slideshow view integrated with the Files view and Public Links
+- Image rotation
+- Sort images by name or date
+- Image and video download straight from the slideshow
+- Native SVG support
+- Mobile support</description>
+	<licence>GPLv2</licence>
 	<author>Felix Heidecke</author>
 	<version>1.0.0</version>
 	<namespace>Mediaviewer</namespace>
