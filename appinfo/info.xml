@@ -11,7 +11,7 @@
 	<documentation>
 		<developer>https://github.com/owncloud/files_mediaviewer/blob/master/README.md</developer>
 	</documentation>
-	<screenshot>https://raw.githubusercontent.com/owncloud/screenshots/master/files_mediaviewer/ownCloud-app-media-viewer.jpg</screenshot>
+	<screenshot>https://raw.githubusercontent.com/owncloud/screenshots/master/files_mediaviewer/ownCloud-app-mediaviewer.jpg</screenshot>
 	<category>multimedia</category>
 	<website>https://github.com/owncloud/files_mediaviewer</website>
 	<bugs>https://github.com/owncloud/files_mediaviewer/issues</bugs>
