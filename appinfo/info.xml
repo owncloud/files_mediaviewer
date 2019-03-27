@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <info>
 	<id>files_mediaviewer</id>
-	<name>Mediaviewer</name>
+	<name>Media Viewer</name>
 	<summary>Explore, show and share your media collections</summary>
 	<description>
 A media viewer that adds image and video viewing capabilities to Files view and Public Links.
@@ -9,7 +9,6 @@ A media viewer that adds image and video viewing capabilities to Files view and 
 **Features**
 
 - Support for a large selection of image and video formats (depending on server setup)
-- Image and video viewer in one
 - Fullscreen, zoomable slideshow view integrated with the Files view and Public Links
 - Image rotation
 - Sort images by name or date
@@ -23,7 +22,7 @@ A media viewer that adds image and video viewing capabilities to Files view and 
 	<documentation>
 		<developer>https://github.com/owncloud/files_mediaviewer/blob/master/README.md</developer>
 	</documentation>
-	<screenshot>https://raw.githubusercontent.com/owncloud/screenshots/master/files_mediaviewer/ownCloud-app-media-viewer.jpg</screenshot>
+	<screenshot>https://raw.githubusercontent.com/owncloud/screenshots/master/files_mediaviewer/ownCloud-app-mediaviewer.jpg</screenshot>
 	<category>multimedia</category>
 	<website>https://github.com/owncloud/files_mediaviewer</website>
 	<bugs>https://github.com/owncloud/files_mediaviewer/issues</bugs>
