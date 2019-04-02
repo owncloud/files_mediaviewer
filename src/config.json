@@ -4,8 +4,6 @@
 		"effect" : "slide"
 	},
 	"mimetypes": [
-		"image/png",
-		"image/jpeg",
 		"video/mp4",
 		"video/ogg",
 		"video/webm"

@@ -53,6 +53,10 @@
 		&--image {
 			max-width: 90vw;
 			max-height: 80vh;
+
+			&[alt$=".svg"] {
+				background-color: rgba(white, .333);
+			}
 		}
 
 		&--video {
