@@ -1,5 +1,4 @@
-const app     = require('../../package.json');
-app['config'] = require('../config.json');
+import app from './setup.js';
 
 $(document).ready(function () {
 
@@ -21,15 +20,17 @@ $(document).ready(function () {
 			OC.redirect(OC.joinPaths('#', app.name, fileName));
 		});
 	};
-	app.config.mimetypes.forEach( (type) => {
+
+	app['config'].mimetypes.forEach( (mimetype) => {
+
 		let ViewMedia = {
-			mime: type,
+			mime: mimetype,
 			name: app.name,
 			permissions: OC.PERMISSION_READ,
 			actionHandler
 		};
 
 		OCA.Files.fileActions.registerAction(ViewMedia);
-		OCA.Files.fileActions.setDefault(type, app.name);
+		OCA.Files.fileActions.setDefault(mimetype, app.name);
 	});
 });

@@ -1,5 +1,4 @@
-const app     = require('../../package.json');
-app['config'] = require('../config.json');
+import app from './setup.js';
 
 // Components
 
