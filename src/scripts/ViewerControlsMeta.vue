@@ -9,7 +9,7 @@ export default {
 	mounted () {
 		$(document).on('keyup', (e) => {
 			if (e.which === 27) {
-				this.close();
+				this.closeViewer();
 			}
 		});
 	},
