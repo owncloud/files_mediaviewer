@@ -5,7 +5,7 @@
 				<div class="viewer__wrapper">
 					<div class="viewer__slide" v-for="(slide, index) in list" :key="index">
 						<img v-if="getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(index, slide)" :alt="slide.name">
-						<video v-if="getType(slide) === 'video'" class="viewer__media viewer__media--video" :controls="isFullscreen" :class="{ 'viewer__media--video-paused' : isPaused }">
+						<video v-if="getType(slide) === 'video'" class="viewer__media viewer__media--video" :controls="isFullscreen" :class="{ 'viewer__media--video-paused' : isPaused }" preload="metadata">
 							<source :src="webdavPath(index, slide)" :type="slide.mimetype">
 						</video>
 					</div>
