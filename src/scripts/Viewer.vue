@@ -4,10 +4,11 @@
 			<div class="viewer__container">
 				<div class="viewer__wrapper">
 					<div class="viewer__slide" v-for="(slide, index) in list" :key="index">
-						<img v-if="getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(index, slide)" :alt="slide.name">
-						<video v-if="getType(slide) === 'video'" class="viewer__media viewer__media--video" :controls="isFullscreen" :class="{ 'viewer__media--video-paused' : isPaused }" preload="metadata">
+						<img v-if="getType(slide) === 'image' && shouldRender(index)" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
+						<video v-if="getType(slide) === 'video' && shouldRender(index)" class="viewer__media viewer__media--video" :controls="isFullscreen" :class="{ 'viewer__media--video-paused' : isPaused }" preload="metadata">
 							<source :src="webdavPath(index, slide)" :type="slide.mimetype">
 						</video>
+						<img v-if="!shouldRender(index)" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />
 					</div>
 				</div>
 			</div>
@@ -37,11 +38,8 @@ export default {
 			if ($(event.target).hasClass('viewer__slide'))
 			{this.closeViewer();}
 		},
-		thumbPath (i, item) {
+		thumbPath (item) {
 			let webdavPath;
-
-			if (!this.shouldRender(i))
-			{return 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';}
 
 			if (this.isPublic) {
 				let path   = OC.filePath('files_sharing', 'ajax', 'publicpreview.php');
