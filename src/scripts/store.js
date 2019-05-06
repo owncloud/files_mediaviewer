@@ -53,6 +53,18 @@ export default {
 		},
 		setTransitionState(state, setTo) {
 			state.isInTransition = setTo;
+		},
+		resetAll(state) {
+			state.activeIndex= 0;
+			state.maxIndex = 0;
+			state.activeMediaItem = {};
+			state.isLoading = false;
+			state.isInTransition = false;
+			state.video = {
+				isPaused : true,
+				isMuted : false,
+				isFullscreen : false
+			};
 		}
 	},
 	actions : {
@@ -78,6 +90,9 @@ export default {
 		},
 		setVideoState(context, payload) {
 			context.commit('setVideoState', payload);
+		},
+		resetAll(context) {
+			context.commit('resetAll');
 		}
 	}
 };

@@ -206,6 +206,7 @@ export default {
 
 	deactivated () {
 		this.swiper.destroy();
+		this.$store.dispatch('resetAll');
 		this.list = null;
 	},
 
