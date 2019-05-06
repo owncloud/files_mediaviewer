@@ -12,7 +12,7 @@
 				<!-- Swipe controls -->
 			</nav-controls>
 			<div class="viewer__controls__subgroup">
-				<button class="viewer__control icon__replay_10" :disabled="currentTime === 0" @click="skipTo(0)" v-translate>Replay</button>
+				<button class="viewer__control icon__replay" :disabled="currentTime === 0" @click="skipTo(0)" v-translate>Replay</button>
 				<button class="viewer__control icon__play" :class="[isPaused ? 'icon__play' : 'icon__pause']" @click="togglePlay()" v-translate>Play</button>
 				<button class="viewer__control" :class="[isMuted ? 'icon__volume_down' : 'icon__volume_up']" @click="toggleSound()" v-translate>Mute</button>
 				<button class="viewer__control icon__fullscreen" v-if="documentFullscreenEnabled" @click="requestFullscreen()" v-translate>Fullscreen</button>
