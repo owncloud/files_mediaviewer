@@ -5,12 +5,16 @@ const sass = require('node-sass');
 
 let bsfTransform = [
 	['babelify', {
-		presets: 'es2015'
+		presets: [
+			['env', {
+				targets: {
+					browsers: ['last 2 versions', 'ie >= 11']
+				}
+			}]
+		]
 	}],
 	['vueify']
 ];
-
-
 
 module.exports = function (grunt) {
 	grunt.initConfig({

@@ -201,6 +201,11 @@ export default {
 					}
 				}
 			});
+
+			this.$nextTick(() => {
+				// FF and IE11 Fix
+				this.swiper.update();
+			})
 		});
 	},
 
@@ -210,6 +215,7 @@ export default {
 	},
 
 	mounted () {
+
 		this.$bus.$on('swiper:slideTo', (to) => {
 			if (to === 'next') {
 				this.swiper.slideNext();
