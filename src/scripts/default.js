@@ -54,17 +54,19 @@ const Store = new Vuex.Store(store);
 
 // --------------------------------------------------------------- app setup ---
 
-const files_mediaviewer = new Vue({
-	el : '#files_mediaviewer > div',
-	router,
-	store : Store,
-	template: '<keep-alive><router-view></router-view></keep-alive>',
-	data: {
-		name: 'Mediaviewer'
-	}
-});
+
+import IE11RouterFix from './ie11routerfix'
 
 // Japp … we need to wait for a ready DOM
 $(document).ready(() => {
-	files_mediaviewer.$mount('');
+	new Vue({
+		el : '#files_mediaviewer > div',
+		router,
+		store : Store,
+		template: '<keep-alive><router-view>Was geht hier?</router-view></keep-alive>',
+		mixins : [IE11RouterFix],
+		data: {
+			name: 'Mediaviewer'
+		}
+	});
 });
