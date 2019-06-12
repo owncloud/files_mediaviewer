@@ -170,13 +170,8 @@ export default {
 							self.$bus.$emit('swiper:init');
 						}, 666);
 					},
-					touchStart : function() {
-						self.$store.dispatch('setInTransition');
-					},
-					touchEnd : function() {
-						self.$store.dispatch('setTransitionEnd');
-					},
 					slideChangeTransitionStart : function() {
+						self.$bus.$emit('swiper:slideChangeTransitionStart');
 						self.$store.dispatch('setInTransition');
 						self.$store.dispatch('setReady');
 					},
@@ -214,7 +209,6 @@ export default {
 	},
 
 	mounted () {
-
 		this.$bus.$on('swiper:slideTo', (to) => {
 			if (to === 'next') {
 				this.swiper.slideNext();
