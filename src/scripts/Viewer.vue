@@ -198,7 +198,7 @@ export default {
 			this.$nextTick(() => {
 				// FF and IE11 Fix
 				this.swiper.update();
-			})
+			});
 		});
 	},
 

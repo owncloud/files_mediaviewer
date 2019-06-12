@@ -105,7 +105,6 @@ export default {
 				this.$video.addEventListener('playing', this.handlePlaying);
 				this.$video.addEventListener('stalled', this.handlePause);
 				this.$video.addEventListener('timeupdate', this.handleTimeupdate);
-				console.log('addEventListener', this.$video.getEventListeners());
 			}
 
 			this.$scrubber.addEventListener('mousemove', (event) => {
@@ -121,26 +120,26 @@ export default {
 		},
 
 		handleCanPlay () {
-				this.$store.dispatch('setReady');
+			this.$store.dispatch('setReady');
 		},
 
 		handlePause () {
-				this.$store.dispatch('setVideoState', {
-			source : 'addEventListener handlePause',
-					isPaused : true
-				});
+			this.$store.dispatch('setVideoState', {
+				source : 'addEventListener handlePause',
+				isPaused : true
+			});
 		},
 
 		handlePlaying () {
-				this.duration = this.$video.duration;
-				this.$store.dispatch('setVideoState', {
-			source : 'addEventListener handlePlaying',
-					isPaused : false
-				});
+			this.duration = this.$video.duration;
+			this.$store.dispatch('setVideoState', {
+				source : 'addEventListener handlePlaying',
+				isPaused : false
+			});
 		},
 
 		handleTimeupdate () {
-				this.currentTime = Math.round(this.$video.currentTime);
+			this.currentTime = Math.round(this.$video.currentTime);
 		},
 	},
 	mounted () {
