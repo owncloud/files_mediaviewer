@@ -160,7 +160,7 @@ export default {
 				on : {
 					init : function () {
 						// Sadly, there is no afterInit() method here :-|
-						// Will have to wait 666 MS
+						// Will have to wait 250 MS
 						setTimeout(() => {
 							self.$store.dispatch('setActive', {
 								activeIndex : this.activeIndex,
@@ -168,7 +168,7 @@ export default {
 								activeHTMLElement : $('.swiper-slide-active .viewer__media')
 							});
 							self.$bus.$emit('swiper:init');
-						}, 666);
+						}, 250);
 					},
 					slideChangeTransitionStart : function() {
 						self.$bus.$emit('swiper:slideChangeTransitionStart');

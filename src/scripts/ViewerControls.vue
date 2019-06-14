@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<component :is="controlComponent"></component>
+		<ViewerControlsVideo v-show="slideIsVideo" />
+		<ViewerControlsImage v-show="slideIsImage" />
 		<spinner :show="isLoading"></spinner>
 	</div>
 </template>

@@ -26,9 +26,15 @@ export default {
 			return state.activeMediaItem.mimetype.split('/')[0];
 		},
 		HTMLImageElement (state) {
+			if (state.activeHTMLElement === null)
+				return null;
+
 			return (state.activeHTMLElement.get(0) instanceof HTMLImageElement) ? state.activeHTMLElement.get(0) : false;
 		},
 		HTMLVideoElement (state) {
+			if (state.activeHTMLElement === null)
+				return null;
+
 			return (state.activeHTMLElement.get(0) instanceof HTMLVideoElement) ? state.activeHTMLElement.get(0) : false;
 		}
 	},
