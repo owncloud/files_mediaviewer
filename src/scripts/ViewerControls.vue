@@ -16,10 +16,10 @@ export default {
 	mounted () {
 		// Keyboard controls for swiping and closing
 		$(document).on('keyup', (e) => {
-			if (e.which === 39) {
+			if (e.which === 39 && this.isActive) {
 				this.$bus.$emit('swiper:slideTo', 'next');
 			}
-			else if (e.which === 37) {
+			else if (e.which === 37 && this.isActive) {
 				this.$bus.$emit('swiper:slideTo', 'prev');
 			}
 		});

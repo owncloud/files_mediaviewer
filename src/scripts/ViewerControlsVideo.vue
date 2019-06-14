@@ -88,7 +88,7 @@ export default {
 
 
 		init () {
-			if (!this.$video)
+			if (!this.$video || !this.isActive)
 			{return;}
 
 			this.duration    = this.$video.duration;

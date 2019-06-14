@@ -17,6 +17,9 @@ const helper = {
 		}
 	},
 	computed : {
+		isActive () {
+			return (this.$route.params.file) ? true : false;
+		},
 		isPublic () {
 			return typeof OCA.Sharing.PublicApp === 'object';
 		},
