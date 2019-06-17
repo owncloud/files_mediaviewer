@@ -160,7 +160,7 @@ export default {
 				on : {
 					init : function () {
 						// Sadly, there is no afterInit() method here :-|
-						// Will have to wait 666 MS
+						// Will have to wait 250 MS
 						setTimeout(() => {
 							self.$store.dispatch('setActive', {
 								activeIndex : this.activeIndex,
@@ -168,15 +168,10 @@ export default {
 								activeHTMLElement : $('.swiper-slide-active .viewer__media')
 							});
 							self.$bus.$emit('swiper:init');
-						}, 666);
-					},
-					touchStart : function() {
-						self.$store.dispatch('setInTransition');
-					},
-					touchEnd : function() {
-						self.$store.dispatch('setTransitionEnd');
+						}, 250);
 					},
 					slideChangeTransitionStart : function() {
+						self.$bus.$emit('swiper:slideChangeTransitionStart');
 						self.$store.dispatch('setInTransition');
 						self.$store.dispatch('setReady');
 					},
@@ -203,17 +198,17 @@ export default {
 			this.$nextTick(() => {
 				// FF and IE11 Fix
 				this.swiper.update();
-			})
+			});
 		});
 	},
 
 	deactivated () {
 		this.swiper.destroy();
+		this.$store.dispatch('resetAll');
 		this.list = null;
 	},
 
 	mounted () {
-
 		this.$bus.$on('swiper:slideTo', (to) => {
 			if (to === 'next') {
 				this.swiper.slideNext();

@@ -55,7 +55,7 @@ const Store = new Vuex.Store(store);
 // --------------------------------------------------------------- app setup ---
 
 
-import IE11RouterFix from './ie11routerfix'
+import IE11RouterFix from './ie11routerfix';
 
 // Japp … we need to wait for a ready DOM
 $(document).ready(() => {

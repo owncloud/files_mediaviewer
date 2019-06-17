@@ -57,7 +57,7 @@ export default {
 		},
 
 		checkImageState () {
-			if (!this.$image)
+			if (!this.$image || !this.isActive)
 			{return;}
 
 			this.$store.dispatch('setLoading');
