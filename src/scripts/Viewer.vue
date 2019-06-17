@@ -113,10 +113,10 @@ export default {
 		},
 
 		fetchFileList(callback) {
-			
+
 			let fetch = new Promise( (resolve, reject) => {
 
-				let list = _.filter(FileList.files, (file) => {
+				let list = _.filter(OCA.Mediaviewer.files, (file) => {
 					return _.contains(this.$app.config.mimetypes, file.mimetype);
 				});
 

@@ -1,7 +1,14 @@
-import app from './setup.js';
+if (!OCA.Mediaviewer) {
+	/**
+	 * @namespace
+	 */
+	OCA.Mediaviewer = {};
+}
+
+OCA.Mediaviewer.app = require('./setup.js').default;
 
 $(document).ready(function () {
-
+	const app = OCA.Mediaviewer.app;
 	const mountPoint = $('<div>', {
 		id: app.name,
 		html: '<div>'
@@ -10,18 +17,20 @@ $(document).ready(function () {
 	if (!OCA.Files) {
 		return;
 	}
-
+	
 	// ---- Register fileactions -------
 
-	let actionHandler = (fileName) => {
+	let actionHandler = (fileName, context) => {
 		$('body').append(mountPoint);
-		
+
+		OCA.Mediaviewer.files = context.fileList.files;
+
 		OC.addScript(app.name, app.name).then(() => {
 			OC.redirect(OC.joinPaths('#', app.name, fileName));
 		});
 	};
 
-	app['config'].mimetypes.forEach( (mimetype) => {
+	app.config.mimetypes.forEach( (mimetype) => {
 
 		let ViewMedia = {
 			mime: mimetype,
