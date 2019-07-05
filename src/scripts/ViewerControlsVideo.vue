@@ -26,7 +26,7 @@
 <script>
 import ViewerControlsNavigate from './ViewerControlsNavigate.vue';
 import ViewerControlsMeta from './ViewerControlsMeta.vue';
-import 'geteventlisteners';
+import './geteventlisteners';
 
 export default {
 	name : 'VideoControls',
