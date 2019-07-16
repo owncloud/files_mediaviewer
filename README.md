@@ -10,3 +10,25 @@ Requires
 * NPM
 
 Run `npm install && npm run build` to build.
+
+## Supporting more media types
+
+First, make sure you have installed ImageMagick and its imagick PECL extension.
+Next add a few new entries to your **config/config.php** configuration file.
+
+```
+  'preview_max_scale_factor' => 1,
+  'enabledPreviewProviders' =>
+  array (
+    0 => 'OC\\Preview\\PNG',
+    1 => 'OC\\Preview\\JPEG',
+    2 => 'OC\\Preview\\GIF',
+    11 => 'OC\\Preview\\Illustrator',
+    12 => 'OC\\Preview\\Postscript',
+    13 => 'OC\\Preview\\Photoshop',
+    14 => 'OC\\Preview\\TIFF'
+  ),
+```
+
+Look at the sample configuration (config.sample.php) in your config folder if you need more information about how the config file works.
+That's it. You should be able to see more media types in your slideshows and galleries as soon as you've installed the app.
