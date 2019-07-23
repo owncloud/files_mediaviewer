@@ -11,4 +11,3 @@
 use OCP\Util;
 
 Util::addScript('files_mediaviewer', 'files_mediaviewer_init');
-Util::addStyle('files_mediaviewer', 'files_mediaviewer');
