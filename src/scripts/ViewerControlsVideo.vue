@@ -26,6 +26,7 @@
 <script>
 import ViewerControlsNavigate from './ViewerControlsNavigate.vue';
 import ViewerControlsMeta from './ViewerControlsMeta.vue';
+import './geteventlisteners';
 
 export default {
 	name : 'VideoControls',
@@ -85,9 +86,9 @@ export default {
 			this.$store.dispatch('setLoading');
 		},
 
-		init () {
 
-			if (!this.$video)
+		init () {
+			if (!this.$video || !this.isActive)
 			{return;}
 
 			this.duration    = this.$video.duration;
@@ -97,34 +98,14 @@ export default {
 				isMuted : false
 			});
 
-			this.$video.addEventListener('loadstart', () => {
-				this.$store.dispatch('setLoading');
-			});
-
-			this.$video.addEventListener('canplay', () => {
-				this.$store.dispatch('setReady');
-			});
-
-			this.$video.addEventListener('pause', () => {
-				this.$store.dispatch('setVideoState', {
-					isPaused : true
-				});
-			});
-
-			this.$video.addEventListener('playing', () => {
-				this.duration = this.$video.duration;
-				this.$store.dispatch('setVideoState', {
-					isPaused : false
-				});
-			});
-
-			this.$video.addEventListener('stalled', () => {
-				this.$store.dispatch('setLoading');
-			});
-
-			this.$video.addEventListener('timeupdate', () => {
-				this.currentTime = Math.round(this.$video.currentTime);
-			});
+			if (Object.keys(this.$video.getEventListeners()).length === 0) {
+				this.$video.addEventListener('loadstart', this.handleLoadstart);
+				this.$video.addEventListener('canplay', this.handleCanPlay);
+				this.$video.addEventListener('pause', this.handlePause);
+				this.$video.addEventListener('playing', this.handlePlaying);
+				this.$video.addEventListener('stalled', this.handlePause);
+				this.$video.addEventListener('timeupdate', this.handleTimeupdate);
+			}
 
 			this.$scrubber.addEventListener('mousemove', (event) => {
 				let refPos = this.$scrubber.getBoundingClientRect(),
@@ -133,14 +114,39 @@ export default {
 				this.mousePos = Math.round(pct / 100 * this.duration);
 			});
 		},
+
+		handleLoadstart () {
+			this.$store.dispatch('setLoading');
+		},
+
+		handleCanPlay () {
+			this.$store.dispatch('setReady');
+		},
+
+		handlePause () {
+			this.$store.dispatch('setVideoState', {
+				source : 'addEventListener handlePause',
+				isPaused : true
+			});
+		},
+
+		handlePlaying () {
+			this.duration = this.$video.duration;
+			this.$store.dispatch('setVideoState', {
+				source : 'addEventListener handlePlaying',
+				isPaused : false
+			});
+		},
+
+		handleTimeupdate () {
+			this.currentTime = Math.round(this.$video.currentTime);
+		},
 	},
 	mounted () {
 		this.$bus.$on('swiper:slideChangeTransitionEnd', () => {
 			this.init();
 		});
-	},
-	created () {
-		this.$nextTick(() => {
+		this.$bus.$on('swiper:init', () => {
 			this.init();
 		});
 	},

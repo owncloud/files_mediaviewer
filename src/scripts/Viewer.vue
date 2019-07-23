@@ -4,10 +4,11 @@
 			<div class="viewer__container">
 				<div class="viewer__wrapper">
 					<div class="viewer__slide" v-for="(slide, index) in list" :key="index">
-						<img v-if="getType(slide) === 'image'" class="viewer__media viewer__media--image" :src="thumbPath(index, slide)" :alt="slide.name">
-						<video v-if="getType(slide) === 'video'" class="viewer__media viewer__media--video" :controls="isFullscreen" :class="{ 'viewer__media--video-paused' : isPaused }">
+						<img v-if="getType(slide) === 'image' && shouldRender(index)" class="viewer__media viewer__media--image" :src="thumbPath(slide)" :alt="slide.name">
+						<video v-if="getType(slide) === 'video' && shouldRender(index)" class="viewer__media viewer__media--video" :controls="isFullscreen" :class="{ 'viewer__media--video-paused' : isPaused }" preload="metadata">
 							<source :src="webdavPath(index, slide)" :type="slide.mimetype">
 						</video>
+						<img v-if="!shouldRender(index)" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />
 					</div>
 				</div>
 			</div>
@@ -37,11 +38,8 @@ export default {
 			if ($(event.target).hasClass('viewer__slide'))
 			{this.closeViewer();}
 		},
-		thumbPath (i, item) {
+		thumbPath (item) {
 			let webdavPath;
-
-			if (!this.shouldRender(i))
-			{return 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';}
 
 			if (this.isPublic) {
 				let path   = OC.filePath('files_sharing', 'ajax', 'publicpreview.php');
@@ -115,10 +113,10 @@ export default {
 		},
 
 		fetchFileList(callback) {
-			
+
 			let fetch = new Promise( (resolve, reject) => {
 
-				let list = _.filter(FileList.files, (file) => {
+				let list = _.filter(OCA.Mediaviewer.files, (file) => {
 					return _.contains(this.$app.config.mimetypes, file.mimetype);
 				});
 
@@ -162,7 +160,7 @@ export default {
 				on : {
 					init : function () {
 						// Sadly, there is no afterInit() method here :-|
-						// Will have to wait 666 MS
+						// Will have to wait 250 MS
 						setTimeout(() => {
 							self.$store.dispatch('setActive', {
 								activeIndex : this.activeIndex,
@@ -170,15 +168,10 @@ export default {
 								activeHTMLElement : $('.swiper-slide-active .viewer__media')
 							});
 							self.$bus.$emit('swiper:init');
-						}, 666);
-					},
-					touchStart : function() {
-						self.$store.dispatch('setInTransition');
-					},
-					touchEnd : function() {
-						self.$store.dispatch('setTransitionEnd');
+						}, 250);
 					},
 					slideChangeTransitionStart : function() {
+						self.$bus.$emit('swiper:slideChangeTransitionStart');
 						self.$store.dispatch('setInTransition');
 						self.$store.dispatch('setReady');
 					},
@@ -205,17 +198,17 @@ export default {
 			this.$nextTick(() => {
 				// FF and IE11 Fix
 				this.swiper.update();
-			})
+			});
 		});
 	},
 
 	deactivated () {
 		this.swiper.destroy();
+		this.$store.dispatch('resetAll');
 		this.list = null;
 	},
 
 	mounted () {
-
 		this.$bus.$on('swiper:slideTo', (to) => {
 			if (to === 'next') {
 				this.swiper.slideNext();

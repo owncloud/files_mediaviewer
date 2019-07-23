@@ -79,6 +79,21 @@ module.exports = function (grunt) {
 			}
 		},
 
+		postcss: {
+			options: {
+				map: {
+					inline: false
+				},
+				processors: [
+					require('autoprefixer')({browsers: 'last 2 versions'}),
+					require('cssnano')()
+				]
+			},
+			dist: {
+				src: 'css/files_mediaviewer.css'
+			}
+		},
+
 		watch: {
 			default: {
 				options: {
@@ -101,18 +116,21 @@ module.exports = function (grunt) {
 	}); //initConfig
 	//
 	grunt.loadNpmTasks('grunt-force');
+	grunt.loadNpmTasks('grunt-postcss');
 	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-browserify');
 
 	grunt.registerTask('default', [
 		'sass',
+		'postcss',
 		'browserify:build',
 		'browserify:buildInit'
 	]);
 
 	grunt.registerTask('watcher', [
 		'sass',
+		'postcss',
 		'browserify:dev',
 		'browserify:devInit',
 		'watch'

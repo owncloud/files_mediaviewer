@@ -23,10 +23,6 @@ $core-image-path : '../../../core/img';
 $app-image-path : '../img';
 
 #{$namespace} {
-	@import "../../node_modules/purecss/build/base-min";
-	@import "../../node_modules/purecss/build/grids-min";
-	@import "../../node_modules/purecss/build/grids-responsive-min";
-
 	@import "../../node_modules/swiper/dist/css/swiper.min";
 
 	@import "base";
