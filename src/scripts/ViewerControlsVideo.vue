@@ -26,7 +26,7 @@
 <script>
 import ViewerControlsNavigate from './ViewerControlsNavigate.vue';
 import ViewerControlsMeta from './ViewerControlsMeta.vue';
-import './geteventlisteners';
+import './getEventListeners';
 
 export default {
 	name : 'VideoControls',
@@ -77,7 +77,10 @@ export default {
 		},
 
 		requestFullscreen () {
-			this.$video.requestFullscreen();
+			if (document.fullscreenEnabled) this.$video.requestFullscreen();
+			else if (document.webkitFullscreenEnabled) this.$video.webkitRequestFullscreen();
+			else if (document.msFullscreenEnabled) this.$video.msRequestFullscreen();
+			else return false
 		},
 
 		skipTo (seconds) {
@@ -175,7 +178,7 @@ export default {
 		},
 
 		documentFullscreenEnabled () {
-			return document.fullscreenEnabled;
+			return document.fullscreenEnabled || document.webkitFullscreenEnabled || document.msFullscreenEnabled
 		},
 
 		scrubberPosition () {
