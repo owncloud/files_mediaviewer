@@ -18,7 +18,7 @@ app_name=files_mediaviewer
 build_dir=$(CURDIR)/build
 dist_dir=$(build_dir)/dist
 src_files=README.md LICENSE CHANGELOG.md
-src_dirs=appinfo css js templates
+src_dirs=appinfo js templates
 all_src=$(src_dirs) $(src_files)
 
 occ=$(CURDIR)/../../occ
