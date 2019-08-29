@@ -1,3 +1,5 @@
+require('../styles/default.scss')
+
 import app from './setup.js';
 
 // Components

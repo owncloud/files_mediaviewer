@@ -6,6 +6,4 @@
 
 /js/
 /css/
-
-# @NOTE Remove on first release
-package-lock.json
+/.DS_Store
