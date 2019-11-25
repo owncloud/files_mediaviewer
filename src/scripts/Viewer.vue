@@ -71,7 +71,7 @@ export default {
 					preview: 1
 				});
 
-				webdavPath = encodeURI(`${path}?${params}`);
+				webdavPath = OC.encodePath(path) + '?' + params
 			}
 
 			return webdavPath;
@@ -97,7 +97,7 @@ export default {
 					item.name
 				);
 
-				webdavPath = path;
+				webdavPath = OC.encodePath(path);
 			}
 
 			return webdavPath;
@@ -136,7 +136,7 @@ export default {
 
 				return;
 			});
-		},
+		}
 	},
 
 	activated () {
