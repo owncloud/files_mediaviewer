@@ -33,6 +33,10 @@
 
 	&__count {
 		color: white;
+
+		@media (max-width: 360px) {
+			display: none;
+		}
 	}
 
 	// -- Video controls
@@ -91,6 +95,7 @@
 	justify-content: space-between;
 	align-items: center;
 	transition: width .25s;
+	box-sizing: border-box;
 
 	padding: {
 		left: 15px;
@@ -115,5 +120,9 @@
 	// --- Enlarge juicebar on hovering over controlbar
 	&:hover > .viewer__control__scrubber {
 		height: 10px;
+	}
+
+	@media (max-width: 650px) {
+		min-width: 100%
 	}
 }
