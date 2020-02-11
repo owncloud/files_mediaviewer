@@ -23,7 +23,7 @@
   },
   "scripts": {
     "build": "webpack -p",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch --mode=development"
   },
   "repository": {
     "type": "git",

@@ -108,6 +108,7 @@ export default {
 				this.$video.addEventListener('playing', this.handlePlaying);
 				this.$video.addEventListener('stalled', this.handlePause);
 				this.$video.addEventListener('timeupdate', this.handleTimeupdate);
+				this.$video.addEventListener('error', this.handleError);
 			}
 
 			this.$scrubber.addEventListener('mousemove', (event) => {
@@ -115,6 +116,14 @@ export default {
 					pct    = (100 / refPos.width) * (event.pageX - refPos.left);
 
 				this.mousePos = Math.round(pct / 100 * this.duration);
+			});
+		},
+
+		handleError () {
+			OC.Notification.show( this.t('Failed to load video data'), {type: 'error', timeout: 15})
+			this.$store.dispatch('setVideoState', {
+				source : 'addEventListener handlePause',
+				isPaused : true
 			});
 		},
 
