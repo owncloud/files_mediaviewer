@@ -6,6 +6,7 @@
 	"mimetypes": [
 		"video/mp4",
 		"video/ogg",
-		"video/webm"
+		"video/webm",
+		"video/quicktime"
 	]
 }
