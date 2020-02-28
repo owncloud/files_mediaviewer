@@ -32,6 +32,16 @@ $(document).ready(function () {
 
 	app.config.mimetypes.forEach( (mimetype) => {
 
+		// register only browser playable videotypes
+		let n = mimetype.search("video");
+		if (n === 0) {
+			let hasVideo = document.createElement('video').canPlayType &&
+				document.createElement('video').canPlayType(mimetype);
+			if (!hasVideo) {
+				return;
+			}
+		}
+
 		let ViewMedia = {
 			mime: mimetype,
 			name: app.name,
