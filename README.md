@@ -7,9 +7,9 @@ Viewer for pictures and videos integrated in the files app
 
 Requires
 * Node.js
-* NPM
+* yarn
 
-Run `npm install && npm run build` to build.
+Run `yarn install && yarn build` to build.
 
 ## Supporting more media types
 
