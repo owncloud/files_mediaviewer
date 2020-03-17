@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
-## [1.0.2] - 2020-02-17
+## [1.0.2] - 2020-03-17
+
+### Added
+
+- add QT and check playable - [#196](https://github.com/owncloud/files_mediaviewer/issues/196)
 
 ### Fixed
 
@@ -15,6 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- [Security] Bump serialize-javascript from 1.8.0 to 2.1.2 - [#200](https://github.com/owncloud/files_mediaviewer/issues/200)
 - Update dependencies - [#155](https://github.com/owncloud/files_mediaviewer/issues/155)
 
 ## [1.0.1] - 2019-11-13
