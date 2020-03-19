@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.0.2] - 2020-03-17
+
+### Added
+
+- add QT and check playable - [#196](https://github.com/owncloud/files_mediaviewer/issues/196)
+
+### Fixed
+
+- Add notification on playback error - [#109](https://github.com/owncloud/files_mediaviewer/issues/109)
+- Fix moderate Cross-Site-Scripting vulnerability - [#163](https://github.com/owncloud/files_mediaviewer/issues/163)
+- Fix media controls on small devices - [#164](https://github.com/owncloud/files_mediaviewer/issues/164)
+- Encode # in media URI - [#152](https://github.com/owncloud/files_mediaviewer/issues/152)
+
+### Changed
+
+- [Security] Bump serialize-javascript from 1.8.0 to 2.1.2 - [#200](https://github.com/owncloud/files_mediaviewer/issues/200)
+- Update dependencies - [#155](https://github.com/owncloud/files_mediaviewer/issues/155)
+
 ## [1.0.1] - 2019-11-13
 
 ### Fixed
@@ -21,5 +39,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - Initial release
 
-[Unreleased]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.2...master
+[1.0.2]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.0...v1.0.1
