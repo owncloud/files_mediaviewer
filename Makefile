@@ -1,9 +1,6 @@
 SHELL := /bin/bash
 
 COMPOSER_BIN := $(shell command -v composer 2> /dev/null)
-ifndef COMPOSER_BIN
-    $(error composer is not available on your system, please install composer)
-endif
 YARN := $(shell command -v yarn 2> /dev/null)
 ifndef YARN
     $(error yarn is not available on your system, please install yarn)
@@ -50,6 +47,9 @@ dist: js-deps build-js distdir sign package
 
 .PHONY: composer
 composer:
+ifndef COMPOSER_BIN
+    $(error composer is not available on your system, please install composer)
+endif
 	$(COMPOSER_BIN) install --no-dev
 
 .PHONY: js-deps
