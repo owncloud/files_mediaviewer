@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "Viewer for pictures and videos integrated in the files app",
   "dependencies": {
+    "easygettext": "^2.10.0",
     "swiper": "^4.5.1",
     "vue": "^2.6.10",
     "vue-router": "^3.1.3",

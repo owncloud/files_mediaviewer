@@ -6,6 +6,10 @@ const helper = {
 			return t(scope, string);
 		},
 
+		$gettext(string, scope = appName) {
+			return t(scope, string);
+		},
+
 		pauseAllVideos () {
 			$('.viewer__slide .viewer__media--video').each(function() {
 				$(this).get(0).pause();
@@ -34,7 +38,8 @@ const helper = {
 
 const directive = {
 	bind(el, binding) {
-		el.innerText = t(binding.value, el.innerText.trim());
+		console.log(binding.value, el.innerText.trim());
+		el.innerText = t('files_mediaviewer', el.innerText.trim());
 	}
 };
 

@@ -77,3 +77,30 @@ endif
 .PHONY: package
 package:
 	tar --format=gnu -czf $(dist_dir)/$(app_name).tar.gz -C $(dist_dir) $(app_name)
+
+##
+## l10n
+##--------------------------------------
+
+.PHONY: l10n-clean
+l10n-clean:
+	cd l10n && make clean
+
+.PHONY: l10n-read
+l10n-read: js-deps
+	cd l10n && make makemessages
+
+.PHONY: l10n-write
+l10n-write: l10n/l10n.pl
+	perl l10n/l10n.pl files_mediaviewer write
+
+.PHONY: l10n-push
+l10n-push:
+	cd l10n && tx -d push -s
+
+.PHONY: l10n-pull
+l10n-pull:
+	cd l10n && tx -d pull -a --minimum-perc=15
+
+l10n/l10n.pl:
+	wget -qO l10n/l10n.pl https://rawgit.com/ownclouders/7f3e2bdf09e6c7258850d770c0edaf0b/raw/d3ad1673b5449900f85a04f95cdf7e7149140c4f/l10n.pl

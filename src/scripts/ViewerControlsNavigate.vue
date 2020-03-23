@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<button class="viewer__control icon__prev" @click="slideTo('prev')" v-translate>Previous</button>
-		<span class="viewer__control__count">{{ activeSlide }} {{ t('of') }} {{ lastSlide }}</span>
+		<span class="viewer__control__count">{{ activeSlide }} {{ ofString }} {{ lastSlide }}</span>
 		<button class="viewer__control icon__next" @click="slideTo('next')" v-translate>Next</button>
 	</div>
 </template>
@@ -13,6 +13,9 @@ export default {
 		},
 		lastSlide () {
 			return this.$store.state.maxIndex;
+		},
+		ofString () {
+			return this.$gettext('of');
 		}
 	},
 	methods : {
