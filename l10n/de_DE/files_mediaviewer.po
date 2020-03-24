@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the FilesMediaViewer package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Andreas Eitel <github-aneitel@online.de>, 2020
+# Christian Scherm <christian.scherm@owncloud.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FilesMediaViewer 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-24 09:35+0000\n"
+"PO-Revision-Date: 2020-03-23 16:54+0000\n"
+"Last-Translator: Christian Scherm <christian.scherm@owncloud.com>, 2020\n"
+"Language-Team: German (Germany) (https://www.transifex.com/owncloud-org/teams/6149/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../src/scripts/ViewerControlsMeta.vue:3
+msgid "Close"
+msgstr "Schließen"
+
+#: ../src/scripts/ViewerControlsMeta.vue:2
+msgid "Download"
+msgstr "Herunterladen"
+
+#: ../src/scripts/ViewerControlsVideo.vue:17
+msgid "Fullscreen"
+msgstr "Vollbildschirm"
+
+#: ../src/scripts/ViewerSpinner.vue:2
+msgid "Loading"
+msgstr "Laden"
+
+#: ../src/scripts/ViewerControlsVideo.vue:16
+msgid "Mute"
+msgstr "Ton aus"
+
+#: ../src/scripts/ViewerControlsNavigate.vue:4
+msgid "Next"
+msgstr "Nächstes"
+
+#: ../src/scripts/ViewerControlsNavigate.vue:18
+msgid "of"
+msgstr "von"
+
+#: ../src/scripts/ViewerControlsVideo.vue:15
+msgid "Play"
+msgstr "Abspielen"
+
+#: ../src/scripts/ViewerControlsNavigate.vue:2
+msgid "Previous"
+msgstr "Vorheriges"
+
+#: ../src/scripts/ViewerControlsVideo.vue:14
+msgid "Replay"
+msgstr "Wiederholen"
+
+#: ../src/scripts/ViewerControlsImage.vue:7
+msgid "Rotate 90° counterclockwise"
+msgstr "90° gegen den Uhrzeigersinn drehen"
+
+#: ../src/scripts/ViewerControlsImage.vue:8
+msgid "Zoom in"
+msgstr "Vergrößern"
+
+#: ../src/scripts/ViewerControlsImage.vue:9
+msgid "Zoom out"
+msgstr "Verkleinern"
+
+#: ../src/scripts/helper.js:42
+msgid "files_mediaviewer"
+msgstr "files_mediaviewer"

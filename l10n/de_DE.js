@@ -1,17 +1,19 @@
-{ "translations": {
+OC.L10N.register(
+    "files_mediaviewer",
+    {
     "Close" : "Schließen",
     "Download" : "Herunterladen",
     "Fullscreen" : "Vollbildschirm",
-    "Loading" : "Lade",
+    "Loading" : "Laden",
     "Mute" : "Ton aus",
-    "Next" : "Weiter",
+    "Next" : "Nächstes",
     "of" : "von",
     "Play" : "Abspielen",
-    "Previous" : "Zurück",
-    "Replay" : "Wiedergeben",
-    "Rotate 90° counterclockwise" : "Um 90° im Uhrzeigersinn drehen",
+    "Previous" : "Vorheriges",
+    "Replay" : "Wiederholen",
+    "Rotate 90° counterclockwise" : "90° gegen den Uhrzeigersinn drehen",
     "Zoom in" : "Vergrößern",
     "Zoom out" : "Verkleinern",
     "files_mediaviewer" : "files_mediaviewer"
-},"pluralForm" :"nplurals=2; plural=(n != 1);"
-}
+},
+"nplurals=2; plural=(n != 1);");

@@ -12,6 +12,8 @@ OC.L10N.register(
     "Previous" : "Zurück",
     "Replay" : "Wiedergeben",
     "Rotate 90° counterclockwise" : "Um 90° im Uhrzeigersinn drehen",
+    "Zoom in" : "Vergrößern",
+    "Zoom out" : "Verkleinern",
     "files_mediaviewer" : "files_mediaviewer"
 },
 "nplurals=2; plural=(n != 1);");
