@@ -2,6 +2,7 @@
 /build/
 /vendor/
 .php_cs.cache
+.drone.yml
 /tests/output/
 
 /js/
