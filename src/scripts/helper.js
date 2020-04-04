@@ -18,6 +18,23 @@ const helper = {
 
 		closeViewer () {
 			this.$router.push('/');
+		},
+
+		getDisplayTime (time) {
+			if (time === 0) return "00:00";
+
+			// when switching between previews, currentTime is not rounded somehow
+			time = Math.round(time);
+
+			let hour = Math.floor(time / 3600);
+			let minute = Math.floor(time % 3600 / 60);
+			let second = time % 60;
+
+			let times = [minute, second];
+			if ( hour > 0 ) times = [hour, minute, second];
+			times = times.map( el => el < 10 ? (el+"").padStart(2, "0") : el);
+
+			return times.join(":");
 		}
 	},
 	computed : {
