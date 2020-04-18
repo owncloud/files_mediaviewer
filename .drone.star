@@ -84,12 +84,12 @@ def javascript():
 			'path': 'server/apps/%s' % config['app']
 		},
 		'steps':
-			installApp('7.1') +
+			installApp('7.2') +
 			params['extraSetup'] +
 			[
                 {
                     'name': 'l10n-read',
-                    'image': 'owncloudci/php:7.1',
+                    'image': 'owncloudci/php:7.2',
                     'pull': 'always',
                     'environment': params['extraEnvironment'],
                     'commands': params['extraCommandsBeforeTestRun'] + [
