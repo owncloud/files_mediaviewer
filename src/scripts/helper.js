@@ -1,4 +1,5 @@
 const appName = require('../../package.json').name;
+var moment = require("moment");
 
 const helper = {
 	methods: {
@@ -18,6 +19,16 @@ const helper = {
 
 		closeViewer () {
 			this.$router.push('/');
+		},
+
+		getDisplayTime (time) {
+			if (isNaN(time) || time === 0) {
+				return "00:00";
+			}
+			// when switching between previews, currentTime is not rounded somehow
+			time = Math.round(time);
+			var formatted = moment.duration(time, 'seconds').format("hh:mm:ss", { trim: "mid" });
+			return formatted;
 		}
 	},
 	computed : {
