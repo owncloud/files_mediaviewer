@@ -4,6 +4,8 @@
   "description": "Viewer for pictures and videos integrated in the files app",
   "dependencies": {
     "easygettext": "^2.12.0",
+    "@types/moment-duration-format": "^2.2.2",
+    "moment-duration-format": "^2.3.2",
     "swiper": "^4.5.1",
     "vue": "^2.6.10",
     "vue-router": "^3.1.3",

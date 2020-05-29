@@ -12,6 +12,7 @@
 				<!-- Swipe controls -->
 			</nav-controls>
 			<div class="viewer__controls__subgroup">
+				<span class="viewer__control__count" v-text="showTimeInfo()"></span>
 				<button class="viewer__control icon__replay" :disabled="currentTime === 0" @click="skipTo(0)" v-translate>Replay</button>
 				<button class="viewer__control icon__play" :class="[isPaused ? 'icon__play' : 'icon__pause']" @click="togglePlay()" v-translate>Play</button>
 				<button class="viewer__control" :class="[isMuted ? 'icon__volume_down' : 'icon__volume_up']" @click="toggleSound()" v-translate>Mute</button>
@@ -153,6 +154,12 @@ export default {
 		handleTimeupdate () {
 			this.currentTime = Math.round(this.$video.currentTime);
 		},
+
+		showTimeInfo() {
+			let current = this.getDisplayTime(this.currentTime);
+			let duration = this.totalDisplayTime;
+			return `${current} / ${duration}`;
+		}
 	},
 	mounted () {
 		this.$bus.$on('swiper:slideChangeTransitionEnd', () => {
@@ -207,6 +214,12 @@ export default {
 		},
 		$scrubber () {
 			return $('.viewer__control__scrubber').get(0);
+		},
+
+		totalDisplayTime () {
+			// this.duration is not rounded as opposed to this.currentTime
+			let duration = Math.round(this.duration);
+			return this.getDisplayTime(duration);
 		}
 	}
 };

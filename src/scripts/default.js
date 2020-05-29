@@ -18,6 +18,9 @@ Vue.use(VueRouter);
 
 // --- Global Components
 
+import moment from 'moment';
+import 'moment-duration-format';
+
 import {
 	helper,
 	directive
