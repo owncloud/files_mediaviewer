@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FilesMediaViewer 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-29 03:55+0000\n"
+"POT-Creation-Date: 2020-05-30 03:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
-#: ../src/scripts/ViewerControlsVideo.vue:17
+#: ../src/scripts/ViewerControlsVideo.vue:18
 msgid "Fullscreen"
 msgstr ""
 
@@ -33,7 +33,7 @@ msgstr ""
 msgid "Loading"
 msgstr ""
 
-#: ../src/scripts/ViewerControlsVideo.vue:16
+#: ../src/scripts/ViewerControlsVideo.vue:17
 msgid "Mute"
 msgstr ""
 
@@ -45,7 +45,7 @@ msgstr ""
 msgid "of"
 msgstr ""
 
-#: ../src/scripts/ViewerControlsVideo.vue:15
+#: ../src/scripts/ViewerControlsVideo.vue:16
 msgid "Play"
 msgstr ""
 
@@ -53,7 +53,7 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
-#: ../src/scripts/ViewerControlsVideo.vue:14
+#: ../src/scripts/ViewerControlsVideo.vue:15
 msgid "Replay"
 msgstr ""
 
@@ -69,6 +69,6 @@ msgstr ""
 msgid "Zoom out"
 msgstr ""
 
-#: ../src/scripts/helper.js:42
+#: ../src/scripts/helper.js:53
 msgid "files_mediaviewer"
 msgstr ""
