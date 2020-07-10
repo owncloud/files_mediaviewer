@@ -14,7 +14,7 @@ app_name=files_mediaviewer
 build_dir=$(CURDIR)/build
 dist_dir=$(build_dir)/dist
 src_files=README.md LICENSE CHANGELOG.md
-src_dirs=appinfo js templates
+src_dirs=appinfo js l10n templates
 all_src=$(src_dirs) $(src_files)
 
 occ=$(CURDIR)/../../occ
@@ -56,6 +56,7 @@ distdir:
 	rm -rf $(dist_dir)
 	mkdir -p $(dist_dir)/$(app_name)
 	cp -R $(all_src) $(dist_dir)/$(app_name)
+	rm -Rf $(dist_dir)/$(app_name)/l10n/.tx
 
 .PHONY: sign
 sign:
