@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.0.3] - 2020-06-23
+
+### Added
+
+- Update config.json to support mimetype video/quicktime - [#194](https://github.com/owncloud/files_mediaviewer/issues/194)
+- Add time display to viewer controls - [#225](https://github.com/owncloud/files_mediaviewer/issues/225)
+- Add l10n support - [#217](https://github.com/owncloud/files_mediaviewer/issues/217)
+
+### Changed
+
+- Bump libraries
+
 ## [1.0.2] - 2020-03-17
 
 ### Added
@@ -39,6 +51,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - Initial release
 
-[Unreleased]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.2...master
+[Unreleased]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.3...HEAD
+[1.0.3]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.0...v1.0.1
