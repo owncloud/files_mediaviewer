@@ -1,0 +1,13 @@
+{ "translations": {
+    "Close" : "Κλείσιμο",
+    "Download" : "Λήψη",
+    "Fullscreen" : "Πλήρης οθόνη",
+    "Loading" : "Γίνεται φόρτωση",
+    "Next" : "Επόμενο",
+    "Play" : "Αναπαραγωγή",
+    "Previous" : "Προηγούμενο",
+    "Replay" : "Επανάληψη",
+    "Zoom in" : "Μεγέθυνση",
+    "Zoom out" : "Σμίκρυνση"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}
