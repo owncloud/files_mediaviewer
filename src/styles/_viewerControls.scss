@@ -19,7 +19,7 @@
 		display: block;
 		position: absolute;
 		color: white;
-		transform: translate(-50%, -150%);
+		transform: translate(-50%, -190%);
 		top: 0;
 		left: 50%;
 		white-space: nowrap;
@@ -45,11 +45,12 @@
 		position: absolute;
 		left: 0;
 		right: 0;
-		top: 0;
-		height: 5px;
+		top: -1px;
+		height: 10px;
 		width: 100%;
 		transform: translateY(-100%);
 		transition: height .25s;
+		background: rgba(0, 0, 0, 0.5);
 
 		// Juicebar
 		> div {
@@ -119,7 +120,7 @@
 
 	// --- Enlarge juicebar on hovering over controlbar
 	&:hover > .viewer__control__scrubber {
-		height: 10px;
+		height: 15px;
 	}
 
 	@media (max-width: 650px) {
