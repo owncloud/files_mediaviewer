@@ -6,7 +6,7 @@
     "easygettext": "^2.12.0",
     "@types/moment-duration-format": "^2.2.2",
     "moment-duration-format": "^2.3.2",
-    "swiper": "^4.5.1",
+    "swiper": "^6.3.1",
     "vue": "^2.6.10",
     "vue-router": "^3.1.3",
     "vuex": "^3.1.2"
