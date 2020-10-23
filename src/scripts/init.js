@@ -49,7 +49,9 @@ $(document).ready(function () {
 			actionHandler
 		};
 
-		OCA.Files.fileActions.registerAction(ViewMedia);
-		OCA.Files.fileActions.setDefault(mimetype, app.name);
+		if (OCA.Files.fileActions) {
+			OCA.Files.fileActions.registerAction(ViewMedia);
+			OCA.Files.fileActions.setDefault(mimetype, app.name);
+		}
 	});
 });
