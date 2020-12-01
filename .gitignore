@@ -8,3 +8,6 @@
 /js/
 /css/
 /.DS_Store
+
+# SonarCloud scanner
+.scannerwork
