@@ -46,6 +46,8 @@ $(document).ready(function () {
 			mime: mimetype,
 			name: app.name,
 			permissions: OC.PERMISSION_READ,
+			displayName: t('files_mediaviewer', 'Open in Media Viewer'),
+			iconClass: 'icon-toggle',
 			actionHandler
 		};
 
