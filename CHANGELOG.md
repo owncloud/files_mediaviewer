@@ -61,7 +61,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - Initial release
 
-[Unreleased]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.3...HEAD
+[Unreleased]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.4...HEAD
+[1.0.4]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.0...v1.0.1
