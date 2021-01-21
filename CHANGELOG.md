@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.0.4] - 2021-01-10
+
+### Added
+
+- Add icon and correct text in the file actions menu - [#337](https://github.com/owncloud/files_mediaviewer/pull/337)
+- Possibly fix Gallery & files_mediaviewer compatibility issue - [#310](https://github.com/owncloud/files_mediaviewer/pull/310)
+- Add bgcolor and adopt the height of the video scrubber - [#287](https://github.com/owncloud/files_mediaviewer/pull/287)
+
+### Changed
+
+- Bump libraries
+
 ## [1.0.3] - 2020-06-23
 
 ### Added
@@ -51,7 +63,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - Initial release
 
-[Unreleased]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.3...HEAD
+[Unreleased]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.4...HEAD
+[1.0.4]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.0...v1.0.1
