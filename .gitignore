@@ -8,3 +8,6 @@
 /js/
 /css/
 /.DS_Store
+
+# Generated from .drone.star
+.drone.yml
