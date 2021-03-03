@@ -22,7 +22,7 @@
     "vue-loader": "^15.9.6",
     "vue-template-compiler": "^2.6.12",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^4.5.0"
   },
   "scripts": {
     "build": "webpack -p",
