@@ -3,8 +3,8 @@
   "version": "1.0.1",
   "description": "Viewer for pictures and videos integrated in the files app",
   "dependencies": {
-    "easygettext": "^2.16.1",
     "@types/moment-duration-format": "^2.2.2",
+    "easygettext": "^2.16.1",
     "moment-duration-format": "^2.3.2",
     "swiper": "^4.5.1",
     "vue": "^2.6.12",
@@ -16,7 +16,7 @@
     "@babel/preset-env": "^7.12.11",
     "babel-loader": "^8.2.2",
     "css-loader": "^3.2.1",
-    "node-sass": "^4.14.1",
+    "sass": "^1.35.1",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.1.4",
     "vue-loader": "^15.9.6",
