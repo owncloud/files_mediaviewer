@@ -84,12 +84,12 @@ def javascript():
 			'path': 'server/apps/%s' % config['app']
 		},
 		'steps':
-			installApp('7.2') +
+			installApp() +
 			params['extraSetup'] +
 			[
                 {
                     'name': 'l10n-read',
-                    'image': 'owncloudci/php:7.2',
+                    'image': 'owncloudci/nodejs:%s' % getNodeJsVersion(),
                     'pull': 'always',
                     'environment': params['extraEnvironment'],
                     'commands': params['extraCommandsBeforeTestRun'] + [
@@ -165,19 +165,26 @@ def notify():
 
 	return result
 
-def installApp(phpVersion):
+def installApp():
 	if 'appInstallCommand' not in config:
 		return []
 
 	return [{
 		'name': 'install-app-%s' % config['app'],
-		'image': 'owncloudci/php:%s' % phpVersion,
+		'image': 'owncloudci/nodejs:%s' % getNodeJsVersion(),
 		'pull': 'always',
 		'commands': [
 			'cd /var/www/owncloud/server/apps/%s' % config['app'],
 			config['appInstallCommand']
 		]
 	}]
+
+def getNodeJsVersion():
+    if "nodeJsVersion" not in config:
+        # We use nodejs 14 as the default
+        return "14"
+    else:
+        return config["nodeJsVersion"]
 
 def dependsOn(earlierStages, nextStages):
 	for earlierStage in earlierStages:
