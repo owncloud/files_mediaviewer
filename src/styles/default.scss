@@ -23,7 +23,7 @@ $core-image-path : '../../../core/img';
 $app-image-path : '../img';
 
 #{$namespace} {
-	@import "../../node_modules/swiper/dist/css/swiper.min";
+	@import "../../node_modules/swiper/dist/css/swiper.min.css";
 
 	@import "base";
 	@import "transitions";
