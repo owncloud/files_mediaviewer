@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FilesMediaViewer 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-18 00:10+0000\n"
+"POT-Creation-Date: 2021-09-19 00:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,6 +69,6 @@ msgstr ""
 msgid "Zoom out"
 msgstr ""
 
-#: ../src/scripts/init.js:49 ../src/scripts/helper.js:53
+#: ../src/scripts/helper.js:53 ../src/scripts/init.js:49
 msgid "files_mediaviewer"
 msgstr ""
