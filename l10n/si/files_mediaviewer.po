@@ -2,28 +2,32 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the FilesMediaViewer package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Hela Basa, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FilesMediaViewer 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-07 00:56+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2020-03-23 16:54+0000\n"
+"Last-Translator: Hela Basa, 2021\n"
+"Language-Team: Sinhala (https://www.transifex.com/owncloud-org/teams/6149/si/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: si\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/scripts/ViewerControlsMeta.vue:3
 msgid "Close"
-msgstr ""
+msgstr "වසන්න"
 
 #: ../src/scripts/ViewerControlsMeta.vue:2
 msgid "Download"
-msgstr ""
+msgstr "බාන්න"
 
 #: ../src/scripts/ViewerControlsVideo.vue:18
 msgid "Fullscreen"
@@ -43,7 +47,7 @@ msgstr ""
 
 #: ../src/scripts/ViewerControlsNavigate.vue:10
 msgid "of"
-msgstr ""
+msgstr "ගේ"
 
 #: ../src/scripts/ViewerControlsVideo.vue:16
 msgid "Play"
