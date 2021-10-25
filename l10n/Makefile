@@ -19,7 +19,7 @@ makemessages:
 	touch files_mediaviewer.pot
 	../node_modules/.bin/gettext-extract --attribute v-translate \
 		--output=files_mediaviewer.pot $(GETTEXT_VUE_SOURCES)
-	xgettext --language=JavaScript --keyword=t \
+	xgettext --language=JavaScript --keyword=t:2 --keyword=n:2,3 \
 		--from-code=utf-8 --join-existing --no-wrap \
 		--package-name=FilesMediaViewer \
 		--package-version=0.0.1 \
