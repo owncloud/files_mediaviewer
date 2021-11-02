@@ -13,7 +13,7 @@ GETTEXT_PHP_SOURCES = $(shell find ../lib -name '*.php')
 .PHONY: clean makemessages translations push pull
 
 clean:
-	rm -rf files_classifier.pot locale
+	rm -rf files_mediaviewer.pot locale
 
 makemessages:
 	touch files_mediaviewer.pot
