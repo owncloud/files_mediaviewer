@@ -7,6 +7,7 @@ OC.L10N.register(
     "Loading" : "載入中",
     "Mute" : "靜音",
     "Next" : "下一個",
+    "of" : "的",
     "Play" : "播放",
     "Previous" : "上一個",
     "Replay" : "重播",

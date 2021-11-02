@@ -13,7 +13,6 @@ OC.L10N.register(
     "Replay" : "Repetir",
     "Rotate 90° counterclockwise" : "Rotar 90° no sentido contrario das agullas do reloxo",
     "Zoom in" : "Achegar",
-    "Zoom out" : "Afastar",
-    "files_mediaviewer" : "files_mediaviewer"
+    "Zoom out" : "Afastar"
 },
 "nplurals=2; plural=(n != 1);");

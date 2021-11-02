@@ -8,3 +8,6 @@
 /js/
 /css/
 /.DS_Store
+
+/l10n/files_mediaviewer.pot
+*.po

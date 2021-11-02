@@ -13,7 +13,6 @@ OC.L10N.register(
     "Replay" : "เล่นใหม่",
     "Rotate 90° counterclockwise" : "หมุนทวนเข็ม 90°",
     "Zoom in" : "ซูมเข้า",
-    "Zoom out" : "ซูมออก",
-    "files_mediaviewer" : "files_mediaviewer"
+    "Zoom out" : "ซูมออก"
 },
 "nplurals=1; plural=0;");

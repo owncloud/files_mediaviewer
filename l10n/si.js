@@ -3,6 +3,9 @@ OC.L10N.register(
     {
     "Close" : "වසන්න",
     "Download" : "බාන්න",
-    "of" : "ගේ"
+    "Next" : "ඊලඟ",
+    "of" : "ගේ",
+    "Play" : "ධාවනය",
+    "Previous" : "පෙර"
 },
 "nplurals=2; plural=(n != 1);");
