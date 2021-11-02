@@ -14,6 +14,6 @@ OC.L10N.register(
     "Rotate 90° counterclockwise" : "Rotacionar 90º no sentido dos ponteiros do relógio",
     "Zoom in" : "Ampliar",
     "Zoom out" : "Diminuir",
-    "files_mediaviewer" : "arquivos_visualizadordemidia"
+    "Open in Media Viewer" : "Abrir no Visualizador de Mídia"
 },
 "nplurals=2; plural=(n > 1);");

@@ -13,7 +13,6 @@ OC.L10N.register(
     "Replay" : "Endurspila",
     "Rotate 90° counterclockwise" : "Snua 90° andsælis",
     "Zoom in" : "Þysja inn",
-    "Zoom out" : "Þysja út",
-    "files_mediaviewer" : "skrar_efnisveita"
+    "Zoom out" : "Þysja út"
 },
 "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");

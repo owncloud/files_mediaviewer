@@ -13,7 +13,6 @@ OC.L10N.register(
     "Replay" : "Herhalen",
     "Rotate 90° counterclockwise" : "Draai 90 ° tegen de klok in",
     "Zoom in" : "Inzoomen",
-    "Zoom out" : "Uitzoomen",
-    "files_mediaviewer" : "files_mediaviewer"
+    "Zoom out" : "Uitzoomen"
 },
 "nplurals=2; plural=(n != 1);");

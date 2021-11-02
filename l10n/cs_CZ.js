@@ -13,7 +13,6 @@ OC.L10N.register(
     "Replay" : "Přehrát znovu",
     "Rotate 90° counterclockwise" : "Otočit o 90° proti směru hod. ručiček",
     "Zoom in" : "Přiblížit",
-    "Zoom out" : "Oddálit",
-    "files_mediaviewer" : "files_mediaviewer"
+    "Zoom out" : "Oddálit"
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;");

@@ -13,7 +13,6 @@ OC.L10N.register(
     "Replay" : "دوبارہ پلے",
     "Rotate 90° counterclockwise" : "90°  گھماوگھڑی کی سمت ",
     "Zoom in" : "زوم ان",
-    "Zoom out" : "زوم آوٹ ",
-    "files_mediaviewer" : "فائلز _میڈیا وئیور"
+    "Zoom out" : "زوم آوٹ "
 },
 "nplurals=2; plural=(n != 1);");
