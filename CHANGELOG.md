@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.0.5] - 2021-11-09
+
+### Changed
+
+- [Security] Bump y18n from 4.0.0 to 4.0.3 - [#400](https://github.com/owncloud/files_mediaviewer/pull/400)
+- [Security] Bump ssri from 6.0.1 to 6.0.2 - [#407](https://github.com/owncloud/files_mediaviewer/pull/407)
+- Translation updates - [#548](https://github.com/owncloud/files_mediaviewer/pull/548)
+- Bump Libraries
+
+
 ## [1.0.4] - 2021-01-10
 
 ### Added
@@ -63,7 +73,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - Initial release
 
-[Unreleased]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.4...HEAD
+[Unreleased]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.5...HEAD
+[1.0.5]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.1...v1.0.2
