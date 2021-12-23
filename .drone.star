@@ -1,3 +1,8 @@
+OC_CI_ALPINE = "owncloudci/alpine:latest"
+OC_CI_WAIT_FOR = "owncloudci/wait-for:latest"
+OC_CI_NODEJS = "owncloudci/nodejs:14"
+OC_UBUNTU = "owncloud/ubuntu:20.04"
+
 config = {
 	'app': 'files_mediaviewer',
 	'rocketchat': {
@@ -190,3 +195,15 @@ def dependsOn(earlierStages, nextStages):
 	for earlierStage in earlierStages:
 		for nextStage in nextStages:
 			nextStage['depends_on'].append(earlierStage['name'])
+
+def waitForServer(federatedServerNeeded):
+    return [{
+        "name": "wait-for-server",
+        "image": OC_CI_WAIT_FOR,
+        "pull": "always",
+        "commands": [
+            "wait-for -it server:80 -t 600",
+        ] + ([
+            "wait-for -it federated:80 -t 600",
+        ] if federatedServerNeeded else []),
+    }]
