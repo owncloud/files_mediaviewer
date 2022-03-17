@@ -11,3 +11,9 @@
 
 /l10n/files_mediaviewer.pot
 *.po
+
+# Generated from .drone.star
+.drone.yml
+
+# IDE Cache
+.idea

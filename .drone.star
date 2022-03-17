@@ -1,3 +1,9 @@
+OC_CI_NODEJS = "owncloudci/nodejs:%s"
+PLUGINS_CODE_COV = "plugins/codecov:latest"
+PLUGINS_SLACK = "plugins/slack:1"
+
+DEFAULT_NODEJS_VERSION = "14"
+
 config = {
 	'app': 'files_mediaviewer',
 	'rocketchat': {
@@ -89,8 +95,7 @@ def javascript():
 			[
                 {
                     'name': 'l10n-read',
-                    'image': 'owncloudci/nodejs:%s' % getNodeJsVersion(),
-                    'pull': 'always',
+                    'image': OC_CI_NODEJS % getNodeJsVersion(),
                     'environment': params['extraEnvironment'],
                     'commands': params['extraCommandsBeforeTestRun'] + [
                         'make l10n-read'
@@ -111,7 +116,6 @@ def javascript():
 		result['steps'].append({
 			'name': 'codecov-js',
 			'image': 'plugins/codecov:latest',
-			'pull': 'always',
 			'settings': {
 				'paths': [
 					'coverage/*.info',
@@ -138,8 +142,7 @@ def notify():
 		'steps': [
 			{
 				'name': 'notify-rocketchat',
-				'image': 'plugins/slack:1',
-				'pull': 'always',
+				'image': PLUGINS_SLACK,
 				'settings': {
 					'webhook': {
 						'from_secret': config['rocketchat']['from_secret']
@@ -171,8 +174,7 @@ def installApp():
 
 	return [{
 		'name': 'install-app-%s' % config['app'],
-		'image': 'owncloudci/nodejs:%s' % getNodeJsVersion(),
-		'pull': 'always',
+		'image': OC_CI_NODEJS % getNodeJsVersion(),
 		'commands': [
 			'cd /var/www/owncloud/server/apps/%s' % config['app'],
 			config['appInstallCommand']
@@ -182,7 +184,7 @@ def installApp():
 def getNodeJsVersion():
     if "nodeJsVersion" not in config:
         # We use nodejs 14 as the default
-        return "14"
+        return DEFAULT_NODEJS_VERSION
     else:
         return config["nodeJsVersion"]
 
