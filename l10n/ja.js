@@ -13,6 +13,7 @@ OC.L10N.register(
     "Replay" : "リプレイ",
     "Rotate 90° counterclockwise" : "90°左回り",
     "Zoom in" : "ズームイン",
-    "Zoom out" : "ズームアウト"
+    "Zoom out" : "ズームアウト",
+    "Open in Media Viewer" : "メディアビューアで開く"
 },
 "nplurals=1; plural=0;");
