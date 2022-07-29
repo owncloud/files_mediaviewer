@@ -7,11 +7,13 @@ OC.L10N.register(
     "Loading" : "Yükleniyor",
     "Mute" : "Sessiz",
     "Next" : "Sonraki",
+    "of" : "/",
     "Play" : "Oynat",
     "Previous" : "Önceki",
     "Replay" : "Yeniden Oynat",
     "Rotate 90° counterclockwise" : "90° saat yönünün tersine döndür",
     "Zoom in" : "Yakınlaştır",
-    "Zoom out" : "uzaklaştır"
+    "Zoom out" : "uzaklaştır",
+    "Open in Media Viewer" : "Medya Görüntüleyicide Aç"
 },
 "nplurals=2; plural=(n > 1);");
