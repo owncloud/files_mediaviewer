@@ -2904,9 +2904,9 @@ supports-color@^8.0.0:
     has-flag "^4.0.0"
 
 svelte@^3.x:
-  version "3.50.0"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.50.0.tgz#d11a7a6bd1e084ec051d55104a9af8bccf54461f"
-  integrity sha512-zXeOUDS7+85i+RxLN+0iB6PMbGH7OhEgjETcD1fD8ZrhuhNFxYxYEHU41xuhkHIulJavcu3PKbPyuCrBxdxskQ==
+  version "3.50.1"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.50.1.tgz#b35fbc5e79ddd71e8bb27c3149ee6ff903841239"
+  integrity sha512-bS4odcsdj5D5jEg6riZuMg5NKelzPtmsCbD9RG+8umU03TeNkdWnP6pqbCm0s8UQNBkqk29w/Bdubn3C+HWSwA==
 
 swiper@^7.2.0:
   version "7.2.0"
