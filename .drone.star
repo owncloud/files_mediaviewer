@@ -4,6 +4,11 @@ PLUGINS_SLACK = "plugins/slack:1"
 
 DEFAULT_NODEJS_VERSION = "14"
 
+dir = {
+	"base": "/var/www/owncloud",
+	"apps": "/var/www/owncloud/server/apps",
+}
+
 config = {
 	'app': 'files_mediaviewer',
 	'rocketchat': {
@@ -86,7 +91,7 @@ def javascript():
 		'type': 'docker',
 		'name': 'javascript-tests',
 		'workspace' : {
-			'base': '/var/www/owncloud',
+			'base': dir['base'],
 			'path': 'server/apps/%s' % config['app']
 		},
 		'steps':
@@ -176,7 +181,7 @@ def installApp():
 		'name': 'install-app-%s' % config['app'],
 		'image': OC_CI_NODEJS % getNodeJsVersion(),
 		'commands': [
-			'cd /var/www/owncloud/server/apps/%s' % config['app'],
+			'cd %s/%s' % (dir['apps'], config['app']),
 			config['appInstallCommand']
 		]
 	}]
