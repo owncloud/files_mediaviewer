@@ -88,11 +88,11 @@ l10n-write: l10n/l10n.pl
 
 .PHONY: l10n-push
 l10n-push:
-	cd l10n && tx -d push -s
+	cd l10n && tx push -s
 
 .PHONY: l10n-pull
 l10n-pull:
-	cd l10n && tx -d pull -a --minimum-perc=15
+	cd l10n && tx pull -a --minimum-perc=15
 
 l10n/l10n.pl:
 	wget -qO l10n/l10n.pl https://rawgit.com/ownclouders/7f3e2bdf09e6c7258850d770c0edaf0b/raw/d3ad1673b5449900f85a04f95cdf7e7149140c4f/l10n.pl
