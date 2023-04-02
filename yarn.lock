@@ -2781,10 +2781,10 @@ sass-loader@^12.1.0:
     klona "^2.0.4"
     neo-async "^2.6.2"
 
-sass@^1.59.0:
-  version "1.59.0"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.59.0.tgz#66bcc388d8cb915d264780b6e42dc493edc8a80f"
-  integrity sha512-A2ftQ3SzkoddeQti1PnWrn81JcCpTk5UJcF3DQyfqarBN3Xk4HG/lHcBEurNpyrnd3frl0pw8li+jD+HsNSGUA==
+sass@^1.60.0:
+  version "1.60.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.60.0.tgz#657f0c23a302ac494b09a5ba8497b739fb5b5a81"
+  integrity sha512-updbwW6fNb5gGm8qMXzVO7V4sWf7LMXnMly/JEyfbfERbVH46Fn6q02BX7/eHTdKpE7d+oTkMMQpFWNUMfFbgQ==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
