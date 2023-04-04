@@ -2912,9 +2912,9 @@ supports-color@^8.0.0:
     has-flag "^4.0.0"
 
 svelte@^3.x:
-  version "3.56.0"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.56.0.tgz#0fe159e2e342cc3d430c7ff219315d1ea681c7b4"
-  integrity sha512-LvXiJbjdvJKwB/0CQyYpDX0q+hFqCyWmybzC2G6eK1tJJA/RSRCytTfNmjHv+RHlLuA70vWG7nXp6gbeErYvRA==
+  version "3.58.0"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.58.0.tgz#d3e6f103efd6129e51c7d709225ad3b4c052b64e"
+  integrity sha512-brIBNNB76mXFmU/Kerm4wFnkskBbluBDCjx/8TcpYRb298Yh2dztS2kQ6bhtjMcvUhd5ynClfwpz5h2gnzdQ1A==
 
 swiper@^7.2.0:
   version "7.2.0"
