@@ -8,7 +8,7 @@
     "moment-duration-format": "^2.3.2",
     "svelte": "^3.x",
     "swiper": "^7.2.0",
-    "vue": "^2.7.14",
+    "vue": "^3.3.2",
     "vue-router": "^3.6.5",
     "vuex": "^3.6.2"
   },
