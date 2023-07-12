@@ -13,7 +13,7 @@
     "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.8",
+    "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.7",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.8.1",
