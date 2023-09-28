@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "Viewer for pictures and videos integrated in the files app",
   "dependencies": {
-    "@types/moment-duration-format": "^2.2.3",
+    "@types/moment-duration-format": "^2.2.4",
     "easygettext": "^2.17.0",
     "moment-duration-format": "^2.3.2",
     "svelte": "^3.x",
