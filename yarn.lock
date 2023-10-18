@@ -1115,10 +1115,10 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
   integrity sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==
 
-"@types/moment-duration-format@^2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@types/moment-duration-format/-/moment-duration-format-2.2.4.tgz#24d4b7c209e45570ce514e43fa0d703002a61276"
-  integrity sha512-yKbULlpoDMYAW2eLQNpvXDH1yEFz83qyRhQP1c/Xl5+/pfqEjhlHN//Oy8scLSsXEHy5vY3Ph3eUsoHckSq+zg==
+"@types/moment-duration-format@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@types/moment-duration-format/-/moment-duration-format-2.2.5.tgz#8e290780c5f23b69d99d78f456e8a974c65b6fbf"
+  integrity sha512-0ojMdyThftIMXblaNFbIC4RUNUuiKyXP9BwywS6fm6L4Sod78ziFzO+cH2UWReexJo3go3xhkY3CVdcBiryocg==
   dependencies:
     moment ">=2.14.0"
 
