@@ -16,7 +16,7 @@
     "@babel/core": "^7.23.7",
     "@babel/preset-env": "^7.23.8",
     "babel-loader": "^8.2.5",
-    "css-loader": "^6.8.1",
+    "css-loader": "^6.9.0",
     "sass": "^1.69.7",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.3.4",
