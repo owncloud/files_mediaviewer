@@ -1,0 +1,8 @@
+{ "translations": {
+    "Close" : "Fermer",
+    "Download" : "Télécharger",
+    "Next" : "Suivant",
+    "Play" : "Lecture",
+    "Previous" : "Précédent"
+},"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
+}
