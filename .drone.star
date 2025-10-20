@@ -1,6 +1,6 @@
 OC_CI_NODEJS = "owncloudci/nodejs:%s"
 PLUGINS_CODE_COV = "plugins/codecov:latest"
-PLUGINS_SLACK = "plugins/slack:1"
+
 
 DEFAULT_NODEJS_VERSION = "14"
 
@@ -11,10 +11,6 @@ dir = {
 
 config = {
 	'app': 'files_mediaviewer',
-	'rocketchat': {
-		'channel': 'builds',
-		'from_secret': 'private_rocketchat'
-	},
 
 	'branches': [
 		'master'
@@ -35,10 +31,9 @@ def main(ctx):
 
 	dependsOn(before, stages)
 
-	after = afterPipelines()
-	dependsOn(stages, after)
+	dependsOn(stages)
 
-	return before + stages + after
+	return before + stages
 
 def beforePipelines():
 	return []
@@ -47,11 +42,6 @@ def stagePipelines():
 	jsPipelines = javascript()
 
 	return jsPipelines
-
-def afterPipelines():
-	return [
-		notify()
-	]
 
 def javascript():
 	pipelines = []
@@ -135,43 +125,6 @@ def javascript():
 		result['trigger']['ref'].append('refs/heads/%s' % branch)
 
 	return [result]
-
-def notify():
-	result = {
-		'kind': 'pipeline',
-		'type': 'docker',
-		'name': 'chat-notifications',
-		'clone': {
-			'disable': True
-		},
-		'steps': [
-			{
-				'name': 'notify-rocketchat',
-				'image': PLUGINS_SLACK,
-				'settings': {
-					'webhook': {
-						'from_secret': config['rocketchat']['from_secret']
-					},
-					'channel': config['rocketchat']['channel']
-				}
-			}
-		],
-		'depends_on': [],
-		'trigger': {
-			'ref': [
-				'refs/tags/**'
-			],
-			'status': [
-				'success',
-				'failure'
-			]
-		}
-	}
-
-	for branch in config['branches']:
-		result['trigger']['ref'].append('refs/heads/%s' % branch)
-
-	return result
 
 def installApp():
 	if 'appInstallCommand' not in config:
