@@ -1,0 +1,11 @@
+{ "translations": {
+    "Close" : "დახურვა",
+    "Download" : "ჩამოტვირთვა",
+    "Loading" : "ჩატვირთვა",
+    "Mute" : "გაჩუმება",
+    "Next" : "შემდეგი",
+    "of" : "დან",
+    "Play" : "დაკვრა",
+    "Previous" : "წინა"
+},"pluralForm" :"nplurals=2; plural=(n!=1);"
+}

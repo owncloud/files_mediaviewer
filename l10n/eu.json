@@ -1,0 +1,11 @@
+{ "translations": {
+    "Close" : "Itxi",
+    "Download" : "Deskargatu",
+    "Loading" : "Kargatzen",
+    "Mute" : "Mututu",
+    "Next" : "Hurrengoa",
+    "of" : "-ko",
+    "Play" : "Erreproduzitu",
+    "Previous" : "Aurrekoa"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

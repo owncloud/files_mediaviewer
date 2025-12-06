@@ -1,0 +1,9 @@
+{ "translations": {
+    "Close" : "Bağla",
+    "Download" : "Yüklə",
+    "Loading" : "Yüklənir",
+    "Next" : "Növbəti",
+    "Play" : "Oxu",
+    "Previous" : "Əvvələ"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

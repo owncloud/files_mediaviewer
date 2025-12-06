@@ -1,0 +1,11 @@
+{ "translations": {
+    "Close" : "بستن",
+    "Download" : "دانلود",
+    "Loading" : "بارگذاری",
+    "Mute" : "خفه کردن",
+    "Next" : "بعدی",
+    "of" : "از",
+    "Play" : "پخش کردن",
+    "Previous" : "قبلی"
+},"pluralForm" :"nplurals=2; plural=(n > 1);"
+}

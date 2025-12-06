@@ -1,0 +1,11 @@
+{ "translations": {
+    "Close" : "Fermi",
+    "Download" : "Elŝuti",
+    "Loading" : "Ŝargante",
+    "Mute" : "Silentigi",
+    "Next" : "Sekva",
+    "of" : "de",
+    "Play" : "Ludi",
+    "Previous" : "Antaŭa"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

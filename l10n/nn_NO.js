@@ -1,0 +1,13 @@
+OC.L10N.register(
+    "files_mediaviewer",
+    {
+    "Close" : "Lukk",
+    "Download" : "Last ned",
+    "Loading" : "Lastar",
+    "Mute" : "Demp",
+    "Next" : "Neste",
+    "of" : "av",
+    "Play" : "Spel",
+    "Previous" : "Førre"
+},
+"nplurals=2; plural=(n != 1);");

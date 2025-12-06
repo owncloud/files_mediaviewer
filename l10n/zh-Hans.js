@@ -2,8 +2,10 @@ OC.L10N.register(
     "files_mediaviewer",
     {
     "Close" : "关闭",
+    "Download" : "下载",
     "Fullscreen" : "全屏",
     "Loading" : "加载中",
+    "Mute" : "静音",
     "Next" : "下一首",
     "of" : "的",
     "Play" : "播放",

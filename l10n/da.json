@@ -1,0 +1,11 @@
+{ "translations": {
+    "Close" : "Luk",
+    "Download" : "Hent",
+    "Loading" : "Indlæser",
+    "Mute" : "Lydløs",
+    "Next" : "Næste",
+    "of" : "fra",
+    "Play" : "Afspil",
+    "Previous" : "Forrige"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

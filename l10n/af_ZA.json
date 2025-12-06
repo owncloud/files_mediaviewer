@@ -1,0 +1,10 @@
+{ "translations": {
+    "Close" : "Sluit",
+    "Download" : "Laai Af",
+    "Loading" : "Laai tans",
+    "Next" : "Volgende",
+    "of" : "van",
+    "Play" : "Speel",
+    "Previous" : "Vorige"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

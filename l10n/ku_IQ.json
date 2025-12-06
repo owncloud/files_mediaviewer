@@ -1,0 +1,9 @@
+{ "translations": {
+    "Close" : "دابخه",
+    "Download" : "داگرتن",
+    "Mute" : "بێده‌نگ کردن",
+    "Next" : "داهاتوو",
+    "Play" : "لێدان",
+    "Previous" : "پێشووتر"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

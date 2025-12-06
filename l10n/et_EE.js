@@ -7,6 +7,7 @@ OC.L10N.register(
     "Loading" : "Laadimine",
     "Mute" : "Vaigista",
     "Next" : "Järgmine",
+    "of" : "/",
     "Play" : "Esita",
     "Previous" : "Eelmine",
     "Replay" : "Esita uuesti"

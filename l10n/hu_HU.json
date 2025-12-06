@@ -1,0 +1,11 @@
+{ "translations": {
+    "Close" : "Bezárás",
+    "Download" : "Letöltés",
+    "Loading" : "Betöltés",
+    "Mute" : "Némítás",
+    "Next" : "Következő",
+    "of" : ", tulajdonos",
+    "Play" : "Lejátszás",
+    "Previous" : "Előző"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

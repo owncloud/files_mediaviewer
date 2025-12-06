@@ -1,0 +1,11 @@
+{ "translations": {
+    "Close" : "Zavrieť",
+    "Download" : "Sťahovanie",
+    "Loading" : "Nahrávam",
+    "Mute" : "Stlmiť",
+    "Next" : "Ďalšia",
+    "of" : "z",
+    "Play" : "Prehrať",
+    "Previous" : "Predošlá"
+},"pluralForm" :"nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);"
+}

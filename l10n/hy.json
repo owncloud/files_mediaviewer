@@ -1,0 +1,8 @@
+{ "translations": {
+    "Close" : "Փակել",
+    "Download" : "Ներբեռնել",
+    "Next" : "Հաջորդ",
+    "Play" : "Նվագարկել",
+    "Previous" : "Նախորդ"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

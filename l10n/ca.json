@@ -1,0 +1,11 @@
+{ "translations": {
+    "Close" : "Tanca",
+    "Download" : "Descàrrega",
+    "Loading" : "Carregant",
+    "Mute" : "Mut",
+    "Next" : "Següent",
+    "of" : "de",
+    "Play" : "Reprodueix",
+    "Previous" : "Anterior"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}
