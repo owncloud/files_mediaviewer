@@ -15,7 +15,7 @@
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
-    "babel-loader": "^8.2.5",
+    "babel-loader": "^10.0.0",
     "css-loader": "^6.11.0",
     "sass": "^1.94.0",
     "sass-loader": "^12.1.0",
