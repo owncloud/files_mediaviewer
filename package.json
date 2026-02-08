@@ -19,7 +19,7 @@
     "css-loader": "^6.11.0",
     "sass": "^1.94.0",
     "sass-loader": "^12.1.0",
-    "style-loader": "^3.3.4",
+    "style-loader": "^4.0.0",
     "vue-loader": "^15.11.1",
     "vue-template-compiler": "^2.7.16",
     "webpack": "^5.104.1",
