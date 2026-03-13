@@ -17,7 +17,7 @@ A media viewer that adds image and video viewing capabilities to Files view and 
 - Mobile support</description>
 	<licence>GPLv2</licence>
 	<author>Felix Heidecke</author>
-	<version>1.0.5</version>
+	<version>1.1.0</version>
 	<namespace>Mediaviewer</namespace>
 	<documentation>
 		<developer>https://github.com/owncloud/files_mediaviewer/blob/master/README.md</developer>
@@ -28,7 +28,7 @@ A media viewer that adds image and video viewing capabilities to Files view and 
 	<bugs>https://github.com/owncloud/files_mediaviewer/issues</bugs>
 	<repository type="git">https://github.com/owncloud/files_mediaviewer.git</repository>
 	<dependencies>
-		<owncloud min-version="10" max-version="10"/>
+		<owncloud min-version="10" max-version="11"/>
 	</dependencies>
 	<default_enable />
 </info>
