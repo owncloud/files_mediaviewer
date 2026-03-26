@@ -40,6 +40,22 @@ jobs:
     needs:
       - get-vars
     steps:
+      - name: Clone owncloud/core
+        uses: actions/checkout@v6
+        with:
+          repository: owncloud/core
+
+      - name: Checkout apps/${{ inputs.app-name }}
+        uses: actions/checkout@v6
+        with:
+          path: apps/${{ inputs.app-name }}
+          repository: ${{ inputs.app-repository }}
+
+      - name: Install Linux packages
+        if: ${{ inputs.additional-packages }}
+        run: |
+          sudo apt-get install ${{ inputs.additional-packages }}
+
       - name: Run JS Lint
         run: |
           cd apps/${{ inputs.app-name }}
