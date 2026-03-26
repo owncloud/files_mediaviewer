@@ -34,11 +34,13 @@ jobs:
     name: Commits
     uses: owncloud/reusable-workflows/.github/workflows/semantic-git-message.yml@main
 
-  js-unit:
-    name: JS Unit
+  js-lint:
+    name: JS Lint
+    runs-on: ubuntu-latest
     needs:
       - get-vars
-    uses: owncloud/reusable-workflows/.github/workflows/js-unit.yml@main
-    with:
-      app-name: ${{ needs.get-vars.outputs.app-name }}
-      php-version: '8.3'
+    steps:
+      - name: Run JS Lint
+        run: |
+          cd apps/${{ inputs.app-name }}
+          make test-js-style
