@@ -70,6 +70,11 @@ endif
 package:
 	tar --format=gnu -czf $(dist_dir)/$(app_name).tar.gz -C $(dist_dir) $(app_name)
 
+.PHONY: test-js-style
+test-js-style:             ## Run eslint and check javascript style
+test-js-style: js-deps
+	$(YARN) lint
+
 ##
 ## l10n
 ##--------------------------------------

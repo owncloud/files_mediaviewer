@@ -17,6 +17,8 @@
     "@babel/preset-env": "^7.28.5",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.11.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.32.0",
     "sass": "^1.94.0",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.3.4",
@@ -27,6 +29,7 @@
   },
   "scripts": {
     "build": "webpack --progress --mode=production",
+    "lint": "eslint ./src/scripts/*.js",
     "watch": "webpack --watch --mode=development"
   },
   "repository": {
