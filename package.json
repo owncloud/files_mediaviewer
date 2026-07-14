@@ -18,7 +18,7 @@
     "babel-loader": "^8.2.5",
     "css-loader": "^7.1.4",
     "sass": "^1.94.1",
-    "sass-loader": "^12.1.0",
+    "sass-loader": "^17.0.0",
     "style-loader": "^4.0.0",
     "vue-loader": "^15.11.1",
     "vue-template-compiler": "^2.7.16",
