@@ -29,6 +29,12 @@
     "build": "webpack --progress --mode=production",
     "watch": "webpack --watch --mode=development"
   },
+  "resolutions": {
+    "babel-loader/loader-utils": "^2.0.4",
+    "nth-check": "^2.1.1",
+    "serialize-javascript": "^7.0.5",
+    "postcss": "^8.5.10"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/owncloud/files_mediaviewer.git"
