@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+
+## [1.1.1] - 2026-07-22
+
+### Changed
+- Maintenance release re-signed with the ownCloud G2 code-signing certificate for the ownCloud 11.0.0 release.
+
+## [1.1.0] - 2026-06-29
+
+### Changed
+- ownCloud 11 compatible release (oc 11.0.0-rc1).
+
 ## [1.0.5] - 2021-11-09
 
 ### Changed
@@ -73,7 +84,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - Initial release
 
-[Unreleased]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.5...HEAD
+[Unreleased]: https://github.com/owncloud/files_mediaviewer/compare/v1.1.1..master
+[1.1.1]: https://github.com/owncloud/files_mediaviewer/compare/v1.1.0..v1.1.1
+[1.1.0]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.5..v1.1.0
 [1.0.5]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/owncloud/files_mediaviewer/compare/v1.0.2...v1.0.3
