@@ -2883,10 +2883,10 @@ svelte@^5.x:
     magic-string "^0.30.11"
     zimmerframe "^1.1.2"
 
-swiper@^12.1.2:
-  version "12.1.2"
-  resolved "https://registry.yarnpkg.com/swiper/-/swiper-12.1.2.tgz#39eaad0c088def66a7eb8f6bae1439384586ab90"
-  integrity sha512-4gILrI3vXZqoZh71I1PALqukCFgk+gpOwe1tOvz5uE9kHtl2gTDzmYflYCwWvR4LOvCrJi6UEEU+gnuW5BtkgQ==
+swiper@^14.0.6:
+  version "14.0.6"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-14.0.6.tgz#41e4498d74a0d11dc93b4d74f25dc6214ba012e5"
+  integrity sha512-ArptjmcZMBvpLCbvzSKuqvQpjjITCbZdymiGOrbZQffQ3ZSjgpvMByXX0WZBUt+FV4PPIumdYfZ9ZdBbFsdH6g==
 
 tapable@^2.3.0, tapable@^2.3.3:
   version "2.3.3"
