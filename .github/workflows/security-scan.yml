@@ -26,7 +26,3 @@ jobs:
   trivy:
     name: Trivy
     uses: owncloud/reusable-workflows/.github/workflows/trivy.yml@main
-    with:
-      # `make dist` runs js-deps/build-js, and the Makefile aborts at parse time
-      # when yarn is missing ($(error yarn is not available on your system)).
-      node-version: '18'
