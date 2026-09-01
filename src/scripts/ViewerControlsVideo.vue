@@ -48,7 +48,8 @@ export default {
 			mousePos    : {
 				type    : Number,
 				default : 0
-			}
+			},
+			initialized: false
 		};
 	},
 	methods : {
@@ -118,6 +119,8 @@ export default {
 
 				this.mousePos = Math.round(pct / 100 * this.duration);
 			});
+
+			this.initialized = true;
 		},
 
 		handleError () {
@@ -163,7 +166,9 @@ export default {
 	},
 	mounted () {
 		this.$bus.$on('swiper:slideChangeTransitionEnd', () => {
-			this.init();
+			if (this.initialized) {
+				this.init();
+			}
 		});
 		this.$bus.$on('swiper:init', () => {
 			this.init();
