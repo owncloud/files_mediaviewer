@@ -78,8 +78,13 @@ package:
 l10n-clean:
 	cd l10n && make clean
 
+# string extraction only needs easygettext, not the node >=20 build toolchain
+.PHONY: l10n-deps
+l10n-deps:
+	$(YARN) install --frozen-lockfile --ignore-engines
+
 .PHONY: l10n-read
-l10n-read: js-deps
+l10n-read: l10n-deps
 	cd l10n && make makemessages
 
 .PHONY: l10n-write
